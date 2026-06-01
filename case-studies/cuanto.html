@@ -226,7 +226,7 @@
     overflow: hidden;
   }
   .deliv-card__media img {
-    width: 100%; height: 100%; object-fit: contain; object-position: center; display: block;
+    width: 100%; height: 100%; object-fit: cover; object-position: center; display: block;
   }
   .deliv-card__body {
     flex: 0 0 auto;
@@ -369,7 +369,7 @@
   .pitem__h {
     font-family: var(--display);
     font-weight: 500;
-    font-size: clamp(28px, 3.6vw, 48px);
+    font-size: clamp(26px, 3.1vw, 40px);
     letter-spacing: -0.025em;
     line-height: 1.05;
     margin: 0;
@@ -421,14 +421,20 @@
   /* unified panel grid: num | (title + lead + media) | prose-on-right */
   .pitem__grid {
     display: grid;
-    grid-template-columns: 80px 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: clamp(24px, 3vw, 56px);
     align-items: start;
   }
+  .pitem__grid .pitem__num { grid-column: 1; grid-row: 1; padding-top: 0; margin-bottom: clamp(12px, 1.4vw, 18px); }
+  .pitem__grid .pitem__main { grid-column: 1; grid-row: 2; }
+  .pitem__grid .pitem__col-right { grid-column: 2; grid-row: 1 / 3; }
   .pitem__main { min-width: 0; display: flex; flex-direction: column; }
   .pitem__main .pitem__h { margin-bottom: clamp(20px, 2.5vw, 32px); max-width: 20ch; }
   @media (max-width: 760px) {
     .pitem__grid { grid-template-columns: 1fr; gap: 20px; }
+    .pitem__grid .pitem__num,
+    .pitem__grid .pitem__main,
+    .pitem__grid .pitem__col-right { grid-column: auto; grid-row: auto; }
     .pitem__main .pitem__h { margin-bottom: 18px; }
   }
 
@@ -1103,7 +1109,7 @@
       const rail = stage && stage.querySelector('.deliv__rail');
       const headH = head ? head.getBoundingClientRect().height : 0;
       const railH = rail ? rail.getBoundingClientRect().height : 0;
-      const avail = window.innerHeight - headH - railH - 80; // gaps + breathing room
+      const avail = window.innerHeight - headH - railH - 32; // gaps + breathing room
       viewport.style.maxWidth = '';
       // fill the full column width; card height = available pinned height (mockup flexes to fill)
       viewport.style.height = Math.max(320, Math.round(avail)) + 'px';
