@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Cuanto — Case Study · Copo Studio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="../assets/favicon.png">
+<link rel="stylesheet" href="../css/site.css">
+<style>
+  /* ---- HERO ---- */
+  .cs-hero { padding-top: clamp(92px, 11vh, 124px); padding-bottom: clamp(28px, 3vw, 44px); }
+  .cs-hero__crumbs { display: flex; justify-content: space-between; align-items: center; margin-bottom: clamp(28px, 3.5vw, 48px); flex-wrap: wrap; gap: 16px; }
+  .cs-hero__eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--pop);
+    margin-bottom: 24px;
+  }
+  .cs-hero__h {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(40px, 6vw, 88px);
+    letter-spacing: -0.035em;
+    line-height: 0.98;
+    margin: 0;
+    max-width: 18ch;
+  }
+
+  /* hero two-column: metrics card (left) + quote card (right) */
+  .cs-hero__layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(20px, 2.4vw, 36px);
+    margin-top: clamp(44px, 6vw, 84px);
+    align-items: stretch;
+  }
+  @media (max-width: 860px) { .cs-hero__layout { grid-template-columns: 1fr; } }
+  .cs-hero__metrics {
+    border: 1px solid var(--rule-dark);
+    border-radius: 10px;
+    padding: clamp(28px, 3vw, 48px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: clamp(22px, 2.6vw, 38px);
+  }
+  .hmetric__n {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(24px, 2.6vw, 34px);
+    letter-spacing: -0.02em;
+    line-height: 1;
+    margin: 0;
+    color: var(--snow);
+  }
+  .hmetric__n .plus { color: var(--pop); }
+  .hmetric__n .lbl { font-family: var(--body); font-size: 0.5em; font-weight: 400; color: var(--snow-2); margin-left: 10px; letter-spacing: 0; }
+  .hmetric__d { font-size: 14px; color: var(--snow-3); margin: 10px 0 0; line-height: 1.5; max-width: 42ch; }
+  .cs-hero__quote { color: var(--ink); justify-content: space-between; }
+  .cs-hero__quote .t-card__quote { font-size: clamp(16px, 1.2vw, 18px); line-height: 1.5; color: var(--ink-3); }
+
+  /* ---- Big results bar ---- */
+  .results {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--rule-light);
+    border-bottom: 1px solid var(--rule-light);
+  }
+  @media (max-width: 800px) { .results { grid-template-columns: 1fr; } }
+  .result {
+    padding: clamp(28px, 3.2vw, 52px) clamp(24px, 3vw, 48px);
+    border-right: 1px solid var(--rule-light);
+  }
+  .result:last-child { border-right: 0; }
+  @media (max-width: 800px) {
+    .result { border-right: 0; border-bottom: 1px solid var(--rule-light); }
+    .result:last-child { border-bottom: 0; }
+  }
+  .result__n {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(48px, 7vw, 104px);
+    letter-spacing: -0.04em;
+    line-height: 0.9;
+    margin: 0 0 20px;
+  }
+  .result__n .plus { color: var(--pop); }
+  .result__l {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-bottom: 10px;
+  }
+  .result__d {
+    font-size: 15px;
+    color: var(--ink-2);
+    line-height: 1.45;
+    margin: 0;
+    max-width: 36ch;
+  }
+
+  /* ---- Meta ---- */
+  .cs-meta { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: clamp(20px, 3vw, 48px); padding-block: clamp(40px, 5vw, 64px); border-bottom: 1px solid var(--rule-light); }
+  @media (max-width: 900px) { .cs-meta { grid-template-columns: 1fr 1fr; gap: 32px; } }
+  .cs-meta__label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 10px; }
+  .cs-meta__v { font-size: 15px; line-height: 1.45; margin: 0; }
+  .dark-skin .cs-meta { border-color: var(--rule-dark); }
+  .dark-skin .cs-meta__label { color: var(--snow-3); }
+  .dark-skin .cs-meta__v { color: var(--snow); }
+
+  /* ---- Overview section ---- */
+  .overview { padding-block: clamp(80px, 10vw, 140px); }
+  .overview__grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: clamp(40px, 6vw, 120px);
+    align-items: flex-start;
+  }
+  @media (max-width: 900px) { .overview__grid { grid-template-columns: 1fr; } }
+  .overview__h {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(36px, 5vw, 72px);
+    letter-spacing: -0.035em;
+    line-height: 0.96;
+    margin: 0;
+  }
+  .overview__body p { font-size: clamp(17px, 1.4vw, 19px); line-height: 1.55; margin: 0 0 24px; max-width: 60ch; }
+  .overview__body p strong { font-weight: 500; color: var(--ink); position: relative; }
+
+  /* ---- Mini stat row ---- */
+  .ministats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-block: 1px solid var(--rule-light);
+  }
+  .dark-skin .ministats { border-color: var(--rule-dark); }
+  @media (max-width: 700px) { .ministats { grid-template-columns: 1fr; } }
+  .ministat {
+    padding: clamp(28px, 3vw, 40px) clamp(20px, 2.5vw, 32px);
+    border-right: 1px solid var(--rule-light);
+  }
+  .ministat:last-child { border-right: 0; }
+  .dark-skin .ministat { border-right-color: var(--rule-dark); }
+  @media (max-width: 700px) {
+    .ministat { border-right: 0; border-bottom: 1px solid var(--rule-light); }
+    .ministat:last-child { border-bottom: 0; }
+  }
+  .ministat__n { font-family: var(--display); font-weight: 500; font-size: clamp(36px, 4.5vw, 68px); letter-spacing: -0.035em; line-height: 0.92; margin: 0 0 12px; }
+  .ministat__t { font-size: 14px; margin: 0 0 6px; font-weight: 500; }
+  .ministat__d { font-size: 13px; color: var(--ink-3); margin: 0; line-height: 1.4; }
+  .dark-skin .ministat__d { color: var(--snow-3); }
+  .dark-skin .ministat__t { color: var(--snow); }
+
+  /* ---- Deliverables (4 quadrants) ---- */
+  .deliv {
+    padding-block: clamp(80px, 10vw, 160px);
+  }
+  .deliv__head h2 {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(36px, 5.5vw, 80px);
+    letter-spacing: -0.035em;
+    line-height: 0.96;
+    margin: 0 0 64px;
+    max-width: 22ch;
+  }
+  .deliv-grid {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(28px, 4vw, 56px);
+  }
+
+  /* ---- Pinned scroll stage ---- */
+  .deliv__scroll { position: relative; height: 200vh; }
+  .deliv__stage {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: clamp(40px, 5vw, 88px);
+    align-items: center;
+    overflow: hidden;
+  }
+  .deliv__left { display: flex; flex-direction: column; }
+  /* heading stacked: label, heading, then stepper */
+  .deliv__head { display: block; }
+  .deliv__head .cs-meta__label { margin: 0 0 14px; }
+  .deliv__head h2 { margin: 0; max-width: 22ch; font-size: clamp(28px, 3vw, 48px); }
+  /* vertical card: mockup on top, text below — sits to the right */
+  .deliv__viewport {
+    position: relative;
+    width: 100%;
+    margin: 0;
+    overflow: hidden;
+    border-radius: 0;
+  }
+  .deliv__track {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: transform .22s cubic-bezier(0.22, 0.61, 0.36, 1);
+    will-change: transform;
+  }
+  .deliv-card {
+    flex: 0 0 100%;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background: var(--ink);
+    color: var(--snow);
+  }
+  .deliv-card__media {
+    position: relative;
+    width: 100%;
+    flex: 1 1 auto;
+    min-height: 0;
+    background: var(--paper-3);
+    overflow: hidden;
+  }
+  .deliv-card__media img {
+    width: 100%; height: 100%; object-fit: cover; object-position: center; display: block;
+  }
+  .deliv-card__body {
+    flex: 0 0 auto;
+    padding: clamp(18px, 2vw, 30px) clamp(22px, 3vw, 40px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+  }
+  .deliv-card__label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--snow-3);
+  }
+  .deliv-card__t {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(22px, 2.4vw, 34px);
+    letter-spacing: -0.025em;
+    line-height: 1.0;
+    margin: 0;
+  }
+  .deliv-card__d { font-size: clamp(14px, 1.1vw, 16px); line-height: 1.5; margin: 0; max-width: 56ch; color: var(--snow-2); }
+
+  /* progress rail */
+  .deliv__rail {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: clamp(28px, 3.5vw, 48px);
+    width: 100%;
+    max-width: 360px;
+  }
+  .deliv__rail-track {
+    flex: 1;
+    height: 2px;
+    background: var(--rule-light);
+    position: relative;
+    overflow: hidden;
+  }
+  .deliv__rail-fill {
+    position: absolute; left: 0; top: 0; bottom: 0;
+    background: var(--pop);
+    width: 25%;
+    transition: width .22s cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+  .deliv__rail-count {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: var(--ink-3);
+    white-space: nowrap;
+  }
+  .deliv__rail-count b { color: var(--ink); font-weight: 500; }
+
+  @media (max-width: 860px) {
+    .deliv__scroll { height: auto; }
+    .deliv__stage { position: static; height: auto; display: block; }
+    .deliv__left { display: block; }
+    .deliv__stage .deliv__head { margin-bottom: clamp(20px, 3vw, 32px); }
+    .deliv__viewport { height: auto; width: 100%; max-width: none; margin: 0; transform: none; overflow: visible; border-radius: 0; }
+    .deliv__track { flex-direction: column; transform: none !important; gap: clamp(28px, 5vw, 48px); }
+    .deliv-card { flex: 0 0 auto; }
+    .deliv__rail { display: none; }
+  }
+  .deliv-card.over-img > * { z-index: 1; }
+  .deliv-card.over-img .deliv-card__d { color: var(--snow-2); }
+
+  /* ---- Process accordion ---- */
+  .process {
+    padding-block: clamp(80px, 10vw, 160px);
+    border-top: 1px solid var(--rule-light);
+  }
+  .dark-skin .process { border-color: var(--rule-dark); }
+  .process__head {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(40px, 6vw, 96px);
+    align-items: flex-end;
+    margin-bottom: clamp(48px, 6vw, 80px);
+  }
+  @media (max-width: 900px) { .process__head { grid-template-columns: 1fr; align-items: flex-start; } }
+  .process__h {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(36px, 5.5vw, 80px);
+    letter-spacing: -0.035em;
+    line-height: 0.96;
+    margin: 0;
+    max-width: 14ch;
+  }
+  .process__nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  @media (max-width: 700px) { .process__nav { grid-template-columns: 1fr; } }
+  .process__nav a {
+    font-size: 14px;
+    border-bottom: 1px solid var(--rule-light);
+    padding-block: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: padding .25s var(--ease);
+  }
+  .dark-skin .process__nav a { border-color: var(--rule-dark); }
+  .process__nav a:hover { padding-left: 8px; }
+  .process__nav a span:first-child { display: flex; gap: 12px; align-items: center; }
+  .process__nav a .num { font-family: var(--mono); font-size: 11px; color: var(--ink-3); letter-spacing: 0.16em; }
+  .dark-skin .process__nav a .num { color: var(--snow-3); }
+  .process__nav a:hover .arr { color: var(--pop); }
+  .arr { transition: transform .3s var(--ease); }
+  .process__nav a:hover .arr { transform: translate(4px, -4px); }
+
+  /* ---- Process item ---- */
+  .pitem {
+    padding-block: clamp(64px, 7vw, 120px);
+    border-top: 1px solid var(--rule-light);
+  }
+  .dark-skin .pitem { border-color: var(--rule-dark); }
+  .pitem__head {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: clamp(20px, 3vw, 48px);
+    align-items: flex-start;
+    margin-bottom: 40px;
+  }
+  @media (max-width: 700px) { .pitem__head { grid-template-columns: 1fr; } }
+  .pitem__num {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    color: var(--ink-3);
+    padding-top: 8px;
+  }
+  .dark-skin .pitem__num { color: var(--snow-3); }
+  .pitem__h {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(28px, 3.6vw, 48px);
+    letter-spacing: -0.025em;
+    line-height: 1.05;
+    margin: 0;
+    max-width: 22ch;
+  }
+  .pitem__body {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: clamp(20px, 3vw, 48px);
+  }
+  @media (max-width: 700px) { .pitem__body { grid-template-columns: 1fr; } }
+  .pitem p { font-size: clamp(16px, 1.3vw, 18px); line-height: 1.6; margin: 0 0 20px; max-width: 60ch; }
+  .pitem strong { font-weight: 500; color: var(--ink); }
+  .dark-skin .pitem strong { color: var(--snow); }
+  .pitem__media {
+    aspect-ratio: 2525/1663;
+    border-radius: 0;
+    margin-top: 24px;
+    background: var(--paper-2);
+  }
+  .pitem__caption {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 16px 0 0;
+    max-width: 60ch;
+  }
+  .dark-skin .pitem__caption { color: var(--snow-3); }
+
+  /* lead highlight — sits at top of each panel, stands out in red */
+  .pitem .pitem__lead {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+    color: var(--pop);
+    margin: 0 0 24px;
+    max-width: 40ch;
+  }
+  .pitem .pitem__media { margin-bottom: 0; margin-top: 0; }
+  .pitem__lead + .pitem__media { margin-top: 0; }
+  /* faint divider between lead and prose in the right column */
+  .pitem__col-right .pitem__lead { margin: 0 0 18px; max-width: none; }
+  .pitem__div { border: 0; border-top: 1px solid var(--rule-light); margin: 0 0 18px; }
+
+  /* unified panel grid: num | (title + lead + media) | prose-on-right */
+  .pitem__grid {
+    display: grid;
+    grid-template-columns: 80px 1fr 1fr;
+    gap: clamp(24px, 3vw, 56px);
+    align-items: start;
+  }
+  .pitem__main { min-width: 0; display: flex; flex-direction: column; }
+  .pitem__main .pitem__h { margin-bottom: clamp(20px, 2.5vw, 32px); max-width: 20ch; }
+  @media (max-width: 760px) {
+    .pitem__grid { grid-template-columns: 1fr; gap: 20px; }
+    .pitem__main .pitem__h { margin-bottom: 18px; }
+  }
+
+  /* two-column panel body: lead + media left, prose right */
+  .pitem__split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(28px, 3vw, 56px);
+    align-items: start;
+  }
+  .pitem__col-left { display: flex; flex-direction: column; }
+  .pitem__col-left > * { margin-bottom: 0; }
+  .pitem__col-left .pitem__media { margin-bottom: 0; }
+  .pitem__col-right { min-width: 0; }
+  .pitem__col-right p { opacity: 0.6; margin: 0 0 16px; font-size: 16px; line-height: 1.6; max-width: 56ch; }
+  .pitem__col-right p:last-child { margin-bottom: 0; }
+  @media (max-width: 760px) {
+    .pitem__split { grid-template-columns: 1fr; gap: 20px; }
+  }
+
+  /* ---- Process tabbed (click-through) layout ---- */
+  .process__layout {
+    display: grid;
+    grid-template-columns: minmax(220px, 300px) 1fr;
+    gap: clamp(40px, 5vw, 80px);
+    align-items: start;
+  }
+  .process__tabs {
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 90px;
+  }
+  .ptab {
+    display: grid;
+    grid-template-columns: 26px 1fr;
+    gap: 12px;
+    align-items: start;
+    text-align: left;
+    background: none;
+    border: 0;
+    border-top: 1px solid var(--rule-dark);
+    padding: 18px 8px 18px 0;
+    cursor: pointer;
+    color: var(--snow-3);
+    transition: color .25s var(--ease), padding-left .25s var(--ease), box-shadow .25s var(--ease);
+    font-family: var(--body);
+  }
+  .ptab:hover { color: var(--snow); padding-left: 6px; }
+  .ptab .num { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; padding-top: 3px; color: var(--snow-3); transition: color .25s var(--ease); }
+  .ptab__label { font-size: 15px; line-height: 1.3; transition: color .25s var(--ease); }
+  .ptab.is-active { color: var(--snow); box-shadow: inset 2px 0 0 var(--pop); padding-left: 14px; }
+  .ptab.is-active .num { color: var(--pop); }
+
+  .process__panels { min-width: 0; }
+  .process__panels .pitem { display: none; border-top: 0; padding-block: 0; }
+  .process__panels .pitem.is-active { display: block; animation: pfade .4s var(--ease); }
+  @keyframes pfade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+  @media (max-width: 900px) {
+    .process__layout { grid-template-columns: 1fr; gap: 24px; }
+    .process__tabs {
+      position: sticky; top: 0;
+      flex-direction: row;
+      overflow-x: auto;
+      background: var(--void);
+      padding-block: 6px;
+      z-index: 5;
+      scrollbar-width: none;
+    }
+    .process__tabs::-webkit-scrollbar { display: none; }
+    .ptab {
+      border-top: 0;
+      border-bottom: 2px solid transparent;
+      white-space: nowrap;
+      grid-template-columns: auto;
+      padding: 10px 14px;
+    }
+    .ptab__label { display: none; }
+    .ptab .num { font-size: 13px; padding-top: 0; }
+    .ptab.is-active { box-shadow: none; border-bottom-color: var(--pop); padding-left: 14px; }
+  }
+
+  /* ---- Next steps / quote ---- */
+  .nextsteps { padding-block: clamp(64px, 8vw, 120px); }
+  .nextsteps__grid {
+    display: grid;
+    grid-template-columns: 0.95fr 1.05fr;
+    gap: clamp(32px, 5vw, 72px);
+    align-items: center;
+  }
+  @media (max-width: 900px) { .nextsteps__grid { grid-template-columns: 1fr; } }
+  .nextsteps__text .overview__body { margin-top: clamp(20px, 2.5vw, 32px); }
+  /* bento image cluster to the right of the text */
+  .nextsteps__bento {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: clamp(10px, 1vw, 16px);
+    aspect-ratio: 3 / 2;
+  }
+  .nextsteps__bento figure {
+    margin: 0;
+    border-radius: 0;
+    overflow: hidden;
+    background: var(--paper-3);
+  }
+  .nextsteps__bento figure:first-child { grid-row: 1 / 3; }
+  .nextsteps__bento img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  @media (max-width: 520px) {
+    .nextsteps__bento { grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; aspect-ratio: auto; }
+    .nextsteps__bento figure { aspect-ratio: 1/1; }
+    .nextsteps__bento figure:first-child { grid-row: auto; grid-column: 1 / 3; aspect-ratio: 2/1; }
+  }
+  .nextsteps__h {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(36px, 5.5vw, 76px);
+    letter-spacing: -0.035em;
+    line-height: 0.96;
+    margin: 0;
+    max-width: 14ch;
+  }
+
+  /* ---- Next project (giant) ---- */
+  .next-project { padding-block: clamp(80px, 10vw, 140px); text-align: center; }
+  .next-project__label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--snow-3); margin-bottom: 24px; display: block; }
+  .next-project__h { font-family: var(--display); font-weight: 500; font-size: clamp(56px, 11vw, 196px); letter-spacing: -0.045em; line-height: 0.88; margin: 0; transition: color .35s var(--ease); }
+  .next-project a:hover .next-project__h { color: var(--pop); }
+
+  /* full bleed util */
+  .full-bleed { width: 100%; aspect-ratio: 4694/2488; position:relative; overflow: hidden; border-radius: 0; }
+  .full-bleed img { width: 100%; height: 100%; object-fit: contain; display:block; }
+
+  .testimonial-strip {
+    padding-block: clamp(48px, 6vw, 80px);
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: clamp(24px, 4vw, 64px);
+    align-items: center;
+    border-bottom: 1px solid var(--rule-light);
+  }
+  @media (max-width: 800px) { .testimonial-strip { grid-template-columns: 1fr; } }
+  .testimonial-strip__pull {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(24px, 2.6vw, 36px);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: var(--pop);
+    margin: 0;
+  }
+  .testimonial-strip__quote {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(18px, 1.6vw, 22px);
+    line-height: 1.35;
+    margin: 0 0 24px;
+    max-width: 56ch;
+  }
+  .testimonial-strip__person {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .ts-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--paper-3);
+    overflow: hidden;
+  }
+</style>
+</head>
+<body class="light-skin" data-page-label="Case Study · Cuanto · Fintech Rewards App">
+
+<!-- corner -->
+<div class="corner">
+  <a href="../index.html" class="brand">
+    <span class="brand__mark"></span>
+    <span class="brand__c">©26</span>
+  </a>
+  <a href="../projects.html" style="font-family:var(--mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;display:inline-flex;align-items:center;gap:8px;">
+    ← All projects
+  </a>
+</div>
+
+<!-- =========================================================
+     HERO
+     ========================================================= -->
+<section class="dark-skin cs-hero shell" data-screen-label="01 Hero">
+  <p class="cs-hero__eyebrow">B2B2C Fintech AI Rewards App &amp; Platform</p>
+  <h1 class="cs-hero__h">How we scaled <span style="color: rgb(169, 226, 81);">Cuanto</span> to 10k users within 6 months<span style="color:var(--pop);">.</span></h1>
+
+  <div class="cs-hero__layout">
+    <div class="cs-hero__metrics" style="border-radius: 0px;">
+      <div class="hmetric">
+        <p class="hmetric__n">10,000<span class="plus">+</span> <span class="lbl">New Users</span></p>
+        <p class="hmetric__d">1.6k in the first month, 5k within 3, and 10k by 6 months.</p>
+      </div>
+      <div class="hmetric">
+        <p class="hmetric__n">40<span class="plus">%</span> <span class="lbl">Retention Rate</span></p>
+        <p class="hmetric__d">20k installs, 10k retained users and 4k recurrent shoppers.</p>
+      </div>
+      <div class="hmetric">
+        <p class="hmetric__n">$1M<span class="plus">+</span> <span class="lbl">Monthly GMV</span></p>
+        <p class="hmetric__d">Across 21,000+ partner brands monthly — incl. Nike, Walmart, Adidas, SHEIN.</p>
+      </div>
+    </div>
+
+    <article class="t-card cs-hero__quote" style="border-radius: 12px 12px 12px 0px">
+      <div>
+        <p class="t-card__pull" style="font-size: 40px">"Gives 100% day in and day out."</p>
+        <p class="t-card__quote">"Kayla is an amazing professional and even more importantly, a fantastic person who gives 100% day in and day out. Loved by the whole team, she brings a great energy and uplifts those around her…"</p>
+      </div>
+      <div class="t-card__person">
+        <div class="t-card__avatar"><img src="../assets/testimonial-rafael.jpg" alt="Rafael R."></div>
+        <div>
+          <p class="t-card__name">Rafael. R</p>
+          <p class="t-card__role">Co-Founder / CEO at Cuanto</p>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- =========================================================
+     HERO MEDIA
+     ========================================================= -->
+<section class="light-skin shell-wide" style="padding: 76px 38px 40px;">
+  <div class="full-bleed">
+    <img src="../assets/cuanto-mockup.png" alt="Cuanto — B2B2C fintech AI rewards app and platform">
+  </div>
+</section>
+
+<!-- testimonial strip moved into hero -->
+
+<!-- meta -->
+<section class="light-skin shell" data-screen-label="04 Meta">
+  <div class="cs-meta" style="padding: 0px 0px 40px">
+    <div>
+      <p class="cs-meta__label">Client</p>
+      <p class="cs-meta__v">Cuanto<br><span style="color:var(--ink-3); font-size: 13px;">B2B2C fintech rewards</span></p>
+    </div>
+    <div>
+      <p class="cs-meta__label">Year</p>
+      <p class="cs-meta__v">2024<br><span style="color:var(--ink-3); font-size: 13px;">8 weeks · 0 → MVP</span></p>
+    </div>
+    <div>
+      <p class="cs-meta__label">Role</p>
+      <p class="cs-meta__v">Lead Product Designer<br><span style="color:var(--ink-3); font-size: 13px;">+ brand &amp; launch</span></p>
+    </div>
+    <div>
+      <p class="cs-meta__label">Deliverables</p>
+      <p class="cs-meta__v">Product · UX/UI · Strategy · AI · Marketplace · Mobile · App · Brand · Growth · Launch · Marketing · Print</p>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     OVERVIEW
+     ========================================================= -->
+<section class="light-skin overview shell" data-screen-label="05 Overview" style="padding: 40px 56px">
+  <div class="overview__grid">
+    <div>
+      <p class="cs-meta__label" style="margin-bottom: 24px;">Cuanto Case Study</p>
+      <h2 class="overview__h">I was challenged to create the ultimate shopping experience<span style="color:var(--pop);">.</span></h2>
+    </div>
+    <div class="overview__body">
+      <p style="opacity: 0.6">One of the first things I challenged early was the product positioning. Initially, Cuanto was being shaped as another cashback rewards app with an AI chat layer. But after deeper product conversations, <strong>I saw a much larger opportunity.</strong></p>
+      <p style="opacity: 0.6">Rather than focusing only on cashback rewards, I pushed for the product to evolve into <strong>a complete AI-powered shopping experience</strong> — helping users discover the best matching products online before rewarding them for the purchase.</p>
+      <p style="opacity: 0.6">Working closely alongside the CEO and CTO, this direction reshaped both the product strategy and overall user experience, allowing us to position Cuanto as something far more <strong>valuable and differentiated within the market.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- mini stats row -->
+<section class="light-skin shell" data-screen-label="06 Scope">
+  <div class="ministats">
+    <div class="ministat">
+      <h4 class="ministat__n">50<span style="font-size:0.55em; color: var(--pop); vertical-align: super; margin-left: 4px;">+</span></h4>
+      <p class="ministat__t">Mobile App screens / states</p>
+      <p class="ministat__d">Core flows, onboarding, states and interactions.</p>
+    </div>
+    <div class="ministat">
+      <h4 class="ministat__n">60<span style="font-size:0.55em; color: var(--pop); vertical-align: super; margin-left: 4px;">+</span></h4>
+      <p class="ministat__t">Responsive Web screens / states</p>
+      <p class="ministat__d">Marketplace, account management and cashback flows.</p>
+    </div>
+    <div class="ministat">
+      <h4 class="ministat__n">8<span style="font-size:0.55em; color: rgb(247, 79, 80); vertical-align: super; margin-left: 4px;">wks</span></h4>
+      <p class="ministat__t">0 → MVP design delivery</p>
+      <p class="ministat__d">Research, branding, UX, UI, launch assets and marketing.</p>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     DELIVERABLES (4 cards)
+     ========================================================= -->
+<section class="light-skin deliv shell" data-screen-label="07 Deliverables" style="padding: 60px 56px">
+  <div class="deliv__scroll" id="delivScroll">
+    <div class="deliv__stage" style="text-align: left">
+      <div class="deliv__left">
+      <div class="deliv__head">
+        <p class="cs-meta__label">Deliverables</p>
+        <h2 style="margin: 0;">Cuanto had an idea<span style="color:var(--pop);">.</span> I turned it into something users can find, trust, understand and use<span style="color:var(--pop);">.</span></h2>
+      </div>
+
+      <div class="deliv__rail">
+        <span class="deliv__rail-count"><b id="delivNum">01</b> / 04</span>
+        <div class="deliv__rail-track"><div class="deliv__rail-fill" id="delivFill"></div></div>
+      </div>
+      </div>
+
+      <div class="deliv__viewport" id="delivViewport">
+        <div class="deliv__track" id="delivTrack">
+        <article class="deliv-card is-active">
+          <div class="deliv-card__media"><img src="../assets/cuanto-deliv-mobile.png" alt="Cuanto mobile app — cashback marketplace and store screens"></div>
+          <div class="deliv-card__body">
+            <span class="deliv-card__label">— 01 —</span>
+            <h3 class="deliv-card__t">Mobile App<span style="color:var(--pop);">.</span></h3>
+            <p class="deliv-card__d">Core cashback and discovery experience designed to maximise engagement, retention and repeat purchases.</p>
+          </div>
+        </article>
+        <article class="deliv-card">
+          <div class="deliv-card__media"><img src="../assets/cuanto-mockup.png" alt="Cuanto web platform" style="object-fit: cover;"></div>
+          <div class="deliv-card__body">
+            <span class="deliv-card__label">— 02 —</span>
+            <h3 class="deliv-card__t">Responsive Web Platform<span style="color:var(--pop);">.</span></h3>
+            <p class="deliv-card__d">Marketplace and onboarding web platform built to streamline acquisition and conversion across devices.</p>
+          </div>
+        </article>
+        <article class="deliv-card">
+          <div class="deliv-card__media"><img src="../assets/cuanto-brand.png" alt="Cuanto brand guidelines — logo, typography, colour"></div>
+          <div class="deliv-card__body">
+            <span class="deliv-card__label">— 03 —</span>
+            <h3 class="deliv-card__t">Brand Identity<span style="color:var(--pop);">.</span></h3>
+            <p class="deliv-card__d">Modern visual system designed to position Cuanto as a trusted, scalable consumer tech product.</p>
+          </div>
+        </article>
+        <article class="deliv-card">
+          <div class="deliv-card__media"><img src="../assets/cuanto-marketing.png" alt="Cuanto marketing &amp; launch assets"></div>
+          <div class="deliv-card__body">
+            <span class="deliv-card__label">— 04 —</span>
+            <h3 class="deliv-card__t">Launch &amp; Marketing<span style="color:var(--pop);">.</span></h3>
+            <p class="deliv-card__d">Conversion-focused marketing assets created to support rollout, visibility and user growth.</p>
+          </div>
+        </article>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     PROCESS / DESIGN THINKING
+     ========================================================= -->
+<section class="dark-skin process shell" data-screen-label="08 Process Index">
+  <div class="process__head">
+    <div style="grid-column: 1 / -1;">
+      <p class="cs-meta__label" style="color: var(--snow-3);">Design Thinking</p>
+      <h2 class="process__h" style="margin-top: 12px; width: 100%; max-width: 100%">Independent thinking, collaborative execution<span style="color:var(--pop);">.</span><br>How we got results<span style="color:var(--pop);">.</span></h2>
+    </div>
+  </div>
+
+  <div class="process__layout" style="border-width: 1px; border-style: solid; padding: 60px; border-color: rgb(112, 110, 107)">
+    <div class="process__tabs" role="tablist" aria-label="Design thinking steps">
+      <button class="ptab is-active" data-target="p1" role="tab"><span class="num">01</span><span class="ptab__label">Product Positioning &amp; Market Research</span></button>
+      <button class="ptab" data-target="p2" role="tab"><span class="num">02</span><span class="ptab__label">Scalable, Dev-ready Figma System</span></button>
+      <button class="ptab" data-target="p3" role="tab"><span class="num">03</span><span class="ptab__label">UX Strategy, Flows, Wireframes &amp; Demos</span></button>
+      <button class="ptab" data-target="p4" role="tab"><span class="num">04</span><span class="ptab__label">Web &amp; Conversion Strategy</span></button>
+      <button class="ptab" data-target="p5" role="tab"><span class="num">05</span><span class="ptab__label">Trust through Visual Brand Identity</span></button>
+      <button class="ptab" data-target="p6" role="tab"><span class="num">06</span><span class="ptab__label">Responsive UI Product Designs</span></button>
+      <button class="ptab" data-target="p7" role="tab"><span class="num">07</span><span class="ptab__label">Launch &amp; Growth Marketing Assets</span></button>
+      <button class="ptab" data-target="p8" role="tab"><span class="num">08</span><span class="ptab__label">Business Impact &amp; User Results</span></button>
+    </div>
+
+    <div class="process__panels">
+
+  <!-- 01 -->
+  <article class="pitem is-active" id="p1">
+    <div class="pitem__grid">
+      <span class="pitem__num">(01)</span>
+      <div class="pitem__main">
+        <h3 class="pitem__h">How product positioning &amp; market research strengthened our vision<span style="color:var(--pop);">.</span></h3>
+        <div class="pitem__media has-img" style="aspect-ratio: 2525/1663; border-radius: 0; overflow:hidden;"><img src="../assets/cuanto-research.png" alt="Cuanto positioning research &amp; competitive landscape" style="width:100%; height:100%; object-fit: contain;"></div>
+      </div>
+      <div class="pitem__col-right">
+        <p class="pitem__lead" style="font-size: 18px">Market research helped uncover a stronger product opportunity that competitors were not yet combining. We would be unique.</p>
+        <hr class="pitem__div">
+        <p>After researching and benchmarking both cashback platforms and emerging AI shopping assistants, I realised there was a much larger product opportunity than simply building another rewards app in a saturated market.</p>
+        <p>Most competitors focused purely on cashback <em>after</em> the shopping experience, while newer AI commerce products focused on helping users discover products more intelligently. I saw an opportunity for Cuanto to combine both models into a single experience — helping users first discover the best matching products online, then rewarding them through cashback incentives.</p>
+      </div>
+    </div>
+  </article>
+
+  <!-- 02 -->
+  <article class="pitem" id="p2">
+    <div class="pitem__grid">
+      <span class="pitem__num">(02)</span>
+      <div class="pitem__main">
+        <h3 class="pitem__h">Why we needed a scalable, dev-ready Figma design system<span style="color:var(--pop);">.</span></h3>
+        <div class="pitem__media has-img" style="aspect-ratio: 2525/1663; border-radius: 0; overflow:hidden;"><img src="../assets/cuanto-figma.png" alt="Cuanto Figma design system — tokens, components, patterns" style="width:100%; height:100%; object-fit: contain;"></div>
+      </div>
+      <div class="pitem__col-right">
+        <p class="pitem__lead">By building a Figma system, we moved rapidly across 100+ screens / states without sacrificing usability or consistency.</p>
+        <hr class="pitem__div">
+        <p>Together with the CTO, I developed a scalable design system that allowed us to move quickly without building everything completely from scratch.</p>
+        <p>Rather than designing isolated screens, I focused on creating reusable foundations that could scale across devices, speed up implementation, and maintain consistency as the product evolved.</p>
+      </div>
+    </div>
+  </article>
+
+  <!-- 03 -->
+  <article class="pitem" id="p3">
+    <div class="pitem__grid">
+      <span class="pitem__num">(03)</span>
+      <div class="pitem__main">
+        <h3 class="pitem__h">Mapping the UX strategy, flows, wireframes and demos saved time<span style="color:var(--pop);">.</span></h3>
+        <div class="pitem__media has-img" style="aspect-ratio: 2525/1663; border-radius: 0; overflow:hidden;"><img src="../assets/cuanto-ux.png" alt="Cuanto UX flows, wireframes and onboarding explorations" style="width:100%; height:100%; object-fit: contain;"></div>
+      </div>
+      <div class="pitem__col-right">
+        <p class="pitem__lead">Mapping flows, wireframes, and prototypes for this new product helped validate the direction and avoid complex iterations.</p>
+        <hr class="pitem__div">
+        <p>To speed up iteration, I started with wireframes and flows before high-fidelity UI. This helped us validate the AI shopping assistant model quickly, reduce unnecessary redesigns later, and confidently move into development and investor demos.</p>
+        <p>For example, since we were offering a new type of shopping experience, our onboarding strategy was critical to get right. I explored three approaches: 1. personalised onboarding, 2. AI-guided walkthrough, 3. interactive product simulation.</p>
+        <p>Between flow and conversion statistics, the interactive journey gave users the clearest understanding — so that's what we shipped.</p>
+      </div>
+    </div>
+  </article>
+
+  <!-- 04 -->
+  <article class="pitem" id="p4">
+    <div class="pitem__grid">
+      <span class="pitem__num">(04)</span>
+      <div class="pitem__main">
+        <h3 class="pitem__h">Having the right web and conversion strategies shows in our results<span style="color:var(--pop);">.</span></h3>
+        <div class="pitem__media has-img" style="aspect-ratio: 2525/1663; border-radius: 0; overflow:hidden;"><img src="../assets/cuanto-ui.png" alt="Cuanto web hero with in-line AI search" style="width:100%; height:100%; object-fit: contain;"></div>
+      </div>
+      <div class="pitem__col-right">
+        <p class="pitem__lead">Everything users needed to make a decision was within the first glance of the site. The hero alone made users want, understand, trust, and start using the product immediately.</p>
+        <hr class="pitem__div">
+        <p>I identified early that users needed to <em>experience</em> the product value immediately — not just read about it. By placing the AI-powered shopping search directly in the hero section, users could instantly interact with the product before committing to sign up.</p>
+        <p>Since this was a new type of shopping experience, I focused heavily on making the product feel familiar from the beginning. Using recognisable UI patterns, trusted partner brands, and layered product information helped reduce friction, build trust quickly, and encourage stronger long-term engagement and retention.</p>
+      </div>
+    </div>
+  </article>
+
+  <!-- 05 -->
+  <article class="pitem" id="p5">
+    <div class="pitem__grid">
+      <span class="pitem__num">(05)</span>
+      <div class="pitem__main">
+        <h3 class="pitem__h">Trust is built through strong and consistent visual brand identity<span style="color:var(--pop);">.</span></h3>
+        <div class="pitem__media has-img" style="aspect-ratio: 2525/1663; border-radius: 0; overflow:hidden;">
+          <img src="../assets/cuanto-brand.png" alt="Cuanto brand guidelines — logo, typography, colour system" style="width:100%; height:100%; object-fit: contain;">
+        </div>
+      </div>
+      <div class="pitem__col-right">
+        <p class="pitem__lead">Simple design fixes improved recognition &amp; searchability, while strong UI rules made us instantly more trustworthy as a new brand.</p>
+        <hr class="pitem__div">
+        <p>Cuanto already had its logo and primary colours established. I developed the wider brand foundations — typography, sizing systems, UI rules, iconography, and custom illustrations — to help the product feel more engaging, recognisable, and trustworthy for B2C users.</p>
+        <p>One major issue I identified was that the arrow within the type-logo caused the name to read as "<em>Guanto</em>" rather than "Cuanto". While subtle, this is the kind of flaw that can affect brand recognition and searchability online — so I adjusted the logo without needing a full redesign.</p>
+      </div>
+    </div>
+  </article>
+
+  <!-- 06 -->
+  <article class="pitem" id="p6">
+    <div class="pitem__grid">
+      <span class="pitem__num">(06)</span>
+      <div class="pitem__main">
+        <h3 class="pitem__h">The CTO loved my responsive UI product designs<span style="color:var(--pop);">.</span> <em style="color:var(--snow-3); font-weight:400;">"That's really good."</em></h3>
+        <div class="pitem__media has-img" style="aspect-ratio: 4694/2488; border-radius: 0; overflow:hidden;">
+          <img src="../assets/cuanto-mockup.png" alt="Cuanto responsive UI" style="width:100%; height:100%; object-fit: contain;">
+        </div>
+      </div>
+      <div class="pitem__col-right">
+        <p class="pitem__lead">I delivered quality, strategically engineered screens using our new Figma system &amp; components for seamless implementation.</p>
+        <hr class="pitem__div">
+        <p>Initially, the direction leaned heavily into a more technical AI aesthetic. Through iterations, I pushed the experience toward something cleaner and more approachable, as we were ultimately targeting everyday non-technical users.</p>
+        <p>I used familiar UI patterns, strong visual hierarchy, and reduced visual noise to make the experience feel intuitive immediately, while naturally guiding users toward product discovery and purchase actions.</p>
+      </div>
+    </div>
+  </article>
+
+  <!-- 07 -->
+  <article class="pitem" id="p7">
+    <div class="pitem__grid">
+      <span class="pitem__num">(07)</span>
+      <div class="pitem__main">
+        <h3 class="pitem__h">Design expands all the way to launch &amp; growth marketing assets<span style="color:var(--pop);">.</span></h3>
+        <div class="pitem__media has-img" style="aspect-ratio: 2525/1663; border-radius: 0; overflow:hidden;"><img src="../assets/cuanto-marketing.png" alt="Cuanto launch &amp; growth marketing assets" style="width:100%; height:100%; object-fit: contain;"></div>
+      </div>
+      <div class="pitem__col-right">
+        <p class="pitem__lead">The psychology behind making users stop, pay attention, and decide to download is often invisible within good design.</p>
+        <hr class="pitem__div">
+        <p>The product experience did not stop once the screens were finalised. A huge part of building a successful startup product is then getting those designs <em>seen</em>, <em>understood</em>, and <em>trusted</em> by users.</p>
+        <p>I designed the App Store visuals, social media content, and launch assets to communicate the product value within seconds. Strong branding, recognisable visuals, and custom illustrations helped the product stand out quickly, while also building trust and credibility with younger online shoppers.</p>
+      </div>
+    </div>
+  </article>
+
+  <!-- 08 -->
+  <article class="pitem" id="p8">
+    <div class="pitem__grid">
+      <span class="pitem__num">(08)</span>
+      <div class="pitem__main">
+        <h3 class="pitem__h">The business impact and user results speak for themselves<span style="color:var(--pop);">.</span></h3>
+        <div class="pitem__media has-img" style="aspect-ratio: 2525/1663; border-radius: 0; overflow:hidden;"><img src="../assets/cuanto-stats.png" alt="Cuanto growth snapshot — users, retention, GMV" style="width:100%; height:100%; object-fit: contain;"></div>
+      </div>
+      <div class="pitem__col-right">
+        <p class="pitem__lead">20,000 installs · 10,000 active users · 40% retention · 21,000+ partner brands · $1M+ GMV processed monthly.</p>
+        <hr class="pitem__div">
+        <p>Following launch, within 6 months the platform reached <strong>20,000 installs</strong>, <strong>10,000 active users</strong>, <strong>40% retention</strong>, over <strong>21,000 partner brands</strong> including Nike, Walmart, Adidas, and SHEIN, and processed over <strong>$1M in GMV monthly</strong>.</p>
+        <p>I'm incredibly proud of how the product turned out, and grateful to have worked alongside such a strong team throughout the process. Together — myself, the CEO, and the CTO — were able to take the product from an idea to a product with real traction and measurable impact.</p>
+      </div>
+    </div>
+  </article>
+    </div><!-- /.process__panels -->
+  </div><!-- /.process__layout -->
+</section>
+
+<!-- =========================================================
+     NEXT STEPS
+     ========================================================= -->
+<section class="light-skin nextsteps shell" data-screen-label="09 Next Steps">
+  <div class="nextsteps__grid">
+    <div class="nextsteps__text">
+      <p class="cs-meta__label">Next Steps</p>
+      <h2 class="nextsteps__h" style="margin-top:12px;">In true startup style, cuanto is still evolving<span style="color:var(--pop);">.</span></h2>
+      <div class="overview__body">
+        <p style="opacity: 0.6; font-size: 18px">Recently, the team identified an opportunity to pivot the product toward a new B2B market, partnering with other companies to give them access to the commerce infrastructure, chat experience, and partner network already built.</p>
+        <p style="opacity: 0.6; font-size: 18px">Since then, I have helped evolve the brand direction to feel more mature and aligned with the new B2B audience; shaping the dashboard platform UI direction, designing our pitch deck, marketing assets, and even the new team merchandise. Super excited for what's still being built here.</p>
+        <p style="opacity: 0.6; font-size: 18px"></p>
+      </div>
+    </div>
+
+    <div class="nextsteps__bento">
+      <figure><img src="../assets/cuanto-next-1.png" alt="Cuanto evolved brand system — logo lockups and gradients"></figure>
+      <figure><img src="../assets/cuanto-next-2.png" alt="Cuanto B2B dashboard direction and marketing showcase"></figure>
+      <figure><img src="../assets/cuanto-next-3.png" alt="Cuanto team merchandise — cap and t-shirt"></figure>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     NEXT PROJECT
+     ========================================================= -->
+<section class="dark-skin contact shell" id="contact" data-screen-label="11 Contact">
+  <div class="contact__glow" aria-hidden="true"></div>
+
+  <div class="contact__grid">
+    <div class="contact__copy">
+      <div class="contact__head">
+        <span class="section-head__num" style="color:var(--snow-3)">(06)</span>
+        <span class="section-head__tag" style="color:var(--snow-2)">Contact</span>
+      </div>
+      <h2 class="contact__h" style="margin: 0 0 32px;">Pitch me a product, and I'll build it for you<span style="color: rgb(247, 79, 79)">.</span></h2>
+      <p class="body-l muted-dark" style="margin: 0 0 24px; font-size: 16px">Reach out and I'll help you move your product forward. Whether you need direction, a quick audit, or a clear plan; expect honest advice and a partner who cares about the outcome as much as you do.</p>
+      <p class="body-l muted-dark" style="margin: 0; font-size: 16px">If you're exploring an idea or ready to build, let's talk product.</p>
+    </div>
+
+    <form onsubmit="event.preventDefault(); this.querySelector('button[type=submit]').textContent='Sent — talk soon';">
+      <div class="field">
+        <label for="f-name">Name *</label>
+        <input id="f-name" type="text" placeholder="Your name" required>
+      </div>
+      <div class="field">
+        <label for="f-email">E-mail *</label>
+        <input id="f-email" type="email" placeholder="you@yourstartup.com" required>
+      </div>
+      <div class="field">
+        <label for="f-goal">Project &amp; goals *</label>
+        <textarea id="f-goal" placeholder="Tell me what you're building, where you're stuck, what success looks like." required></textarea>
+      </div>
+      <button type="submit" class="btn btn-light" style="align-self:flex-start; margin-top: 10px;">
+        Let's talk product
+        <span class="arrow">
+          <svg viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </button>
+    </form>
+  </div>
+</section>
+
+<!-- footer -->
+<footer class="dark-skin footer shell" data-screen-label="Footer" style="display: flex; flex-direction: column; gap: clamp(48px, 8vw, 96px)">
+  <div class="footer__main" style="text-align: left; padding: 0px">
+    <h2 class="footer__brand-h">
+      <span class="footer__brand-mark" aria-label="Copo Studio"></span>
+    </h2>
+
+    <div class="footer__content" style="justify-content: space-between; height: 271px">
+      <div class="footer__socials">
+        <a href="https://www.linkedin.com/in/kaylapiscopo/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg class="footer__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.22 8h4.56V24H.22V8zm7.5 0H12v2.18h.06c.6-1.13 2.07-2.32 4.27-2.32 4.57 0 5.42 3.01 5.42 6.92V24h-4.55v-7.27c0-1.73-.03-3.97-2.42-3.97-2.42 0-2.79 1.89-2.79 3.84V24H7.72V8z"/></svg>
+        </a>
+        <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg class="footer__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="mailto:kaylapiscopo@gmail.com" aria-label="Email">
+          <svg class="footer__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="1.5"/><path d="M3 6l9 7 9-7"/></svg>
+        </a>
+        <a href="https://wa.me/61402559576" aria-label="WhatsApp">
+          <svg class="footer__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11.8 11.8 0 0 0 12.06 0C5.5 0 .15 5.34.15 11.9c0 2.1.55 4.14 1.6 5.94L0 24l6.34-1.66a11.9 11.9 0 0 0 5.72 1.46h.01c6.55 0 11.9-5.34 11.9-11.9 0-3.18-1.24-6.17-3.47-8.4zm-8.44 18.3h-.01a9.86 9.86 0 0 1-5.03-1.38l-.36-.21-3.76.99 1-3.67-.23-.38a9.84 9.84 0 0 1-1.5-5.25c0-5.45 4.44-9.88 9.9-9.88a9.86 9.86 0 0 1 9.88 9.9c0 5.45-4.44 9.88-9.88 9.88zm5.43-7.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48a9.04 9.04 0 0 1-1.66-2.07c-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.49 0 1.47 1.07 2.89 1.22 3.09.15.2 2.1 3.21 5.09 4.5.71.31 1.27.49 1.7.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.42.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35z"/></svg>
+        </a>
+      </div>
+      <p class="body-m muted-dark" style="max-width:34ch; margin:0;">Independent product studio. Run by Kayla, designing apps, brands and websites for ambitious founders.</p>
+      <nav class="footer__nav">
+        <a href="../projects.html">Projects</a>
+        <a href="../index.html#services">Services</a>
+        <a href="../index.html#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </div>
+
+  <div class="footer__bottom">
+    <small>© 2026 Copo Studio · Kayla Piscopo</small>
+    <small>REMOTE → WORLDWIDE</small>
+    <small id="footerClock" style="font-family:var(--mono);letter-spacing:.14em;">— : — —</small>
+  </div>
+</footer>
+
+<script>
+  function tick() {
+    const t = new Intl.DateTimeFormat('en-GB', { hour:'2-digit', minute:'2-digit', hour12:false, timeZone:'Europe/Madrid' }).format(new Date());
+    const fel = document.getElementById('footerClock');
+    if (fel) fel.textContent = `${t} · Barcelona`;
+  }
+  tick(); setInterval(tick, 30000);
+
+  // ---- Design Thinking: click-through tabs ----
+  (function () {
+    const tabs = Array.from(document.querySelectorAll('.ptab'));
+    const panels = Array.from(document.querySelectorAll('.process__panels .pitem'));
+    const layout = document.querySelector('.process__layout');
+    if (!tabs.length || !layout) return;
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const id = tab.dataset.target;
+        tabs.forEach(t => t.classList.toggle('is-active', t === tab));
+        panels.forEach(p => p.classList.toggle('is-active', p.id === id));
+        const top = layout.getBoundingClientRect().top + window.scrollY - 90;
+        if (window.scrollY > top + 4) window.scrollTo({ top, behavior: 'smooth' });
+      });
+    });
+  })();
+
+  /* ---- Pinned deliverables scroll ---- */
+  (function () {
+    const scroll = document.getElementById('delivScroll');
+    const track = document.getElementById('delivTrack');
+    const fill = document.getElementById('delivFill');
+    const num = document.getElementById('delivNum');
+    if (!scroll || !track) return;
+    const cards = Array.from(track.querySelectorAll('.deliv-card'));
+    const n = cards.length;
+    let lastIdx = -1;
+    const mq = window.matchMedia('(max-width: 860px)');
+    const viewport = document.getElementById('delivViewport');
+    const firstMedia = track.querySelector('.deliv-card__media');
+    const DELIV_RATIO = 2525 / 1663;
+    const DELIV_BODY_H = 178; // dark text panel height beneath each mockup
+    function sizeViewport() {
+      if (!viewport || !firstMedia) return;
+      if (mq.matches) { viewport.style.height = ''; viewport.style.maxWidth = ''; return; }
+      const stage = viewport.closest('.deliv__stage');
+      const head = stage && stage.querySelector('.deliv__head');
+      const rail = stage && stage.querySelector('.deliv__rail');
+      const headH = head ? head.getBoundingClientRect().height : 0;
+      const railH = rail ? rail.getBoundingClientRect().height : 0;
+      const avail = window.innerHeight - headH - railH - 80; // gaps + breathing room
+      viewport.style.maxWidth = '';
+      // fill the full column width; card height = available pinned height (mockup flexes to fill)
+      viewport.style.height = Math.max(320, Math.round(avail)) + 'px';
+    }
+
+    function update() {
+      if (mq.matches) { track.style.transform = ''; return; }
+      const rect = scroll.getBoundingClientRect();
+      const total = scroll.offsetHeight - window.innerHeight;
+      const scrolled = Math.min(Math.max(-rect.top, 0), total);
+      const progress = total > 0 ? scrolled / total : 0;
+      // continuous vertical slide across the cards (locks in place, scrolls vertically)
+      const y = progress * (n - 1) * 100;
+      track.style.transform = 'translateY(-' + y + '%)';
+      const idx = Math.min(n - 1, Math.max(0, Math.round(progress * (n - 1))));
+      if (idx !== lastIdx) {
+        lastIdx = idx;
+        if (num) num.textContent = String(idx + 1).padStart(2, '0');
+        if (fill) fill.style.width = ((idx + 1) / n * 100) + '%';
+      }
+    }
+
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => { update(); ticking = false; });
+        ticking = true;
+      }
+    }, { passive: true });
+
+    // snap to the nearest card once scrolling settles
+    let snapTimer = null;
+    let snapping = false;
+    function snap() {
+      if (mq.matches || snapping || n < 2) return;
+      const rect = scroll.getBoundingClientRect();
+      const total = scroll.offsetHeight - window.innerHeight;
+      if (total <= 0) return;
+      const sectionTop = window.scrollY + rect.top;
+      const raw = (window.scrollY - sectionTop) / total;
+      // allow free scroll at the very entry/exit of the pinned range
+      if (raw <= 0.002 || raw >= 0.998) return;
+      const idx = Math.round(raw * (n - 1));
+      const targetY = Math.round(sectionTop + (idx / (n - 1)) * total);
+      if (Math.abs(targetY - window.scrollY) < 2) return;
+      snapping = true;
+      window.scrollTo({ top: targetY, behavior: 'smooth' });
+      setTimeout(() => { snapping = false; }, 320);
+    }
+    window.addEventListener('scroll', () => {
+      if (snapping) return;
+      clearTimeout(snapTimer);
+      snapTimer = setTimeout(snap, 60);
+    }, { passive: true });
+
+    window.addEventListener('resize', () => { sizeViewport(); update(); });
+    window.addEventListener('load', () => { sizeViewport(); update(); });
+    sizeViewport();
+    update();
+  })();
+
+  (function () {
+    const contact = document.getElementById('contact');
+    if (!contact) return;
+    let raf = null, px = 0, py = 0;
+    contact.addEventListener('pointermove', (e) => {
+      const r = contact.getBoundingClientRect();
+      px = e.clientX - r.left;
+      py = e.clientY - r.top;
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        contact.style.setProperty('--mx', px + 'px');
+        contact.style.setProperty('--my', py + 'px');
+        raf = null;
+      });
+    }, { passive: true });
+  })();
+</script>
+<script src="../js/frame.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>PromptShop — Case Study · Copo Studio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="../assets/favicon.png">
+<link rel="stylesheet" href="../css/site.css">
+<style>
+  :root { --ps-blue: #2E80F7; }
+  /* case study layout */
+  .cs-hero {
+    padding-top: clamp(92px, 11vh, 124px);
+    padding-bottom: clamp(28px, 3vw, 44px);
+  }
+  .cs-hero__crumbs {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: clamp(48px, 6vw, 96px);
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .cs-hero__eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ps-blue);
+    margin-bottom: 24px;
+  }
+  .cs-hero__h {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(40px, 6vw, 88px);
+    letter-spacing: -0.035em;
+    line-height: 0.98;
+    margin: 0;
+    max-width: 20ch;
+  }
+
+  /* hero two-column: metrics card (left) + quote card (right) */
+  .cs-hero__layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(20px, 2.4vw, 36px);
+    margin-top: clamp(44px, 6vw, 84px);
+    align-items: stretch;
+  }
+  @media (max-width: 860px) { .cs-hero__layout { grid-template-columns: 1fr; } }
+  .cs-hero__metrics {
+    border: 1px solid var(--rule-dark);
+    padding: clamp(28px, 3vw, 48px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: clamp(22px, 2.6vw, 38px);
+  }
+  .hmetric__n {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(24px, 2.6vw, 34px);
+    letter-spacing: -0.02em;
+    line-height: 1;
+    margin: 0;
+    color: var(--snow);
+  }
+  .hmetric__n .lbl { font-size: 0.5em; font-weight: 400; color: var(--snow-2); margin-left: 10px; letter-spacing: 0; vertical-align: baseline; }
+  .hmetric__sub { font-size: 14px; font-weight: 600; color: var(--snow); margin: 8px 0 0; letter-spacing: -0.01em; }
+  .hmetric__d { font-size: 14px; color: var(--snow-3); margin: 6px 0 0; line-height: 1.5; max-width: 42ch; }
+  .cs-hero__quote { color: var(--ink); justify-content: space-between; }
+  .cs-hero__quote .t-card__quote { font-size: clamp(16px, 1.2vw, 18px); line-height: 1.5; color: var(--ink-3); }
+  .ps-logo {
+    width: 48px;
+    height: 48px;
+    border-radius: 11px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .ps-logo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  /* ---- Overview ---- */
+  .overview { padding-block: clamp(72px, 9vw, 130px); }
+  .overview__grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: clamp(40px, 6vw, 110px);
+    align-items: flex-start;
+  }
+  @media (max-width: 900px) { .overview__grid { grid-template-columns: 1fr; gap: 32px; } }
+  .overview__h {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(36px, 5vw, 72px);
+    letter-spacing: -0.035em;
+    line-height: 1.0;
+    margin: 0;
+  }
+  .overview__body p { font-size: clamp(17px, 1.4vw, 19px); line-height: 1.55; margin: 0 0 24px; max-width: 60ch; color: var(--ink-2); opacity: 0.72; }
+  .overview__body p:last-child { margin-bottom: 0; }
+  .overview__body strong { font-weight: 500; color: var(--ink); opacity: 1; }
+
+  /* ---- Mini stat row ---- */
+  .ministats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-block: 1px solid var(--rule-light);
+  }
+  @media (max-width: 800px) { .ministats { grid-template-columns: 1fr; } }
+  .ministat {
+    padding: clamp(28px, 3vw, 40px) clamp(20px, 2.5vw, 32px);
+    border-right: 1px solid var(--rule-light);
+  }
+  .ministat:first-child { padding-left: 0; }
+  .ministat:last-child { border-right: 0; }
+  @media (max-width: 800px) {
+    .ministat { border-right: 0; border-bottom: 1px solid var(--rule-light); padding-left: 0; }
+    .ministat:last-child { border-bottom: 0; }
+  }
+  .ministat__n { font-family: var(--display); font-weight: 500; font-size: clamp(36px, 4.5vw, 68px); letter-spacing: -0.035em; line-height: 0.92; margin: 0 0 12px; white-space: nowrap; }
+  .ministat__t { font-size: 14px; margin: 0 0 6px; font-weight: 500; }
+  .ministat__d { font-size: 13px; color: var(--ink-3); margin: 0; line-height: 1.4; }
+  .cs-meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: clamp(20px, 3vw, 48px);
+    padding-top: 32px;
+    border-top: 1px solid var(--rule-light);
+  }
+  @media (max-width: 900px) { .cs-meta { grid-template-columns: 1fr 1fr; } }
+  .cs-meta__label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-bottom: 10px;
+  }
+  .cs-meta__v {
+    font-size: 15px;
+    color: var(--ink);
+    line-height: 1.45;
+  }
+  .dark-skin .cs-meta { border-color: var(--rule-dark); }
+  .dark-skin .cs-meta__label { color: var(--snow-3); }
+  .dark-skin .cs-meta__v { color: var(--snow); }
+  .light-skin .cs-meta { border-color: var(--rule-light); }
+  .light-skin .cs-meta__label { color: var(--ink-3); }
+  .light-skin .cs-meta__v { color: var(--ink); }
+
+  /* sticky content layout */
+  .cs-section {
+    padding-block: clamp(80px, 10vw, 160px);
+    border-top: 1px solid var(--rule-dark);
+  }
+  .light-skin.cs-section { border-color: var(--rule-light); }
+  .cs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: clamp(40px, 6vw, 120px);
+    align-items: flex-start;
+  }
+  @media (max-width: 900px) { .cs-grid { grid-template-columns: 1fr; } }
+  .cs-sticky {
+    position: sticky;
+    top: clamp(100px, 14vh, 140px);
+  }
+  .cs-sticky__num {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: block;
+  }
+  .cs-sticky__h {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(40px, 5.5vw, 84px);
+    letter-spacing: -0.035em;
+    line-height: 0.92;
+    margin: 0;
+    max-width: 12ch;
+  }
+  .cs-body p { font-size: clamp(17px, 1.5vw, 21px); line-height: 1.55; margin: 0 0 28px; max-width: 60ch; }
+  .light-skin .cs-body p { color: var(--ink-2); }
+  .dark-skin .cs-body p  { color: var(--snow); }
+
+  .cs-media {
+    aspect-ratio: 16/10;
+    border-radius: 6px;
+    margin-top: 40px;
+  }
+  .cs-media.wide { aspect-ratio: 21/9; }
+  .cs-media.square { aspect-ratio: 1/1; }
+  .cs-media.has-img { aspect-ratio: auto !important; background: transparent; border-radius: 0; overflow: hidden; }
+  .cs-media.has-img img { width: 100%; height: auto; display: block; }
+
+  .pair-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 24px;
+    align-items: start;
+  }
+  @media (max-width: 700px) { .pair-grid { grid-template-columns: 1fr; } }
+
+  /* metrics callouts */
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    padding-block: 48px;
+    border-block: 1px solid var(--rule-dark);
+  }
+  .light-skin .metrics { border-color: var(--rule-light); }
+  @media (max-width: 700px) { .metrics { grid-template-columns: 1fr; } }
+  .metric {
+    padding-inline: clamp(20px, 3vw, 40px);
+    border-right: 1px solid var(--rule-dark);
+  }
+  .light-skin .metric { border-color: var(--rule-light); }
+  .metric:last-child { border-right: 0; }
+  .metric__n {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(40px, 6vw, 88px);
+    letter-spacing: -0.035em;
+    line-height: 1;
+    margin: 0 0 14px;
+  }
+  .metric__l { font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; }
+  .dark-skin .metric__n { color: var(--snow); }
+  .dark-skin .metric__l { color: var(--snow-3); }
+  section.light-skin .metric__n { color: var(--ink); }
+  section.light-skin .metric__l { color: var(--ink-3); }
+
+  /* full bleed image section */
+  .full-bleed {
+    width: 100%;
+    aspect-ratio: 21/9;
+  }
+
+  /* next project */
+  .next-project {
+    padding-block: clamp(80px, 10vw, 140px);
+    position: relative;
+    text-align: center;
+  }
+  .next-project__label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--snow-3);
+    margin-bottom: 24px;
+    display: block;
+  }
+  .next-project a {
+    display: inline-block;
+  }
+  .next-project__h {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(56px, 11vw, 196px);
+    letter-spacing: -0.045em;
+    line-height: 0.88;
+    margin: 0;
+    transition: color .35s var(--ease);
+  }
+  .next-project a:hover .next-project__h { color: var(--pop); }
+</style>
+</head>
+<body class="dark-skin" data-page-label="Case Study · PromptShop · AI Agent Platform">
+
+<!-- corner -->
+<div class="corner">
+  <a href="../index.html" class="brand">
+    <span class="brand__mark"></span>
+    <span class="brand__c">©26</span>
+  </a>
+  <a href="../projects.html" style="font-family:var(--mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;display:inline-flex;align-items:center;gap:8px;">
+    ← All projects
+  </a>
+</div>
+
+<!-- =========================================================
+     HERO
+     ========================================================= -->
+<section class="dark-skin cs-hero shell" data-screen-label="01 Case Hero">
+  <p class="cs-hero__eyebrow" style="color: rgb(247, 79, 80)">AI Agent Platform &amp; Marketplace Website</p>
+  <h1 class="cs-hero__h" style="max-width: 100%;">How we transformed <span style="color: var(--ps-blue);">PromptShop</span> to one AI platform<span style="color:var(--pop);">,</span> understood in seconds<span style="color:var(--pop);">.</span> </h1>
+
+  <div class="cs-hero__layout">
+    <div class="cs-hero__metrics">
+      <div class="hmetric">
+        <p class="hmetric__n"><span style="color:var(--pop);">10</span> Seconds <span class="lbl">User Discovery</span></p>
+        <p class="hmetric__d">Manual read &amp; discover → using the product instantly.</p>
+      </div>
+      <div class="hmetric">
+        <p class="hmetric__n"><span style="color:var(--pop);">3x</span> Faster <span class="lbl">Scalable System</span></p>
+        <p class="hmetric__d">Ideating &amp; designing → building on a set system.</p>
+      </div>
+      <div class="hmetric">
+        <p class="hmetric__n"><span style="color:var(--pop);">1</span> Platform <span class="lbl">Instead of infinite</span></p>
+        <p class="hmetric__d">Endless tools to manage → one automated AI tool.</p>
+      </div>
+    </div>
+
+    <article class="t-card cs-hero__quote" style="border-radius: 12px 12px 12px 0px">
+      <div>
+        <p class="t-card__pull" style="font-size: 40px; line-height: 1">"Your Figma work has been amazing."</p>
+        <p class="t-card__quote">"I really enjoyed working with you, your Figma work has been amazing and it was great collaborating…"</p>
+      </div>
+      <div class="t-card__person">
+        <div class="ps-logo">
+          <img src="../assets/promptshop-logo.png" alt="PromptShop logo">
+        </div>
+        <div>
+          <p class="t-card__name">PromptShop team</p>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- =========================================================
+     HERO MEDIA
+     ========================================================= -->
+<section class="light-skin shell-wide" style="padding-bottom: clamp(40px, 5vw, 80px); padding: 40px 38px">
+  <div class="full-bleed" style="position:relative; overflow:hidden; border-radius: 6px;">
+    <img src="../assets/promptshop-mockup.png" alt="PromptShop — AI agent workspace and marketplace mockup" style="width:100%; height:100%; object-fit: cover; display:block;">
+  </div>
+</section>
+
+<!-- =========================================================
+     META
+     ========================================================= -->
+<section class="light-skin shell" data-screen-label="02 Meta" style="padding-block: clamp(40px, 5vw, 72px); padding: 40px 56px 0px">
+  <div class="cs-meta">
+    <div>
+      <p class="cs-meta__label">Client</p>
+      <p class="cs-meta__v">PromptShop<br><span style="color:var(--ink-3); font-size: 13px;">AI agent platform</span></p>
+    </div>
+    <div>
+      <p class="cs-meta__label">Year</p>
+      <p class="cs-meta__v">2026<br><span style="color:var(--ink-3); font-size: 13px;">2 month engagement</span></p>
+    </div>
+    <div>
+      <p class="cs-meta__label">Role</p>
+      <p class="cs-meta__v">Lead Product Designer<br><span style="color:var(--ink-3); font-size: 13px;">+ visual direction management</span></p>
+    </div>
+    <div>
+      <p class="cs-meta__label">Deliverables</p>
+      <p class="cs-meta__v">Product · UX/UI · Strategy · AI<br>Marketplace · Platform · Web · Systems · Management</p>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     OVERVIEW
+     ========================================================= -->
+<section class="light-skin overview shell" data-screen-label="03 Overview" style="padding: 60px 56px">
+  <div class="overview__grid">
+    <div>
+      <p class="cs-meta__label" style="margin-bottom: 24px;">PromptShop Case Study</p>
+      <h2 class="overview__h">PromptShop had a live product<span style="color:var(--pop);">,</span> but something was missing<span style="color:var(--pop);">.</span></h2>
+    </div>
+    <div class="overview__body">
+      <p>Jack is the Founder &amp; CEO of PromptShop. In our first call he asked about his current product and website.. I presented a complete audit outlining all of the invisible strategy and UI issues.</p>
+      <p>At a glance, the product looked polished. But beneath the surface, it was the invisible product decisions around <strong>positioning, architecture, workflows, and clarity</strong> that were affecting how users understood and interacted with the platform.</p>
+      <p>Working closely with the founders, developers, and graphic designer, I helped evolve PromptShop into something more.</p>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     SCOPE / MINI STATS
+     ========================================================= -->
+<section class="light-skin shell" data-screen-label="04 Scope">
+  <div class="ministats">
+    <div class="ministat">
+      <h4 class="ministat__n">25<span style="font-size:0.55em; color: var(--pop); vertical-align: super; margin-left: 4px;">+</span></h4>
+      <p class="ministat__t">Responsive Platform screens / states</p>
+      <p class="ministat__d">Core flows, screens, dashboards, states &amp; interactions.</p>
+    </div>
+    <div class="ministat">
+      <h4 class="ministat__n">15<span style="font-size:0.55em; color: var(--pop); vertical-align: super; margin-left: 4px;">+</span></h4>
+      <p class="ministat__t">Responsive Web screens / states</p>
+      <p class="ministat__d">Marketplace, landing page and lead funnel flows.</p>
+    </div>
+    <div class="ministat">
+      <h4 class="ministat__n">6<span style="font-size:0.55em; color: var(--pop); vertical-align: super; margin-left: 4px;">wks</span></h4>
+      <p class="ministat__t">Dev-ready design delivery</p>
+      <p class="ministat__d">Research, graphic oversight, UX, UI and strategies.</p>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     CONTEXT (light)
+     ========================================================= -->
+<section class="light-skin cs-section shell" data-screen-label="02 Context">
+  <div class="cs-grid">
+    <div class="cs-sticky">
+      <span class="cs-sticky__num">(01) — Context</span>
+      <h2 class="cs-sticky__h">A product without a center<span style="color:var(--pop);">.</span></h2>
+    </div>
+    <div class="cs-body">
+      <p style="color: rgb(0, 0, 0); opacity: 0.6;">PromptShop launched as an AI agent management platform. Powerful technology, but unclear design was impacting conversions. Users were navigating heavy settings and flows to manually do the work the product was supposed to simplify. New visitors struggled to understand what PromptShop did, who it was for, or where to start.</p>
+      <p style="color: rgb(0, 0, 0); opacity: 0.6;">I came in to lead the next direction. Turning a feature led platform into a focused workspace people operate from, and a marketplace designed to effortlessly convert.</p>
+      <div class="cs-media has-img"><img src="../assets/promptshop-old.png" alt="PromptShop — original landing & dashboard with audit notes"></div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     PROBLEM / DISCOVERY (dark)
+     ========================================================= -->
+<section class="dark-skin cs-section shell" data-screen-label="03 Discovery">
+  <div class="cs-grid">
+    <div class="cs-sticky">
+      <span class="cs-sticky__num" style="color:var(--snow-3);">(02) — Discovery</span>
+      <h2 class="cs-sticky__h">One <span style="color: rgb(241, 238, 231)">problem<span style="color:var(--pop);">,</span> showing up three ways</span><span style="color:var(--pop);">.</span></h2>
+    </div>
+    <div class="cs-body">
+      <p style="opacity: 0.6">Working closely with the design and engineering team, I mapped where attention was breaking. Three patterns kept surfacing, all pointing to the same problem. The product needed a stronger center. One clear job. Then everything else organised around it.</p>
+
+      <ol style="list-style:none; padding:0; counter-reset: q; margin: 32px 0;">
+        <li style="border-top:1px solid var(--rule-dark); padding-block:24px; counter-increment: q; display:grid; grid-template-columns: 60px 1fr; gap: 24px; align-items: flex-start;">
+          <span style="font-family:var(--mono); font-size:11px; color:var(--snow-3); letter-spacing:0.18em;">01</span>
+          <div>
+            <p style="font-family:var(--display); font-weight:500; font-size: clamp(22px, 2.4vw, 32px); margin: 0 0 8px; letter-spacing:-0.02em;">Users navigating instead of being directed.</p>
+            <p style="margin:0; color: var(--snow-2); font-size: 16px;">The workspace existed in pieces, but not as a clear surface for actually getting work done. Users were assembling concepts from disconnected information. </p>
+          </div>
+        </li>
+        <li style="border-top:1px solid var(--rule-dark); padding-block:24px; counter-increment: q; display:grid; grid-template-columns: 60px 1fr; gap: 24px; align-items: flex-start;">
+          <span style="font-family:var(--mono); font-size:11px; color:var(--snow-3); letter-spacing:0.18em;">02</span>
+          <div>
+            <p style="font-family:var(--display); font-weight:500; font-size: clamp(22px, 2.4vw, 32px); margin: 0 0 8px; letter-spacing:-0.02em;">A landing page that explained tech over value.</p>
+            <p style="margin:0; color: var(--snow-2); font-size: 16px;">Visitors got features before outcomes, too many buttons with no real lead, and complex tech before benefits. Conversion suffered and lead quality lacked intent.</p>
+          </div>
+        </li>
+        <li style="border-block:1px solid var(--rule-dark); padding-block:24px; counter-increment: q; display:grid; grid-template-columns: 60px 1fr; gap: 24px; align-items: flex-start;">
+          <span style="font-family:var(--mono); font-size:11px; color:var(--snow-3); letter-spacing:0.18em;">03</span>
+          <div>
+            <p style="font-family:var(--display); font-weight:500; font-size: clamp(22px, 2.4vw, 32px); margin: 0 0 8px; letter-spacing:-0.02em;">A marketplace selling products before trust.</p>
+            <p style="margin:0; color: var(--snow-2); font-size: 16px;">Agents were listed without enough context. No proof. No confidence. No clear path from "listing" to "this solves my problem".</p>
+          </div>
+        </li>
+      </ol>
+
+      <div class="cs-media has-img"><img src="../assets/promptshop-research.png" alt="PromptShop — design benchmarks & research references"></div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     APPROACH (light)
+     ========================================================= -->
+<section class="light-skin cs-section shell" data-screen-label="04 Approach">
+  <div class="cs-grid">
+    <div class="cs-sticky">
+      <span class="cs-sticky__num">(03) — Approach</span>
+      <h2 class="cs-sticky__h">From tool<span style="color:var(--pop);">,</span> to workspace<span style="color:var(--pop);">.</span></h2>
+    </div>
+    <div class="cs-body">
+      <p style="color: rgb(0, 0, 0); opacity: 0.6;">I rebuilt PromptShop around a clearer hierarchy. Workspace first. Agents second. Settings as an additional layer, but the answers are already given, and no questions left to ask. Management dashboards followed. Instead of managing a range of agent tools, now just one AI agent does it all for you. It monitors the agents activity, business impact, outputs, and costs all in the one workspace. Using all the agent tools independently now feels easy, because it feels like one to the user.</p>
+      <p style="color: rgb(0, 0, 0); opacity: 0.6;">In parallel, I led visual direction of the graphic designer and established the Figma foundations. Variables, components, styles, and systems the development team could build from without reopening design decisions every sprint.</p>
+
+      <div class="pair-grid">
+        <div class="cs-media has-img"><img src="../assets/promptshop-figma.png" alt="PromptShop — Figma variables, tokens & components"></div>
+        <div class="cs-media has-img"><img src="../assets/promptshop-system.png" alt="PromptShop — design system: colour, gradients & typography"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     CONVERSION (dark)
+     ========================================================= -->
+<section class="dark-skin cs-section shell" data-screen-label="05 Conversion">
+  <div class="cs-grid">
+    <div class="cs-sticky">
+      <span class="cs-sticky__num" style="color:var(--snow-3);">(04) — Conversion</span>
+      <h2 class="cs-sticky__h">A landing page that gets the click<span style="color:var(--pop);">.</span></h2>
+    </div>
+    <div class="cs-body">
+      <p>Now the user doesn't even have to read a thing to know exactly what to do. The new landing experience leads with the outcome. What do I do here? Oh, I start typing. In the first glance of the site without scrolling, all three strategies that lead to conversion are covered. Build trust. Explain benefit. And one clear path to get users started.</p>
+      <p>The funnel itself was redesigned so that users didn't have to search for solutions to their problem, we gave them the answer. Reducing any friction between opening our website, and finding an agent. </p>
+
+      <div class="cs-media has-img"><img src="../assets/promptshop-site.png" alt="PromptShop — new marketing site"></div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     OUTCOMES (light)
+     ========================================================= -->
+<section class="light-skin cs-section shell" data-screen-label="06 Outcomes">
+  <div class="cs-grid">
+    <div class="cs-sticky">
+      <span class="cs-sticky__num">(05) — Outcomes</span>
+      <h2 class="cs-sticky__h">Built to keep shipping<span style="color:var(--pop);">.</span></h2>
+    </div>
+    <div class="cs-body">
+      <p style="color: rgb(0, 0, 0); opacity: 0.6;">PromptShop is still in development as the new direction rolls out across the platform. Early signals are strong. The team is shipping faster against shared foundations, and the rebuilt experience is already driving strong results.</p>
+
+      <div class="cs-media has-img"><img src="../assets/promptshop-app.png" alt="PromptShop — workspace & dashboard UI"></div>
+
+      <p style="margin-top: 48px; color: rgb(0, 0, 0); opacity: 0.6;">The design system now carries the product forward. Future features land on the same foundations, the same components, and the same visual language instead of reinventing the experience every sprint.</p>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     NEXT (dark, big)
+     ========================================================= -->
+<section class="dark-skin contact shell" id="contact" data-screen-label="07 Contact">
+  <div class="contact__glow" aria-hidden="true"></div>
+
+  <div class="contact__grid">
+    <div class="contact__copy">
+      <div class="contact__head">
+        <span class="section-head__num" style="color:var(--snow-3)">(06)</span>
+        <span class="section-head__tag" style="color:var(--snow-2)">Contact</span>
+      </div>
+      <h2 class="contact__h" style="margin: 0 0 32px;">Pitch me a product, and I'll build it for you<span style="color: rgb(247, 79, 79)">.</span></h2>
+      <p class="body-l muted-dark" style="margin: 0 0 24px; font-size: 16px">Reach out and I'll help you move your product forward. Whether you need direction, a quick audit, or a clear plan; expect honest advice and a partner who cares about the outcome as much as you do.</p>
+      <p class="body-l muted-dark" style="margin: 0; font-size: 16px">If you're exploring an idea or ready to build, let's talk product.</p>
+    </div>
+
+    <form onsubmit="event.preventDefault(); this.querySelector('button[type=submit]').textContent='Sent — talk soon';">
+      <div class="field">
+        <label for="f-name">Name *</label>
+        <input id="f-name" type="text" placeholder="Your name" required>
+      </div>
+      <div class="field">
+        <label for="f-email">E-mail *</label>
+        <input id="f-email" type="email" placeholder="you@yourstartup.com" required>
+      </div>
+      <div class="field">
+        <label for="f-goal">Project &amp; goals *</label>
+        <textarea id="f-goal" placeholder="Tell me what you're building, where you're stuck, what success looks like." required></textarea>
+      </div>
+      <button type="submit" class="btn btn-light" style="align-self:flex-start; margin-top: 10px;">
+        Let's talk product
+        <span class="arrow">
+          <svg viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </button>
+    </form>
+  </div>
+</section>
+
+<!-- footer -->
+<footer class="dark-skin footer shell" data-screen-label="Footer" style="display: flex; flex-direction: column; gap: clamp(48px, 8vw, 96px)">
+  <div class="footer__main" style="text-align: left; padding: 0px">
+    <h2 class="footer__brand-h">
+      <span class="footer__brand-mark" aria-label="Copo Studio"></span>
+    </h2>
+
+    <div class="footer__content" style="justify-content: space-between; height: 271px">
+      <div class="footer__socials">
+        <a href="https://www.linkedin.com/in/kaylapiscopo/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg class="footer__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.22 8h4.56V24H.22V8zm7.5 0H12v2.18h.06c.6-1.13 2.07-2.32 4.27-2.32 4.57 0 5.42 3.01 5.42 6.92V24h-4.55v-7.27c0-1.73-.03-3.97-2.42-3.97-2.42 0-2.79 1.89-2.79 3.84V24H7.72V8z"/></svg>
+        </a>
+        <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg class="footer__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="mailto:kaylapiscopo@gmail.com" aria-label="Email">
+          <svg class="footer__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="1.5"/><path d="M3 6l9 7 9-7"/></svg>
+        </a>
+        <a href="https://wa.me/61402559576" aria-label="WhatsApp">
+          <svg class="footer__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11.8 11.8 0 0 0 12.06 0C5.5 0 .15 5.34.15 11.9c0 2.1.55 4.14 1.6 5.94L0 24l6.34-1.66a11.9 11.9 0 0 0 5.72 1.46h.01c6.55 0 11.9-5.34 11.9-11.9 0-3.18-1.24-6.17-3.47-8.4zm-8.44 18.3h-.01a9.86 9.86 0 0 1-5.03-1.38l-.36-.21-3.76.99 1-3.67-.23-.38a9.84 9.84 0 0 1-1.5-5.25c0-5.45 4.44-9.88 9.9-9.88a9.86 9.86 0 0 1 9.88 9.9c0 5.45-4.44 9.88-9.88 9.88zm5.43-7.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48a9.04 9.04 0 0 1-1.66-2.07c-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.49 0 1.47 1.07 2.89 1.22 3.09.15.2 2.1 3.21 5.09 4.5.71.31 1.27.49 1.7.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.42.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35z"/></svg>
+        </a>
+      </div>
+      <p class="body-m muted-dark" style="max-width:34ch; margin:0;">Independent product studio. Run by Kayla, designing apps, brands and websites for ambitious founders.</p>
+      <nav class="footer__nav">
+        <a href="../projects.html">Projects</a>
+        <a href="../index.html#services">Services</a>
+        <a href="../index.html#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </div>
+
+  <div class="footer__bottom">
+    <small>© 2026 Copo Studio · Kayla Piscopo</small>
+    <small>REMOTE → WORLDWIDE</small>
+    <small id="footerClock" style="font-family:var(--mono);letter-spacing:.14em;">— : — —</small>
+  </div>
+</footer>
+
+<script>
+  function tick() {
+    const t = new Intl.DateTimeFormat('en-GB', { hour:'2-digit', minute:'2-digit', hour12:false, timeZone:'Europe/Madrid' }).format(new Date());
+    const fel = document.getElementById('footerClock');
+    if (fel) fel.textContent = `${t} · Barcelona`;
+  }
+  tick(); setInterval(tick, 30000);
+
+  (function () {
+    const contact = document.getElementById('contact');
+    if (!contact) return;
+    let raf = null, px = 0, py = 0;
+    contact.addEventListener('pointermove', (e) => {
+      const r = contact.getBoundingClientRect();
+      px = e.clientX - r.left;
+      py = e.clientY - r.top;
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        contact.style.setProperty('--mx', px + 'px');
+        contact.style.setProperty('--my', py + 'px');
+        raf = null;
+      });
+    }, { passive: true });
+  })();
+</script>
+<script src="../js/frame.js"></script>
+
+</body>
+</html>
+
+<style id="__om-edit-overrides">
+div:nth-child(3) >:is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) >span:nth-child(1) { font-size: 40px !important }
+</style>
