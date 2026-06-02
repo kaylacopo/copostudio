@@ -481,7 +481,7 @@ section, footer { scroll-margin-top: 80px; }
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  padding-top: 96px;
+  padding-top: 64px;
   padding-bottom: 32px;
   position: relative;
   isolation: isolate;
@@ -1582,7 +1582,7 @@ section, footer { scroll-margin-top: 80px; }
   .hero {
     min-height: 100vh;
     padding-top: 56px;
-    padding-bottom: 24px;
+    padding-bottom: calc(60px + env(safe-area-inset-bottom));
     background:
       linear-gradient(180deg, rgba(10,10,10,0) 46%, rgba(10,10,10,0.55) 64%, var(--void) 78%),
       url("../assets/hero-bg-mobile.png") left 50% / 126% auto no-repeat,
