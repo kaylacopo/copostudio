@@ -1331,19 +1331,22 @@ section, footer { scroll-margin-top: 80px; }
   color: var(--pop);
   outline: none;
 }
-/* branded textured gradient on the heading (falls back to solid coral) */
+/* branded textured gradient on the heading — same recipe as the logo /
+   button hover (--copo-gradient + two-pass noise). Falls back to solid coral. */
 @supports ((-webkit-background-clip: text) or (background-clip: text)) {
   .contact__result-h {
     background-image:
-      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'><filter id='cn'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.32 0'/></filter><rect width='100%25' height='100%25' filter='url(%23cn)'/></svg>"),
-      linear-gradient(102deg, #F74F4F 0%, #F03B3B 32%, #D6177B 64%, #F77428 100%);
-    background-repeat: repeat, no-repeat;
-    background-size: 120px 120px, 100% 100%;
-    background-blend-mode: overlay, normal;
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.6' numOctaves='2' stitchTiles='stitch' seed='9'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.95 -0.05'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>"),
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch' seed='4'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1.4 -0.2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>"),
+      linear-gradient(100deg, #B355CE 0%, #D6177B 28%, #F03B3B 52%, #F77428 78%, #F9B47A 100%);
+    background-repeat: repeat, repeat, no-repeat;
+    background-size: 110px 110px, 240px 240px, 100% 100%;
+    background-blend-mode: multiply, overlay, normal;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     color: transparent;
+    filter: saturate(1.2) contrast(1.08);
   }
 }
 
@@ -1352,7 +1355,7 @@ section, footer { scroll-margin-top: 80px; }
   font-family: var(--body);
   font-size: 17px;
   line-height: 1.55;
-  color: var(--pop);
+  color: rgba(241, 238, 231, 0.6);
   max-width: 34ch;
 }
 
