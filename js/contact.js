@@ -21,19 +21,34 @@
   var CONTACT_EMAIL = "kaylapiscopo@gmail.com";
 
   function buildResultPanel() {
+    // Corner registration bracket — same viewfinder language as the page frame.
+    var bracket =
+      '<svg viewBox="0 0 16 16" fill="none" aria-hidden="true">' +
+        '<path d="M1 7V1H7" stroke="currentColor" stroke-width="1" stroke-linecap="square"/>' +
+        '<circle cx="1" cy="1" r="1.4" fill="currentColor"/>' +
+      "</svg>";
+
     var panel = document.createElement("div");
     panel.className = "contact__result";
     panel.setAttribute("role", "status");
     panel.setAttribute("aria-live", "polite");
     panel.innerHTML =
-      '<span class="contact__result-mark" aria-hidden="true">' +
-        '<svg viewBox="0 0 32 32" fill="none"><path d="M5 17.5 12.5 25 27 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
-      "</span>" +
-      '<h3 class="contact__result-h">Message received.</h3>' +
-      '<p class="contact__result-p">Thanks &mdash; I&rsquo;ll review your project personally and get back to you soon.</p>' +
-      '<button type="button" class="contact__reset"><span class="contact__reset-label">Send another enquiry</span>' +
-        '<svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
-      "</button>";
+      '<div class="contact__result-box">' +
+        '<span class="crf-mark tl" aria-hidden="true">' + bracket + "</span>" +
+        '<span class="crf-mark tr" aria-hidden="true">' + bracket + "</span>" +
+        '<span class="crf-mark bl" aria-hidden="true">' + bracket + "</span>" +
+        '<span class="crf-mark br" aria-hidden="true">' + bracket + "</span>" +
+        '<span class="crf-label crf-label--top" aria-hidden="true">/ Enquiry received /</span>' +
+        '<span class="crf-label crf-label--bottom" aria-hidden="true">/ Copo Studio &mdash; 2026 /</span>' +
+        '<span class="contact__result-mark" aria-hidden="true">' +
+          '<svg viewBox="0 0 32 32" fill="none"><path d="M5 17.5 12.5 25 27 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
+        "</span>" +
+        '<h3 class="contact__result-h">Message received.</h3>' +
+        '<p class="contact__result-p">Thanks &mdash; I&rsquo;ll review your project personally and get back to you soon.</p>' +
+        '<button type="button" class="contact__reset"><span class="contact__reset-label">Send another enquiry</span>' +
+          '<svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
+        "</button>" +
+      "</div>";
     return panel;
   }
 
