@@ -100,8 +100,8 @@
         .then(function (res) {
           return res
             .json()
-            .catch(function () { return {}; })
-            .then(function (data) { return { ok: res.ok, data: data }; });
+            .catch(function () { return null; })
+            .then(function (data) { return { ok: res.ok, status: res.status, data: data }; });
         })
         .then(function (r) {
           setLoading(false);
@@ -112,16 +112,32 @@
               heading.setAttribute("tabindex", "-1");
               heading.focus();
             }
+            return;
+          }
+
+          // Surface the real cause for debugging.
+          console.error("[contact] Web3Forms rejected the submission:", r);
+
+          if (r.data === null) {
+            // Got a response with no/blocked JSON body — typically an ad/privacy
+            // blocker or proxy neutralising the request.
+            showError(
+              "Couldn’t reach the form service — a browser extension or network filter may be blocking it. Please disable blockers and retry, or email " +
+                CONTACT_EMAIL +
+                " directly."
+            );
           } else {
             showError(
-              "Something went wrong. Please try again, or email " +
+              (r.data && r.data.message ? r.data.message + " " : "Something went wrong. ") +
+                "Please try again, or email " +
                 CONTACT_EMAIL +
                 " directly."
             );
           }
         })
-        .catch(function () {
+        .catch(function (err) {
           setLoading(false);
+          console.error("[contact] Submission request failed:", err);
           showError(
             "Couldn’t send right now — please check your connection and try again, or email " +
               CONTACT_EMAIL +
