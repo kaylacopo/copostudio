@@ -27,11 +27,11 @@
     panel.setAttribute("aria-live", "polite");
     panel.innerHTML =
       '<span class="contact__result-mark" aria-hidden="true">' +
-        '<svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5 9.5 18 20 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
+        '<svg viewBox="0 0 32 32" fill="none"><path d="M5 17.5 12.5 25 27 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
       "</span>" +
-      '<h3 class="contact__result-h">Message sent.</h3>' +
-      '<p class="contact__result-p">Thanks &mdash; I&rsquo;ll review your project and get back to you soon.</p>' +
-      '<button type="button" class="contact__reset">Send another enquiry' +
+      '<h3 class="contact__result-h">Message received<span class="contact__result-stop">.</span></h3>' +
+      '<p class="contact__result-p">Thanks &mdash; I&rsquo;ll review your project personally and get back to you soon.</p>' +
+      '<button type="button" class="contact__reset"><span class="contact__reset-label">Send another enquiry</span>' +
         '<svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
       "</button>";
     return panel;
