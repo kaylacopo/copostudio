@@ -508,7 +508,7 @@ section, footer { scroll-margin-top: 80px; }
 .hero__h {
   font-family: var(--display);
   font-weight: 500;
-  font-size: clamp(52px, 7.4vw, 116px);
+  font-size: clamp(48px, 7vw, 104px);
   line-height: 1.0;
   letter-spacing: -0.03em;
   margin: 0;
@@ -1581,15 +1581,15 @@ section, footer { scroll-margin-top: 80px; }
   /* --- Hero: fill the viewport with the mobile bg asset --- */
   .hero {
     min-height: 100vh;
-    padding-top: 84px;
-    padding-bottom: 40px;
+    padding-top: 56px;
+    padding-bottom: 24px;
     background:
       linear-gradient(180deg, rgba(10,10,10,0) 46%, rgba(10,10,10,0.55) 64%, var(--void) 78%),
       url("../assets/hero-bg-mobile.png") left 50% / 126% auto no-repeat,
       var(--void) !important;
   }
   /* push headline + body down so the enlarged logo gets breathing room above */
-  .hero__headline { padding-top: 96px; padding-bottom: 14px; }
+  .hero__headline { padding-top: 72px; padding-bottom: 14px; }
   .hero__h { font-size: clamp(34px, 11.5vw, 52px) !important; line-height: 0.94 !important; letter-spacing: -0.02em !important; max-width: 100% !important; }
   .hero__top { gap: 12px; padding-top: 0; }
   .hero__meta { gap: 20px; padding-top: 18px; }
