@@ -1262,7 +1262,8 @@ section, footer { scroll-margin-top: 80px; }
 }
 .contact__result { display: none; }
 .contact form.is-sent .field,
-.contact form.is-sent > button[type="submit"],
+.contact form.is-sent button[type="submit"],
+.contact form.is-sent .btn-wrap,
 .contact form.is-sent .contact__error { display: none; }
 .contact form.is-sent .contact__result {
   display: flex;
@@ -1288,17 +1289,31 @@ section, footer { scroll-margin-top: 80px; }
   letter-spacing: -0.025em;
   line-height: 0.98;
   margin: 0;
-  color: var(--snow);
+  color: var(--pop);
   outline: none;
 }
-.contact__result-stop { color: var(--pop); }
+/* branded textured gradient on the heading (falls back to solid coral) */
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .contact__result-h {
+    background-image:
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'><filter id='cn'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.32 0'/></filter><rect width='100%25' height='100%25' filter='url(%23cn)'/></svg>"),
+      linear-gradient(102deg, #F74F4F 0%, #F03B3B 32%, #D6177B 64%, #F77428 100%);
+    background-repeat: repeat, no-repeat;
+    background-size: 120px 120px, 100% 100%;
+    background-blend-mode: overlay, normal;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+}
 
 .contact__result-p {
   margin: 0;
   font-family: var(--body);
   font-size: 17px;
   line-height: 1.55;
-  color: var(--snow-2);
+  color: var(--pop);
   max-width: 34ch;
 }
 
@@ -1315,19 +1330,19 @@ section, footer { scroll-margin-top: 80px; }
   font-size: 11px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--snow-3);
+  color: var(--pop);
   transition: color .3s var(--ease);
 }
 .contact__reset-label {
   position: relative;
   padding-bottom: 3px;
-  background-image: linear-gradient(var(--pop), var(--pop));
+  background-image: linear-gradient(currentColor, currentColor);
   background-repeat: no-repeat;
   background-position: 0 100%;
   background-size: 0 1px;
   transition: background-size .35s var(--ease);
 }
-.contact__reset:hover { color: var(--snow); }
+.contact__reset:hover { color: #ff857b; }
 .contact__reset:hover .contact__reset-label { background-size: 100% 1px; }
 .contact__reset svg {
   width: 11px;
