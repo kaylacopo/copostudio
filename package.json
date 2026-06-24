@@ -1,0 +1,9 @@
+{
+  "name": "copostudio",
+  "version": "1.0.0",
+  "description": "Copo Studio - Product Partner for Startups",
+  "private": true,
+  "dependencies": {
+    "@vercel/analytics": "^1.3.1"
+  }
+}
