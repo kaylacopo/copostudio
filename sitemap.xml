@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://copostudio.com/</loc>
+    <lastmod>2026-07-07</lastmod>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://copostudio.com/projects</loc>
+    <lastmod>2026-07-07</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://copostudio.com/case-studies/promptshop</loc>
+    <lastmod>2026-07-07</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://copostudio.com/case-studies/cuanto</loc>
+    <lastmod>2026-07-07</lastmod>
+    <priority>0.7</priority>
+  </url>
+</urlset>
