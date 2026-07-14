@@ -118,8 +118,12 @@
   </div>
 </section>
 
-<!-- spacer between hero and stats -->
-<div style="height: 120px; background: #F1EEE7"></div>
+<!-- hero → stats interstitial video (replaces the old spacer) -->
+<div class="hero-video" data-hero-video style="width:100%;background:#000;line-height:0;font-size:0;">
+  <video class="hero-video__el" muted loop playsinline preload="metadata" aria-label="Copo Studio — app showcase loop" style="display:block;width:100%;height:auto;max-height:100vh;object-fit:contain;margin:0 auto;background:#000;cursor:pointer;">
+    <source src="assets/hero-loop.mp4" type="video/mp4">
+  </video>
+</div>
 
 <!-- =========================================================
      3 — STATS (dark)
@@ -604,6 +608,7 @@
 </script>
 <script src="js/frame.js"></script>
 <script src="js/contact.js"></script>
+<script src="js/hero-video.js"></script>
 
 </body>
 </html>
