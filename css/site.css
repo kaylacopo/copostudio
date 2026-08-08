@@ -697,13 +697,14 @@ section, footer { scroll-margin-top: 80px; }
 .section-head {
   display: grid;
   grid-template-columns: 1fr 1.4fr;
-  gap: clamp(24px, 6vw, 96px);
+  gap: clamp(24px, 4vw, 64px);
   align-items: flex-end;
-  padding-bottom: clamp(48px, 7vw, 96px);
+  padding-bottom: clamp(32px, 3vw, 48px);
   border-bottom: 1px solid var(--rule-light);
-  margin-bottom: clamp(40px, 5vw, 64px);
+  margin-bottom: clamp(24px, 2.5vw, 40px);
 }
 .dark-skin .section-head { border-color: var(--rule-dark); }
+.problems .section-head { border-bottom: none; padding-bottom: 0; }
 @media (max-width: 900px) {
   .section-head { grid-template-columns: 1fr; align-items: flex-start; }
 }
@@ -1746,7 +1747,7 @@ section, footer { scroll-margin-top: 80px; }
 /* ==========================================================================
    PROBLEMS — WHY FOUNDERS PARTNER WITH COPO
    ========================================================================== */
-.problems { padding-block: clamp(60px, 8vw, 96px); }
+.problems { padding-block: clamp(40px, 4vw, 56px); }
 .problems__source {
   display: inline-block;
   font-family: var(--mono);
@@ -1772,18 +1773,18 @@ section, footer { scroll-margin-top: 80px; }
   .problems__cards { grid-template-columns: 1fr; }
 }
 .problem-card {
-  padding: clamp(28px, 3vw, 48px) clamp(20px, 2.5vw, 36px);
+  padding: clamp(20px, 2vw, 32px) clamp(16px, 2vw, 28px);
   background: var(--paper);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  min-height: 280px;
+  min-height: 240px;
 }
 .problem-card__head {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  margin-bottom: 36px;
+  margin-bottom: 24px;
 }
 .problem-card__num {
   font-family: var(--mono);
