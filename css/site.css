@@ -1747,7 +1747,7 @@ section, footer { scroll-margin-top: 80px; }
 /* ==========================================================================
    PROBLEMS — WHY FOUNDERS PARTNER WITH COPO
    ========================================================================== */
-.problems { padding-block: clamp(56px, 6vw, 80px); }
+.problems { padding-block: clamp(80px, 10vw, 160px); }
 .problems__source {
   display: inline-block;
   font-family: var(--mono);
