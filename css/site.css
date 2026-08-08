@@ -854,7 +854,7 @@ section, footer { scroll-margin-top: 80px; }
   margin-bottom: clamp(60px, 8vw, 120px);
 }
 @media (max-width: 900px) { .work__intro { grid-template-columns: 1fr; } }
-.work__intro h2 { max-width: 12ch; }
+.work__intro h2 { max-width: none; }
 
 .project {
   margin-bottom: clamp(80px, 8vw, 140px);
