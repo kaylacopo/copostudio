@@ -949,6 +949,7 @@ section, footer { scroll-margin-top: 80px; }
 .testimonials {
   padding-block: clamp(80px, 10vw, 160px);
 }
+.testimonials .section-head { border-bottom: none; padding-bottom: 0; }
 .t-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -961,7 +962,7 @@ section, footer { scroll-margin-top: 80px; }
   padding: clamp(28px, 3vw, 44px);
   border: 1px solid var(--rule-light);
   background: var(--paper);
-  border-radius: 22px;
+  border-radius: 12px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -969,17 +970,15 @@ section, footer { scroll-margin-top: 80px; }
   transition: background .35s var(--ease), border-color .35s var(--ease);
 }
 .t-card:hover { background: var(--paper-2); border-color: var(--ink-4); }
-.t-card--mvst { gap: 28px; }
-.t-card--mvst .t-card__org { margin-bottom: 12px; }
 .t-card__org {
   display: flex;
   align-items: center;
   gap: 14px;
 }
 .t-card__org-logo {
-  width: 56px;
-  height: 56px;
-  border-radius: 14px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
   background: var(--paper-2);
   border: 1px solid var(--rule-light);
   display: flex;
@@ -994,19 +993,22 @@ section, footer { scroll-margin-top: 80px; }
 
 .t-card__quote {
   font-family: var(--display);
+  font-style: italic;
   font-weight: 400;
-  font-size: clamp(22px, 2vw, 30px);
-  letter-spacing: -0.018em;
-  line-height: 1.15;
+  font-size: 18px;
+  line-height: 1.44;
+  color: var(--ink);
+  opacity: 0.6;
   margin: 0;
 }
 .t-card__pull {
   font-family: var(--display);
   font-weight: 500;
-  font-size: clamp(18px, 1.4vw, 22px);
-  letter-spacing: -0.01em;
+  font-size: clamp(24px, 2.2vw, 32px);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
   color: var(--pop);
-  margin: 0 0 18px;
+  margin: 0 0 16px;
 }
 .t-card__person {
   display: flex;
