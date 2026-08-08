@@ -1167,7 +1167,7 @@ section, footer { scroll-margin-top: 80px; }
 .contact__h {
   font-family: var(--display);
   font-weight: 500;
-  font-size: clamp(42px, 5vw, 72px);
+  font-size: clamp(32px, 3.33vw, 48px);
   letter-spacing: -0.03em;
   line-height: 0.98;
   margin: 0;
@@ -1776,7 +1776,7 @@ section, footer { scroll-margin-top: 80px; }
   background: var(--paper);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   min-height: 280px;
 }
 .problem-card__head {
