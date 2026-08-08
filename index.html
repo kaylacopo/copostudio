@@ -59,13 +59,22 @@
   .hero-hl { color: var(--pop); }
   @supports ((-webkit-background-clip: text) or (background-clip: text)) {
     .hero-hl {
-      background-image: linear-gradient(to top right, #A81530 0%, #EE3A48 24%, #FF6A5C 48%, #F0537E 70%, #C948B0 87%, #9E48DC 100%);
+      background-image:
+        url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.6' numOctaves='2' stitchTiles='stitch' seed='9'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.95 -0.05'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>"),
+        url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch' seed='4'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1.4 -0.2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>"),
+        linear-gradient(to top right, #A81530 0%, #EE3A48 18%, #FF6A5C 36%, #C948B0 60%, #9E48DC 82%, #7B2FD0 100%);
+      background-repeat: repeat, repeat, no-repeat;
+      background-size: 110px 110px, 240px 240px, 100% 100%;
+      background-blend-mode: multiply, overlay, normal;
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
       color: transparent;
+      filter: saturate(1.2) contrast(1.08);
     }
   }
+  /* unify all home-page section headings to match hero scale */
+  .display.h-large { font-size: clamp(42px, 5vw, 72px) !important; }
   /* keep the trusted-by logos on one line: let their column size to content on desktop */
   @media (min-width: 901px) { .hero__meta { grid-template-columns: 1.2fr auto 1fr; } }
   /* mobile: ease down the heading + trusted-by sentence */
@@ -168,19 +177,195 @@
   <div class="stats">
     <div class="stat">
       <p class="stat__label">01 — RESULTS</p>
-      <h3 class="stat__num">12<span class="unit" style="font-size: 40px; letter-spacing: -2px; color: rgb(247, 79, 80)">+ products</span></h3>
+      <h3 class="stat__num">12<span class="unit" style="letter-spacing: -2px; color: rgb(247, 79, 80)">+ products</span></h3>
       <p class="muted-dark body-m" style="margin:0; font-size: 16px;">Successfully launched across 7 industries, with 2 more currently in development.</p>
     </div>
     <div class="stat">
       <p class="stat__label">02 — Reach</p>
-      <h3 class="stat__num">500<span class="unit" style="font-size: 40px; letter-spacing: -2px; color: rgb(247, 79, 80)">k users</span></h3>
+      <h3 class="stat__num">500<span class="unit" style="letter-spacing: -2px; color: rgb(247, 79, 80)">k users</span></h3>
       <p class="muted-dark body-m" style="margin:0; font-size: 16px;">Estimated user reach across 12 companies and multiple projects.</p>
     </div>
     <div class="stat">
       <p class="stat__label">03 — EXPERIENCE</p>
-      <h3 class="stat__num">8<span class="unit" style="font-size: 40px; letter-spacing: -2px; color: rgb(247, 79, 80)"> countries</span></h3>
+      <h3 class="stat__num">8<span class="unit" style="letter-spacing: -2px; color: rgb(247, 79, 80)"> countries</span></h3>
       <p class="muted-dark body-m" style="margin:0; font-size: 16px;">Shipped with global teams, now reaching users in 40+ countries.</p>
     </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     4 — PROBLEMS (light) — Why founders partner with Copo
+     ========================================================= -->
+<section class="light-skin problems shell" data-screen-label="04 Problems">
+  <div class="section-head" style="text-align: left; align-items: flex-start;">
+    <div style="text-align: left;">
+      <span class="section-head__tag">Why founders partner with Copo</span>
+    </div>
+    <div style="width: 1000px">
+      <h2 class="display h-large" style="margin: 0 0 24px; max-width: 22ch;">Know you have a great idea, but struggling to execute?</h2>
+      <p class="body-l muted-light" style="max-width: 54ch; margin: 0 0 16px; font-size: 16px">The #1 reason startups fail isn't money. It's product. 43% die from poor product-market fit, most never found a market at all.</p>
+      <p class="problems__source">Source: CB Insights — Why Startups Fail (2026)</p>
+    </div>
+  </div>
+  <div class="problems__cards">
+
+    <div class="problem-card">
+      <div class="problem-card__head">
+        <p class="problem-card__num">(01)</p>
+        <svg class="problem-card__icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M7 4h18M7 28h18"/>
+          <path d="M9 4l7 12-7 12M23 4l-7 12 7 12"/>
+        </svg>
+      </div>
+      <div>
+        <h3 class="problem-card__title">You're the bottleneck</h3>
+        <p class="problem-card__desc">Everything depends on you to keep moving. From product strategy and UX to branding, websites and investor decks, you're wearing too many hats.</p>
+      </div>
+    </div>
+
+    <div class="problem-card">
+      <div class="problem-card__head">
+        <p class="problem-card__num">(02)</p>
+        <svg class="problem-card__icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="16" cy="9" r="4"/>
+          <path d="M8 27c0-4.4 3.6-8 8-8s8 3.6 8 8"/>
+          <circle cx="6" cy="13" r="3"/>
+          <path d="M2 25c0-3.3 1.8-5.5 4-6"/>
+          <circle cx="26" cy="13" r="3"/>
+          <path d="M30 25c0-3.3-1.8-5.5-4-6"/>
+        </svg>
+      </div>
+      <div>
+        <h3 class="problem-card__title">Managing, not executing</h3>
+        <p class="problem-card__desc">You need someone adding value, not creating more work. Coordinating freelancers, reviewing work and repeating feedback takes time away from growing your business.</p>
+      </div>
+    </div>
+
+    <div class="problem-card">
+      <div class="problem-card__head">
+        <p class="problem-card__num">(03)</p>
+        <svg class="problem-card__icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="4" y="8" width="24" height="16" rx="2"/>
+          <path d="M4 13h24M9 20h4M15 20h3"/>
+        </svg>
+      </div>
+      <div>
+        <h3 class="problem-card__title">The costs feel risky</h3>
+        <p class="problem-card__desc">Hiring a senior team is expensive. Junior hires need guidance. Agencies add overhead. You need something affordable, flexible, and experienced all in one.</p>
+      </div>
+    </div>
+
+    <div class="problem-card">
+      <div class="problem-card__head">
+        <p class="problem-card__num">(04)</p>
+        <svg class="problem-card__icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 22c-1-2.8-4-6-4-9a8 8 0 0 1 16 0c0 3-3 6.2-4 9"/>
+          <path d="M12 22h8M12.5 26h7M14 29h4"/>
+        </svg>
+      </div>
+      <div>
+        <h3 class="problem-card__title">Needs founder mindset</h3>
+        <p class="problem-card__desc">You need someone solving problems, not waiting for instructions — challenging ideas, making better product decisions and moving your product forward alongside you.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- =========================================================
+     6 — WORK (dark)  — sticky scroll reveals
+     ========================================================= -->
+<section class="dark-skin work shell" id="work" data-screen-label="06 Work">
+  <div class="section-head" style="text-align: left; align-items: flex-start; height: 460px">
+    <div style="text-align: left;">
+      <span class="section-head__num" style="color:var(--snow-3);">(02)</span>
+      <span class="section-head__tag" style="color:var(--snow-2);">Selected Work</span>
+    </div>
+    <div class="work__intro" style="width: 1000px; text-align: left; grid-template-columns: 1fr; gap: 24px;">
+      <div>
+        <h2 class="display h-large" style="margin: 0; max-width: 14ch; width: 800px;">Built like an agency<span style="color:var(--pop)">,</span> delivered like a partner<span class="accent" style="color:var(--pop)">.</span></h2>
+      </div>
+      <div>
+        <p class="body-l muted-dark" style="max-width: 56ch; margin:0 0 16px; font-size: 16px">Agency-level product thinking with the speed, ownership, and clarity of direct 1-on-1 partnership. I've worked across B2B, B2C and B2B2C — from AI platforms to fintech, health, energy and ecommerce, spanning 12 industries.</p>
+        <p class="body-l muted-dark" style="max-width: 56ch; margin:0;">Because good design isn't just how it looks. It's how it performs.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Project 01 — PromptShop -->
+  <article class="project">
+    <div class="project__media has-img" style="align-self:start;"><img src="assets/promptshop-mockup.png" alt="PromptShop — AI agent workspace and marketplace"></div>
+    <div class="project__meta">
+      <span class="project__index">AI Agent Platform &amp; Marketplace</span>
+      <div>
+        <h3 class="project__title">How we transformed <span style="color:#2E80F7;">PromptShop</span> into one AI platform, understood in seconds.</h3>
+      </div>
+      <p class="project__desc muted-dark">Founded by Formula 1 driver Jack Doohan and Georgios Frangulis, founder of Oakberry. I led the design team in transforming multiple AI products into a single scalable platform experience.</p>
+      <div class="project__tags">
+        <span class="tag">UX / UI</span>
+        <span class="tag">Strategy</span>
+        <span class="tag">Web &amp; Conversion</span>
+        <span class="tag">Visual Direction</span>
+      </div>
+      <div class="project__cta">
+        <a href="/case-studies/promptshop" class="btn btn-ghost-dark">
+          See it
+          <span class="arrow">
+            <svg viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+      </div>
+      <div class="project__footer">
+        <span class="project__status" style="color:var(--snow);">
+          <span style="width:6px;height:6px;border-radius:50%;background:#7CE0A6;display:inline-block;"></span>
+          Launched
+        </span>
+        <span style="font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--snow-3);">2025 — present</span>
+      </div>
+    </div>
+  </article>
+
+  <!-- Project 02 — Cuanto -->
+  <article class="project">
+    <div class="project__media has-img"><img src="assets/cuanto-mockup.png" alt="Cuanto — B2B2C fintech AI rewards app"></div>
+    <div class="project__meta">
+      <span class="project__index">B2B2C Fintech AI Rewards App</span>
+      <div>
+        <h3 class="project__title">How we scaled <span style="color:rgb(169, 226, 81);">Cuanto</span> to 10k users within 6 months.</h3>
+      </div>
+      <p class="project__desc muted-dark">Founded by Rafael Rubio and Jaf Aguiar, the team behind Qoala, a venture-backed cashback platform supported by Plug and Play and Mitgo. I led the end-to-end product design across mobile, web, UX strategy and launch.</p>
+      <div class="project__tags">
+        <span class="tag">UX / UI</span>
+        <span class="tag">Strategy</span>
+        <span class="tag">Web &amp; Conversion</span>
+        <span class="tag">Brand</span>
+        <span class="tag">Launch</span>
+      </div>
+      <div class="project__cta">
+        <a href="/case-studies/cuanto" class="btn btn-ghost-dark">
+          See it
+          <span class="arrow">
+            <svg viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+      </div>
+      <div class="project__footer">
+        <span class="project__status" style="color:var(--snow);">
+          <span style="width:6px;height:6px;border-radius:50%;background:#7CE0A6;display:inline-block;"></span>
+          Launched — 10k users in 6 months
+        </span>
+        <span style="font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--snow-3);">2024</span>
+      </div>
+    </div>
+  </article>
+
+  <div style="display:flex; justify-content:center; padding-top: 32px; border-top: 1px solid var(--rule-dark);">
+    <a href="/projects" class="btn btn-ghost-dark">
+      Browse the full index
+      <span class="arrow">
+        <svg viewBox="0 0 12 12" fill="none"><path d="M2 6H10M10 6L6 2M10 6L6 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+    </a>
   </div>
 </section>
 
@@ -194,7 +379,7 @@
       <span class="section-head__tag">Deliverables</span>
     </div>
     <div style="width: 1000px">
-      <h2 class="display h-large" style="margin: 0 0 24px; max-width: 18ch; font-size: 80px">End<span style="color:var(--pop)">-</span>to<span style="color:var(--pop)">-</span>end product delivery<span class="accent" style="color:var(--pop)">.</span></h2>
+      <h2 class="display h-large" style="margin: 0 0 24px; max-width: 18ch;">End<span style="color:var(--pop)">-</span>to<span style="color:var(--pop)">-</span>end product delivery<span class="accent" style="color:var(--pop)">.</span></h2>
       <p class="body-l muted-light" style="max-width: 54ch; margin: 0; font-family: 'Inter', system-ui, sans-serif; font-size: 16px">Startups move fast and good product decisions need to be made from the start. I work across strategy, product design, conversion and launch support. Built independently, strategically, and around what your business truly needs.</p>
     </div>
   </div>
@@ -307,103 +492,6 @@
 </section>
 
 <!-- =========================================================
-     6 — WORK (dark)  — sticky scroll reveals
-     ========================================================= -->
-<section class="dark-skin work shell" id="work" data-screen-label="06 Work">
-  <div class="section-head" style="text-align: left; align-items: flex-start; height: 460px">
-    <div style="text-align: left;">
-      <span class="section-head__num" style="color:var(--snow-3);">(02)</span>
-      <span class="section-head__tag" style="color:var(--snow-2);">Selected Work</span>
-    </div>
-    <div class="work__intro" style="width: 1000px; text-align: left; grid-template-columns: 1fr; gap: 24px;">
-      <div>
-        <h2 class="display h-large" style="margin: 0; max-width: 14ch; width: 800px; font-size: 80px">Built like an agency<span style="color:var(--pop)">,</span> delivered like a partner<span class="accent" style="color:var(--pop)">.</span></h2>
-      </div>
-      <div>
-        <p class="body-l muted-dark" style="max-width: 56ch; margin:0 0 16px; font-size: 16px">Agency-level product thinking with the speed, ownership, and clarity of direct 1-on-1 partnership. I've worked across B2B, B2C and B2B2C — from AI platforms to fintech, health, energy and ecommerce, spanning 12 industries.</p>
-        <p class="body-l muted-dark" style="max-width: 56ch; margin:0;">Because good design isn't just how it looks. It's how it performs.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Project 01 — PromptShop -->
-  <article class="project">
-    <div class="project__media has-img" style="align-self:start;"><img src="assets/promptshop-mockup.png" alt="PromptShop — AI agent workspace and marketplace"></div>
-    <div class="project__meta">
-      <span class="project__index">AI Agent Platform &amp; Marketplace</span>
-      <div>
-        <h3 class="project__title">How we transformed <span style="color:#2E80F7;">PromptShop</span> into one AI platform, understood in seconds.</h3>
-      </div>
-      <p class="project__desc muted-dark">Founded by Formula 1 driver Jack Doohan and Georgios Frangulis, founder of Oakberry. I led the design team in transforming multiple AI products into a single scalable platform experience.</p>
-      <div class="project__tags">
-        <span class="tag">UX / UI</span>
-        <span class="tag">Strategy</span>
-        <span class="tag">Web &amp; Conversion</span>
-        <span class="tag">Visual Direction</span>
-      </div>
-      <div class="project__cta">
-        <a href="/case-studies/promptshop" class="btn btn-ghost-dark">
-          See it
-          <span class="arrow">
-            <svg viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </span>
-        </a>
-      </div>
-      <div class="project__footer">
-        <span class="project__status" style="color:var(--snow);">
-          <span style="width:6px;height:6px;border-radius:50%;background:#7CE0A6;display:inline-block;"></span>
-          Launched
-        </span>
-        <span style="font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--snow-3);">2025 — present</span>
-      </div>
-    </div>
-  </article>
-
-  <!-- Project 02 — Cuanto -->
-  <article class="project">
-    <div class="project__media has-img"><img src="assets/cuanto-mockup.png" alt="Cuanto — B2B2C fintech AI rewards app"></div>
-    <div class="project__meta">
-      <span class="project__index">B2B2C Fintech AI Rewards App</span>
-      <div>
-        <h3 class="project__title">How we scaled <span style="color:rgb(169, 226, 81);">Cuanto</span> to 10k users within 6 months.</h3>
-      </div>
-      <p class="project__desc muted-dark">Founded by Rafael Rubio and Jaf Aguiar, the team behind Qoala, a venture-backed cashback platform supported by Plug and Play and Mitgo. I led the end-to-end product design across mobile, web, UX strategy and launch.</p>
-      <div class="project__tags">
-        <span class="tag">UX / UI</span>
-        <span class="tag">Strategy</span>
-        <span class="tag">Web &amp; Conversion</span>
-        <span class="tag">Brand</span>
-        <span class="tag">Launch</span>
-      </div>
-      <div class="project__cta">
-        <a href="/case-studies/cuanto" class="btn btn-ghost-dark">
-          See it
-          <span class="arrow">
-            <svg viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </span>
-        </a>
-      </div>
-      <div class="project__footer">
-        <span class="project__status" style="color:var(--snow);">
-          <span style="width:6px;height:6px;border-radius:50%;background:#7CE0A6;display:inline-block;"></span>
-          Launched — 10k users in 6 months
-        </span>
-        <span style="font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--snow-3);">2024</span>
-      </div>
-    </div>
-  </article>
-
-  <div style="display:flex; justify-content:center; padding-top: 32px; border-top: 1px solid var(--rule-dark);">
-    <a href="/projects" class="btn btn-ghost-dark">
-      Browse the full index
-      <span class="arrow">
-        <svg viewBox="0 0 12 12" fill="none"><path d="M2 6H10M10 6L6 2M10 6L6 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </span>
-    </a>
-  </div>
-</section>
-
-<!-- =========================================================
      7 — TESTIMONIALS (light)
      ========================================================= -->
 <section class="light-skin testimonials shell" data-screen-label="07 Testimonials" style="padding: 152px 56px 80px">
@@ -413,7 +501,7 @@
       <span class="section-head__tag">Testimonials</span>
     </div>
     <div style="width: 1000px">
-      <h2 class="display h-large" style="margin: 0 0 24px; max-width: 16ch; font-size: 80px">Built <em style="font-family:var(--display);font-style:italic;font-weight:400;">with</em> founders <span style="color:var(--pop)">—</span> not just for them<span class="accent" style="color:var(--pop)">.</span></h2>
+      <h2 class="display h-large" style="margin: 0 0 24px; max-width: 16ch;">Built <em style="font-family:var(--display);font-style:italic;font-weight:400;">with</em> founders <span style="color:var(--pop)">—</span> not just for them<span class="accent" style="color:var(--pop)">.</span></h2>
       <p class="body-l muted-light" style="max-width: 54ch; margin:0; font-size: 16px">Some founders want close collaboration. Others need someone who can move independently and make strong calls. I work both ways — the goal stays the same.</p>
     </div>
   </div>
@@ -482,7 +570,7 @@
         <span class="section-head__num">(04)</span>
         <span class="section-head__tag">About</span>
       </div>
-      <h2 class="display h-large about__title" style="margin: 0 0 32px; max-width: 18ch; font-size: 80px">Founder<span style="color:var(--pop)">-</span>level mentality<span style="color:var(--pop)">,</span> child<span style="color:var(--pop)">-</span>level creativity<span style="color:var(--pop)">.</span></h2>
+      <h2 class="display h-large about__title" style="margin: 0 0 32px; max-width: 18ch;">Founder<span style="color:var(--pop)">-</span>level mentality<span style="color:var(--pop)">,</span> child<span style="color:var(--pop)">-</span>level creativity<span style="color:var(--pop)">.</span></h2>
       <p class="body-l" style="margin:0 0 18px; font-size: 16px">I love everything behind good design — the psychology of understanding people, the strategies of solving problems, and the tactics of making things feel simple for everyone else.</p>
       <p class="body-l" style="margin:0 0 18px; font-size: 16px">But the best ideas come from curiosity. That inner child who asks <em>"but why?"</em> is usually where the best product decisions start.</p>
       <p class="body-l" style="margin:0 0 32px; font-size: 16px">Outside of work, I paint, read, write music, stay active, travel, and spend as much time around animals as possible. Everything that feeds the mind, feeds the work.</p>

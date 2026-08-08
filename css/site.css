@@ -669,7 +669,7 @@ section, footer { scroll-margin-top: 80px; }
 .stat__num {
   font-family: var(--display);
   font-weight: 500;
-  font-size: clamp(64px, 9vw, 156px);
+  font-size: clamp(42px, 5vw, 72px);
   line-height: 0.86;
   letter-spacing: -0.04em;
   margin: 0 0 20px;
@@ -1167,7 +1167,7 @@ section, footer { scroll-margin-top: 80px; }
 .contact__h {
   font-family: var(--display);
   font-weight: 500;
-  font-size: clamp(40px, 5.5vw, 80px);
+  font-size: clamp(42px, 5vw, 72px);
   letter-spacing: -0.03em;
   line-height: 0.98;
   margin: 0;
@@ -1744,6 +1744,81 @@ section, footer { scroll-margin-top: 80px; }
 }
 
 /* ==========================================================================
+   PROBLEMS — WHY FOUNDERS PARTNER WITH COPO
+   ========================================================================== */
+.problems { padding-block: clamp(60px, 8vw, 96px); }
+.problems__source {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ink-4);
+  border: 1px solid var(--rule-light);
+  border-radius: 4px;
+  padding: 4px 10px;
+  margin: 0;
+}
+.problems__cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--rule-light);
+  border-top: 1px solid var(--rule-light);
+  border-right: 1px solid var(--rule-light);
+  border-bottom: 1px solid var(--rule-light);
+}
+@media (max-width: 900px) {
+  .problems__cards { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 580px) {
+  .problems__cards { grid-template-columns: 1fr; }
+}
+.problem-card {
+  padding: clamp(28px, 3vw, 48px) clamp(20px, 2.5vw, 36px);
+  background: var(--paper);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 280px;
+}
+.problem-card__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 36px;
+}
+.problem-card__num {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .1em;
+  color: var(--ink-4);
+  margin: 0;
+}
+.problem-card__icon {
+  width: 36px;
+  height: 36px;
+  color: var(--ink);
+  opacity: 0.55;
+  flex-shrink: 0;
+}
+.problem-card__title {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: clamp(20px, 1.8vw, 26px);
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+  color: var(--ink);
+  margin: 0 0 14px;
+}
+.problem-card__desc {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--ink-3);
+  margin: 0;
+}
+
+/* ==========================================================================
    MOBILE OPTIMISATION (≤768px) — overrides only, desktop untouched
    ========================================================================== */
 @media (max-width: 768px) {
@@ -1801,7 +1876,7 @@ section, footer { scroll-margin-top: 80px; }
 
   /* --- Stats --- */
   .stat { padding: 24px 0; }
-  .stat__num { font-size: clamp(46px, 16vw, 76px); }
+  .stat__num { font-size: clamp(28px, 8.3vw, 58px); }
 
   /* --- Projects --- */
   .project { margin-bottom: 56px; }
