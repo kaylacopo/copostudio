@@ -60,17 +60,17 @@
   @supports ((-webkit-background-clip: text) or (background-clip: text)) {
     .hero-hl {
       background-image:
-        url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.6' numOctaves='2' stitchTiles='stitch' seed='9'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.7 -0.1'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>"),
-        url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch' seed='4'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.3 -0.05'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>"),
-        linear-gradient(to top right, #F74F4F 0%, #EE4872 22%, #D460B8 46%, #A868E4 70%, #B068FF 90%);
+        url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.6' numOctaves='2' stitchTiles='stitch' seed='9'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.95 -0.05'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>"),
+        url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch' seed='4'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1.4 -0.2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>"),
+        linear-gradient(to right, #F74F4F 0%, #F0537E 60%, #D860C4 80%, #A860E8 100%);
       background-repeat: repeat, repeat, no-repeat;
       background-size: 110px 110px, 240px 240px, 100% 100%;
-      background-blend-mode: soft-light, multiply, normal;
+      background-blend-mode: multiply, overlay, normal;
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
       color: transparent;
-      filter: saturate(1.1) brightness(1.06);
+      filter: saturate(1.2) brightness(1.4);
     }
   }
   /* unify all home-page section headings to match hero scale */
