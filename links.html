@@ -16,55 +16,66 @@ body{
   font-family:Inter,system-ui,-apple-system,sans-serif;
   -webkit-font-smoothing:antialiased;
   min-height:100vh; display:flex; align-items:center; justify-content:center;
-  padding:40px 20px;
+  padding:48px 22px;
 }
-.card{width:100%; max-width:520px}
+.card{width:100%; max-width:600px}
 
 .eyebrow{
-  font-family:"JetBrains Mono",ui-monospace,monospace; font-size:11px;
+  font-family:"JetBrains Mono",ui-monospace,monospace; font-size:13px;
   letter-spacing:.16em; text-transform:uppercase; color:var(--snow-2);
-  display:flex; align-items:center; gap:10px; margin:0 0 26px;
+  display:flex; align-items:center; gap:11px; margin:0 0 28px;
 }
-.eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--pop);flex:none}
+.eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--pop);flex:none}
 
 h1{
   font-family:Inter,sans-serif; font-weight:500;
-  font-size:clamp(38px,10vw,54px); line-height:.96; letter-spacing:-.035em;
-  margin:0 0 6px;
+  font-size:clamp(46px,12vw,62px); line-height:.96; letter-spacing:-.035em;
+  margin:0 0 10px;
 }
 h1 .stop{color:var(--pop)}
-.role{font-size:16px; line-height:1.5; color:var(--snow-2); margin:0; max-width:34ch}
+.role{font-size:19px; line-height:1.5; color:var(--snow-2); margin:0; max-width:34ch}
 
-.rule{height:4px; border-radius:2px; background:var(--grad); margin:26px 0 34px}
+.rule{height:4px; border-radius:2px; background:var(--grad); margin:30px 0 34px}
 
-.links{display:flex; flex-direction:column; gap:10px; list-style:none; margin:0; padding:0}
+.links{display:flex; flex-direction:column; gap:12px; list-style:none; margin:0; padding:0}
 .link{
-  display:flex; align-items:center; gap:16px;
-  padding:18px 20px; border:1px solid var(--rule); border-radius:4px;
+  display:flex; align-items:center; gap:18px;
+  min-height:76px; padding:20px 22px;
+  border:1px solid var(--rule); border-radius:6px;
   background:var(--void-2); color:var(--snow); text-decoration:none;
   transition:background .18s ease, border-color .18s ease, transform .18s ease;
 }
 .link:hover,.link:focus-visible{background:var(--void-3); border-color:var(--snow-3); transform:translateY(-1px)}
 .link:focus-visible{outline:2px solid var(--pop); outline-offset:3px}
 .idx{
-  font-family:"JetBrains Mono",monospace; font-size:11px; letter-spacing:.1em;
-  color:var(--snow-3); flex:none; width:22px;
+  font-family:"JetBrains Mono",monospace; font-size:13px; letter-spacing:.1em;
+  color:var(--snow-3); flex:none; width:26px;
 }
 .body{flex:1 1 auto; min-width:0}
-.label{display:block; font-size:17px; font-weight:500; letter-spacing:-.01em}
+.label{display:block; font-size:21px; font-weight:500; letter-spacing:-.015em; line-height:1.25}
 .meta{
-  display:block; font-family:"JetBrains Mono",monospace; font-size:11px;
-  letter-spacing:.08em; color:var(--snow-3); margin-top:4px;
+  display:block; font-family:"JetBrains Mono",monospace; font-size:13px;
+  letter-spacing:.06em; color:var(--snow-3); margin-top:6px;
   overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
 }
-.arrow{flex:none; color:var(--snow-3); font-size:18px; line-height:1}
+.arrow{flex:none; color:var(--snow-3); font-size:22px; line-height:1}
 .link:hover .arrow{color:var(--pop)}
 
 footer{
-  margin-top:36px; padding-top:20px; border-top:1px solid var(--rule);
-  font-family:"JetBrains Mono",monospace; font-size:11px; letter-spacing:.12em;
+  margin-top:38px; padding-top:22px; border-top:1px solid var(--rule);
+  font-family:"JetBrains Mono",monospace; font-size:12px; letter-spacing:.12em;
   text-transform:uppercase; color:var(--snow-3);
   display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap;
+}
+
+/* phones — this page is reached by scanning a code, so it is read on a phone first */
+@media (max-width:560px){
+  body{padding:34px 18px; align-items:flex-start}
+  .card{max-width:none}
+  .role{font-size:18px}
+  .link{min-height:84px; padding:22px 20px; gap:16px}
+  .label{font-size:22px}
+  .meta{font-size:13px}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
@@ -88,15 +99,9 @@ footer{
       <span class="arrow" aria-hidden="true">→</span>
     </a></li>
 
-    <li><a class="link" href="https://www.linkedin.com/company/copostudio" target="_blank" rel="noopener">
-      <span class="idx">03</span>
-      <span class="body"><span class="label">Copo Studio on LinkedIn</span><span class="meta">linkedin.com/company/copostudio</span></span>
-      <span class="arrow" aria-hidden="true">→</span>
-    </a></li>
-
     <li><a class="link" href="https://vestself.com" target="_blank" rel="noopener">
-      <span class="idx">04</span>
-      <span class="body"><span class="label">Vest Self — join the waitlist</span><span class="meta">vestself.com</span></span>
+      <span class="idx">03</span>
+      <span class="body"><span class="label">Vest Self. Join the Waitlist.</span><span class="meta">vestself.com</span></span>
       <span class="arrow" aria-hidden="true">→</span>
     </a></li>
   </ul>
