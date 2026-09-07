@@ -1,3 +1,5 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Kayla Piscopo Links</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -69,13 +71,21 @@ footer{
 }
 
 /* phones — this page is reached by scanning a code, so it is read on a phone first */
-@media (max-width:560px){
-  body{padding:34px 18px; align-items:flex-start}
+@media (max-width:760px){
+  body{padding:40px 20px 34px; align-items:flex-start}
   .card{max-width:none}
-  .role{font-size:18px}
-  .link{min-height:84px; padding:22px 20px; gap:16px}
-  .label{font-size:22px}
-  .meta{font-size:13px}
+  .eyebrow{font-size:14px; margin-bottom:30px}
+  .eyebrow::before{width:9px;height:9px}
+  h1{font-size:clamp(52px,15vw,76px); margin-bottom:12px}
+  .role{font-size:20px}
+  .rule{height:5px; margin:32px 0 30px}
+  .links{gap:13px}
+  .link{min-height:92px; padding:22px 22px; gap:16px; border-radius:8px}
+  .idx{font-size:14px; width:28px}
+  .label{font-size:23px; line-height:1.22}
+  .meta{font-size:14px; margin-top:7px}
+  .arrow{font-size:25px}
+  footer{margin-top:34px; font-size:12px}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
