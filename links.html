@@ -1,0 +1,108 @@
+<title>Kayla Piscopo Links</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --void:#0A0A0A; --void-2:#131313; --void-3:#1B1B1B;
+  --snow:#F1EEE7; --snow-2:#A29F99; --snow-3:#6B6862;
+  --pop:#F74F4F; --rule:rgba(241,238,231,.14);
+  --grad:linear-gradient(135deg,#1A0533 0%,#6B1480 12%,#D6177B 32%,#F03B3B 52%,#F77428 68%,#F9B47A 84%,#C6A8E8 100%);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--void); color:var(--snow);
+  font-family:Inter,system-ui,-apple-system,sans-serif;
+  -webkit-font-smoothing:antialiased;
+  min-height:100vh; display:flex; align-items:center; justify-content:center;
+  padding:40px 20px;
+}
+.card{width:100%; max-width:520px}
+
+.eyebrow{
+  font-family:"JetBrains Mono",ui-monospace,monospace; font-size:11px;
+  letter-spacing:.16em; text-transform:uppercase; color:var(--snow-2);
+  display:flex; align-items:center; gap:10px; margin:0 0 26px;
+}
+.eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--pop);flex:none}
+
+h1{
+  font-family:Inter,sans-serif; font-weight:500;
+  font-size:clamp(38px,10vw,54px); line-height:.96; letter-spacing:-.035em;
+  margin:0 0 6px;
+}
+h1 .stop{color:var(--pop)}
+.role{font-size:16px; line-height:1.5; color:var(--snow-2); margin:0; max-width:34ch}
+
+.rule{height:4px; border-radius:2px; background:var(--grad); margin:26px 0 34px}
+
+.links{display:flex; flex-direction:column; gap:10px; list-style:none; margin:0; padding:0}
+.link{
+  display:flex; align-items:center; gap:16px;
+  padding:18px 20px; border:1px solid var(--rule); border-radius:4px;
+  background:var(--void-2); color:var(--snow); text-decoration:none;
+  transition:background .18s ease, border-color .18s ease, transform .18s ease;
+}
+.link:hover,.link:focus-visible{background:var(--void-3); border-color:var(--snow-3); transform:translateY(-1px)}
+.link:focus-visible{outline:2px solid var(--pop); outline-offset:3px}
+.idx{
+  font-family:"JetBrains Mono",monospace; font-size:11px; letter-spacing:.1em;
+  color:var(--snow-3); flex:none; width:22px;
+}
+.body{flex:1 1 auto; min-width:0}
+.label{display:block; font-size:17px; font-weight:500; letter-spacing:-.01em}
+.meta{
+  display:block; font-family:"JetBrains Mono",monospace; font-size:11px;
+  letter-spacing:.08em; color:var(--snow-3); margin-top:4px;
+  overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+}
+.arrow{flex:none; color:var(--snow-3); font-size:18px; line-height:1}
+.link:hover .arrow{color:var(--pop)}
+
+footer{
+  margin-top:36px; padding-top:20px; border-top:1px solid var(--rule);
+  font-family:"JetBrains Mono",monospace; font-size:11px; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--snow-3);
+  display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap;
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="card">
+  <p class="eyebrow">Copo Studio</p>
+  <h1>Kayla Piscopo<span class="stop">.</span></h1>
+  <p class="role">Product Strategy &amp; Design Partner. Founder, Copo Studio.</p>
+  <div class="rule"></div>
+
+  <ul class="links">
+    <li><a class="link" href="https://www.linkedin.com/in/kaylapiscopo/" target="_blank" rel="noopener">
+      <span class="idx">01</span>
+      <span class="body"><span class="label">Kayla on LinkedIn</span><span class="meta">linkedin.com/in/kaylapiscopo</span></span>
+      <span class="arrow" aria-hidden="true">→</span>
+    </a></li>
+
+    <li><a class="link" href="https://copostudio.com" target="_blank" rel="noopener">
+      <span class="idx">02</span>
+      <span class="body"><span class="label">Copo Studio</span><span class="meta">copostudio.com</span></span>
+      <span class="arrow" aria-hidden="true">→</span>
+    </a></li>
+
+    <li><a class="link" href="https://www.linkedin.com/company/copostudio" target="_blank" rel="noopener">
+      <span class="idx">03</span>
+      <span class="body"><span class="label">Copo Studio on LinkedIn</span><span class="meta">linkedin.com/company/copostudio</span></span>
+      <span class="arrow" aria-hidden="true">→</span>
+    </a></li>
+
+    <li><a class="link" href="https://vestself.com" target="_blank" rel="noopener">
+      <span class="idx">04</span>
+      <span class="body"><span class="label">Vest Self — join the waitlist</span><span class="meta">vestself.com</span></span>
+      <span class="arrow" aria-hidden="true">→</span>
+    </a></li>
+  </ul>
+
+  <footer>
+    <span>Stop thinking like a founder</span>
+    <span>8 Sep 2026</span>
+  </footer>
+</div>
