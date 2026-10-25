@@ -2204,4 +2204,6 @@ button.service.service--gradient { color: var(--snow); }
   .t-grid > .t-stack:nth-child(2) > .t-card:nth-child(1) { order: 4; }
   .t-grid > .t-stack:nth-child(2) > .t-card:nth-child(2) { order: 1; }
   .t-grid > .t-card--profile { order: 5; }
+  /* name / role / logo always at the bottom of each quote card */
+  .t-card > .t-card__person, .t-card > .t-card__org { order: 9; }
 }
