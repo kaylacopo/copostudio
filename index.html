@@ -72,12 +72,14 @@
       color: transparent;
       filter: saturate(1.2) brightness(1.4);
     }
-    /* mobile: phones (esp. iOS Safari) drop the filter on clipped text and the noise
-       darkens small type, so use the same gradient with the brightness baked in */
+    /* mobile: phones (esp. iOS Safari) render live noise + filters on clipped text differently,
+       so show a pre-rendered copy of the desktop texture instead */
     @media (max-width: 768px) {
       .hero-hl {
-        background-image: linear-gradient(135deg, #FF2E9C 0%, #FF6262 22%, #FF6262 72%, #FF7FE6 88%, #CB8BFF 100%);
+        /* the exact desktop texture, pre-rendered (assets/texture-hero.jpg), scaled to the phone */
+        background-image: url("assets/texture-hero.jpg");
         background-size: 100% 100%;
+        background-repeat: no-repeat;
         background-blend-mode: normal;
         filter: none;
       }
@@ -422,7 +424,7 @@
           <svg class="service__icon" style="opacity: 0.6" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="6" width="20" height="13" rx="1.5"/><path d="M2 22h20"/><rect x="20" y="11" width="10" height="17" rx="1.5" fill="var(--paper, #fff)"/><path d="M23 25h4"/></svg>
         </div>
         <h3 class="service__title">UX/UI Design</h3>
-        <p class="service__desc">Mobile apps, web apps, product redesigns, design systems, prototypes and product demos.</p>
+        <p class="service__desc">Mobile apps, web apps, product redesigns, design systems, prototypes and demos.</p>
       </div>
     </a>
     <a class="service" href="/services#web-conversion">
@@ -482,7 +484,7 @@
           <svg class="service__icon" style="opacity: 0.6" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5" width="24" height="15" rx="1"/><path d="M9 15l4-4 3 3 6-6"/><path d="M16 20v4M11 29l5-5 5 5"/></svg>
         </div>
         <h3 class="service__title">Business &amp; Events</h3>
-        <p class="service__desc">Pitch decks, presentations, company documents, exhibition stands, signage and event props.</p>
+        <p class="service__desc">Pitch decks, presentations, documents, exhibition stands, signage and event props.</p>
       </div>
     </a>
   </div>

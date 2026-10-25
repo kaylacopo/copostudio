@@ -23,7 +23,7 @@ window.COPO_SERVICES = {
     },
     {
       id: 'ux-ui', num: '02', title: 'UX/UI Design',
-      desc: 'Mobile apps, web apps, product redesigns, design systems, prototypes and product demos.',
+      desc: 'Mobile apps, web apps, product redesigns, design systems, prototypes and demos.',
       icon: '<rect x="2" y="6" width="20" height="13" rx="1.5"/><path d="M2 22h20"/><rect x="20" y="11" width="10" height="17" rx="1.5" fill="var(--paper, #fff)"/><path d="M23 25h4"/>'
     },
     {
@@ -54,7 +54,7 @@ window.COPO_SERVICES = {
     },
     {
       id: 'business-events', num: '08', title: 'Business & Events',
-      desc: 'Pitch decks, presentations, company documents, exhibition stands, signage and event props.',
+      desc: 'Pitch decks, presentations, documents, exhibition stands, signage and event props.',
       icon: '<rect x="4" y="5" width="24" height="15" rx="1"/><path d="M9 15l4-4 3 3 6-6"/><path d="M16 20v4M11 29l5-5 5 5"/>'
     }
   ],

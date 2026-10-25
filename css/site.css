@@ -2132,3 +2132,76 @@ button.service.service--gradient { color: var(--snow); }
 }
 /* text on dark backgrounds: brighter stops so the deep-purple start doesn't vanish */
 .copo-text--bright { background-image: var(--copo-texture-bright); filter: saturate(1.2) brightness(1.4); }
+
+/* ==========================================================================
+   MOBILE PASS (Oct 26) — phones only; desktop untouched
+   ========================================================================== */
+@media (max-width: 768px) {
+  /* Gradients: show pre-rendered copies of the DESKTOP texture (gradient + grain + filter,
+     rendered at desktop size) so phones match desktop exactly. Live SVG grain + CSS filters
+     render differently on iOS Safari and look coarse/dark at small sizes. */
+  :root {
+    --copo-noise-fine: url("../assets/noise-fine.png");
+    --copo-noise-coarse: url("../assets/noise-coarse.png");
+  }
+  .footer__brand-mark {
+    background: url("../assets/texture-footer.jpg") center / 100% 100% no-repeat;
+    filter: none;
+    background-blend-mode: normal;
+  }
+  .service--gradient::before {
+    background: url("../assets/texture-card.jpg") center / 100% 100% no-repeat;
+    filter: none;
+    background-blend-mode: normal;
+  }
+  .reason__num::after {
+    background-image: url("../assets/texture-number.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-blend-mode: normal;
+    filter: none;
+  }
+  .contact__result-h { filter: none; }
+  .stats-band::before { filter: none; background-size: 55px 55px, 120px 120px, 100% 100%; }
+
+  /* Headers on projects / services: room under the nav; booking tag hidden */
+  section.projects-hero.shell:not(.hero),
+  section.svc-hero.shell:not(.hero) { padding-top: 96px !important; }
+  .booking-tag { display: none !important; }
+
+  /* Stats band: tighter, numbers as big as the 01–04 numbers */
+  section.stats-band.shell:not(.hero) { padding-block: 8px !important; }
+  .stats { padding-block: 16px; }
+  .stat { padding-block: 22px !important; }
+  .stat__num { font-size: 56px !important; margin-bottom: 12px; }
+
+  /* Services category cards: less padding, two-line descriptions */
+  .service-grid--8 .service { min-height: 0; padding: 22px 16px; }
+  .service-grid--8 .service__head { margin-bottom: 18px; }
+  .service-grid--8 .service__desc {
+    max-width: none; min-height: 0; font-size: 14px; letter-spacing: -0.01em;
+    display: block; -webkit-line-clamp: unset; overflow: visible;
+  }
+}
+@media (max-width: 600px) {
+  /* Why founders partner: number sits to the right of its text */
+  .reason {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    column-gap: 20px;
+    align-items: start;
+    padding: 24px 0 !important;
+  }
+  .reason__num { grid-column: 2; grid-row: 1 / span 2; font-size: 56px; margin: 0; }
+  .reason__title { grid-column: 1; grid-row: 1; min-height: 0; margin-bottom: 8px; }
+  .reason__desc { grid-column: 1; grid-row: 2; }
+}
+@media (max-width: 700px) {
+  /* Testimonials on phones: Rafael, MVST, Virginia, Erik, then Kayla */
+  .t-grid .t-stack { display: contents; }
+  .t-grid > .t-stack:nth-child(1) > .t-card:nth-child(1) { order: 2; }
+  .t-grid > .t-stack:nth-child(1) > .t-card:nth-child(2) { order: 3; }
+  .t-grid > .t-stack:nth-child(2) > .t-card:nth-child(1) { order: 4; }
+  .t-grid > .t-stack:nth-child(2) > .t-card:nth-child(2) { order: 1; }
+  .t-grid > .t-card--profile { order: 5; }
+}
