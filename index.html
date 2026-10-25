@@ -26,14 +26,14 @@
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Copo Studio — app design and build">
+<meta property="og:image:alt" content="Copo Studio: app design and build">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Copo Studio | Product Partner for Startups">
 <meta name="twitter:description" content="Product strategy, UX/UI and MVP development for startups. Helping founders launch products people understand, trust and keep using.">
 <meta name="twitter:image" content="https://copostudio.com/assets/social-preview.jpg">
-<meta name="twitter:image:alt" content="Copo Studio — app design and build">
+<meta name="twitter:image:alt" content="Copo Studio: app design and build">
 
 <script type="application/ld+json">
 {
@@ -60,9 +60,9 @@
   @supports ((-webkit-background-clip: text) or (background-clip: text)) {
     .hero-hl {
       background-image:
-        url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.6' numOctaves='2' stitchTiles='stitch' seed='9'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.95 -0.05'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>"),
-        url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch' seed='4'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1.4 -0.2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>"),
-        linear-gradient(135deg, #D6177B 0%, #F74F4F 20%, #F74F4F 75%, #D860C4 88%, #A860E8 100%);
+        var(--copo-noise-fine),
+        var(--copo-noise-coarse),
+        var(--copo-gradient-bright);
       background-repeat: repeat, repeat, no-repeat;
       background-size: 110px 110px, 240px 240px, 100% 100%;
       background-blend-mode: multiply, overlay, normal;
@@ -72,9 +72,29 @@
       color: transparent;
       filter: saturate(1.2) brightness(1.4);
     }
+    /* mobile: phones (esp. iOS Safari) drop the filter on clipped text and the noise
+       darkens small type, so use the same gradient with the brightness baked in */
+    @media (max-width: 768px) {
+      .hero-hl {
+        background-image: linear-gradient(135deg, #FF2E9C 0%, #FF6262 22%, #FF6262 72%, #FF7FE6 88%, #CB8BFF 100%);
+        background-size: 100% 100%;
+        background-blend-mode: normal;
+        filter: none;
+      }
+    }
   }
   /* unify all home-page section headings to match hero scale */
-  .display.h-large { font-size: clamp(32px, 3.33vw, 48px) !important; }
+  .display.h-large, .contact__h { font-size: clamp(32px, 3.33vw, 48px) !important; }
+  /* section heads: label left, heading column up to 1000px — every heading shares one left edge */
+  @media (min-width: 901px) { .section-head { grid-template-columns: minmax(200px, 1fr) minmax(0, 1000px); } }
+  /* one vertical rhythm for every content section (hero, stats, footer keep their own) */
+  :root { --section-pad: clamp(56px, 6vw, 96px); --head-gap: clamp(32px, 3.5vw, 56px); }
+  body > section.problems, body > section.work, body > section.deliverables,
+  body > section.testimonials, body > section.about, body > section.contact { padding-block: var(--section-pad); }
+  /* same gap between every section heading and its content */
+  body > section .section-head { padding-bottom: 0; border-bottom: 0; margin-bottom: var(--head-gap); }
+  body > section.deliverables .need-more { margin-top: var(--head-gap); padding-top: var(--head-gap); }
+  @media (max-width: 768px) { body > section.deliverables.shell:not(.hero) { padding-bottom: 56px !important; } }
   /* keep the trusted-by logos on one line: let their column size to content on desktop */
   @media (min-width: 901px) { .hero__meta { grid-template-columns: 1.2fr auto 1fr; } }
   /* mobile: ease down the heading + trusted-by sentence */
@@ -111,7 +131,12 @@
     <span class="brand__mark"></span>
     <span class="brand__c">copo studio</span>
   </a>
-  <span class="clock" id="liveClock" style="display:none">— : — — &nbsp;BCN</span>
+  <span class="clock" id="liveClock" style="display:none">--:-- &nbsp;BCN</span>
+  <nav class="site-nav" aria-label="Main">
+    <a href="/projects">Projects</a>
+    <a href="/services">Services</a>
+    <a href="/contact">Contact</a>
+  </nav>
 </div>
 
 <!-- 3D logo orb — body-level so it can outlive any section's stacking context -->
@@ -165,7 +190,7 @@
 
 <!-- hero → stats interstitial video (replaces the old spacer) -->
 <div class="hero-video" data-hero-video style="width:100%;background:#000;line-height:0;font-size:0;">
-  <video class="hero-video__el" muted loop playsinline preload="metadata" aria-label="Copo Studio — app showcase loop" style="display:block;width:100%;height:auto;max-height:100vh;object-fit:contain;margin:0 auto;background:#000;cursor:pointer;">
+  <video class="hero-video__el" muted loop playsinline preload="metadata" aria-label="Copo Studio: app showcase loop" style="display:block;width:100%;height:auto;max-height:100vh;object-fit:contain;margin:0 auto;background:#000;cursor:pointer;">
     <source src="assets/hero-loop.mp4" type="video/mp4">
   </video>
 </div>
@@ -176,17 +201,17 @@
 <section class="dark-skin shell stats-band" data-screen-label="03 Stats">
   <div class="stats">
     <div class="stat">
-      <p class="stat__label">01 — RESULTS</p>
-      <h3 class="stat__num">12<span class="unit" style="letter-spacing: -2px; color: rgb(247, 79, 80)">+ products</span></h3>
-      <p class="muted-dark body-m" style="margin:0; font-size: 16px;">Successfully launched across 7 industries, with 2 more currently in development.</p>
+      <p class="stat__label">01 · RESULTS</p>
+      <h3 class="stat__num">15<span class="unit" style="letter-spacing: -2px; color: rgb(247, 79, 80)">+ products</span></h3>
+      <p class="muted-dark body-m" style="margin:0; font-size: 16px;">Designed across 12 industries: launched, live and currently in development.</p>
     </div>
     <div class="stat">
-      <p class="stat__label">02 — Reach</p>
+      <p class="stat__label">02 · Reach</p>
       <h3 class="stat__num">500<span class="unit" style="letter-spacing: -2px; color: rgb(247, 79, 80)">k users</span></h3>
       <p class="muted-dark body-m" style="margin:0; font-size: 16px;">Estimated user reach across 12 companies and multiple projects.</p>
     </div>
     <div class="stat">
-      <p class="stat__label">03 — EXPERIENCE</p>
+      <p class="stat__label">03 · EXPERIENCE</p>
       <h3 class="stat__num">8<span class="unit" style="letter-spacing: -2px; color: rgb(247, 79, 80)"> countries</span></h3>
       <p class="muted-dark body-m" style="margin:0; font-size: 16px;">Shipped with global teams, now reaching users in 40+ countries.</p>
     </div>
@@ -199,106 +224,96 @@
 <section class="light-skin problems shell" data-screen-label="04 Problems">
   <div class="section-head" style="text-align: left; align-items: flex-start;">
     <div style="text-align: left;">
+      <span class="section-head__num">(01)</span>
       <span class="section-head__tag">Why founders partner with Copo</span>
     </div>
-    <div style="width: 1000px">
-      <h2 class="display h-large" style="margin: 0 0 24px; max-width: 22ch;">Know you have a great idea<span style="color:var(--pop)">,</span> but struggling to execute<span style="color:var(--pop)">?</span></h2>
-      <p class="body-l muted-light" style="max-width: 54ch; margin: 0 0 6px; font-size: 16px">The #1 reason startups fail isn't money. It's product.</p>
-      <p class="problems__source">Source: CB Insights — Why Startups Fail (2026)</p>
+    <div>
+      <h2 class="display h-large" style="margin: 0 0 24px; max-width: 24ch;">More than a designer<span style="color:var(--pop)">.</span> A partner in building your product<span style="color:var(--pop)">.</span></h2>
+      <p class="body-l muted-light" style="max-width: 54ch; margin: 0; font-size: 16px">From the first idea to the final details, I bring the design expertise, product thinking and initiative to help move your business forward.</p>
     </div>
   </div>
-  <div class="problems__cards">
-
-    <div class="problem-card">
-      <div class="problem-card__head">
-        <p class="problem-card__num">(01)</p>
-        <svg class="problem-card__icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M7 4h18M7 28h18"/>
-          <path d="M9 4l7 12-7 12M23 4l-7 12 7 12"/>
-        </svg>
-      </div>
-      <div>
-        <h3 class="problem-card__title">You're the<br>bottleneck</h3>
-        <p class="problem-card__subtitle">Everything depends on you to keep moving.</p>
-        <p class="problem-card__desc">Strategy, UX, brand, websites, pitch decks.. You wear too many hats.</p>
-      </div>
-    </div>
-
-    <div class="problem-card">
-      <div class="problem-card__head">
-        <p class="problem-card__num">(02)</p>
-        <svg class="problem-card__icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <circle cx="16" cy="9" r="4"/>
-          <path d="M8 27c0-4.4 3.6-8 8-8s8 3.6 8 8"/>
-          <circle cx="6" cy="13" r="3"/>
-          <path d="M2 25c0-3.3 1.8-5.5 4-6"/>
-          <circle cx="26" cy="13" r="3"/>
-          <path d="M30 25c0-3.3-1.8-5.5-4-6"/>
-        </svg>
-      </div>
-      <div>
-        <h3 class="problem-card__title">You're managing, not executing</h3>
-        <p class="problem-card__subtitle">Instead of adding value, people create more work.</p>
-        <p class="problem-card__desc">Coordinating and reviewing work takes time away from your business.</p>
-      </div>
-    </div>
-
-    <div class="problem-card">
-      <div class="problem-card__head">
-        <p class="problem-card__num">(03)</p>
-        <svg class="problem-card__icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <rect x="4" y="8" width="24" height="16" rx="2"/>
-          <path d="M4 13h24M9 20h4M15 20h3"/>
-        </svg>
-      </div>
-      <div>
-        <h3 class="problem-card__title">The costs feel risky, not certain</h3>
-        <p class="problem-card__subtitle">You need affordable, flexible and senior, all in one.</p>
-        <p class="problem-card__desc">Hiring is a commitment. Juniors need guidance. Agencies add overhead.</p>
-      </div>
-    </div>
-
-    <div class="problem-card">
-      <div class="problem-card__head">
-        <p class="problem-card__num">(04)</p>
-        <svg class="problem-card__icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M12 22c-1-2.8-4-6-4-9a8 8 0 0 1 16 0c0 3-3 6.2-4 9"/>
-          <path d="M12 22h8M12.5 26h7M14 29h4"/>
-        </svg>
-      </div>
-      <div>
-        <h3 class="problem-card__title">Your startup needs founder mindsets</h3>
-        <p class="problem-card__subtitle">You need problem solvers, not people awaiting instructions.</p>
-        <p class="problem-card__desc">Someone to challenge ideas and make decisions to move forward.</p>
-      </div>
-    </div>
-
-  </div>
+  <ol class="reasons">
+    <li class="reason">
+      <span class="reason__num" data-n="01" aria-hidden="true">01</span>
+      <h3 class="reason__title">One partner, many hats<span style="color:var(--pop)">.</span></h3>
+      <p class="reason__desc">Strategy, UX/UI, brand, websites, launch assets and everything in between.</p>
+    </li>
+    <li class="reason">
+      <span class="reason__num" data-n="02" aria-hidden="true">02</span>
+      <h3 class="reason__title">Less managing, more momentum<span style="color:var(--pop)">.</span></h3>
+      <p class="reason__desc">Someone who takes ownership, solves problems and keeps things moving without constant direction.</p>
+    </li>
+    <li class="reason">
+      <span class="reason__num" data-n="03" aria-hidden="true">03</span>
+      <h3 class="reason__title">Flexible by design<span style="color:var(--pop)">.</span></h3>
+      <p class="reason__desc">Get the support you need without committing to a full-time hire or a large agency.</p>
+    </li>
+    <li class="reason">
+      <span class="reason__num" data-n="04" aria-hidden="true">04</span>
+      <h3 class="reason__title">Thinking beyond the brief<span style="color:var(--pop)">.</span></h3>
+      <p class="reason__desc">A product-minded collaborator who challenges assumptions and cares about the bigger picture.</p>
+    </li>
+  </ol>
 </section>
 
 <!-- =========================================================
      6 — WORK (dark)  — sticky scroll reveals
      ========================================================= -->
 <section class="dark-skin work shell" id="work" data-screen-label="06 Work">
-  <div class="section-head" style="text-align: left; align-items: flex-start; height: 460px">
+  <div class="section-head" style="text-align: left; align-items: flex-start;">
     <div style="text-align: left;">
       <span class="section-head__num" style="color:var(--snow-3);">(02)</span>
       <span class="section-head__tag" style="color:var(--snow-2);">Selected Work</span>
     </div>
-    <div class="work__intro" style="width: 1000px; text-align: left; grid-template-columns: 1fr; gap: 24px;">
+    <div class="work__intro" style="text-align: left; grid-template-columns: 1fr; gap: 24px;">
       <div>
         <h2 class="display h-large" style="margin: 0;">Built like an agency<span style="color:var(--pop)">,</span><br>delivered like a partner<span class="accent" style="color:var(--pop)">.</span></h2>
       </div>
       <div>
-        <p class="body-l muted-dark" style="max-width: 56ch; margin:0 0 16px; font-size: 16px">Agency-level product thinking with the speed, ownership, and clarity of direct 1-on-1 partnership. I've worked across B2B, B2C and B2B2C — from AI platforms to fintech, health, energy and ecommerce, spanning 12 industries.</p>
+        <p class="body-l muted-dark" style="max-width: 56ch; margin:0 0 16px; font-size: 16px">Agency-level product thinking with the speed, ownership, and clarity of direct 1-on-1 partnership. I've worked across B2B, B2C and B2B2C, from AI platforms to fintech, health, energy and ecommerce, spanning 12 industries.</p>
         <p class="body-l muted-dark" style="max-width: 56ch; margin:0;">Because good design isn't just how it looks. It's how it performs.</p>
       </div>
     </div>
   </div>
 
-  <!-- Project 01 — PromptShop -->
+  <!-- Project 01 — Vest Self -->
   <article class="project">
-    <div class="project__media has-img" style="align-self:start;"><img src="assets/promptshop-mockup.png" alt="PromptShop — AI agent workspace and marketplace"></div>
+    <div class="project__media has-img" style="align-self:start;"><img src="assets/vestself-mockup.jpg" alt="Vest Self: AI goal-achievement app"></div>
+    <div class="project__meta">
+      <span class="project__index">AI-Powered Goal Tracking &amp; Accountability App</span>
+      <div>
+        <h3 class="project__title">How the <span style="color:#E6C15A;">Vest Self</span> idea became a real startup, with everything built from scratch.</h3>
+      </div>
+      <p class="project__desc muted-dark">Started from zero with my technical co-founder, I led the product direction, business strategy, brand identity, website and marketing, bringing an idea to life that tackles a problem almost everyone faces: following through on their goals.</p>
+      <div class="project__tags">
+        <span class="tag">Product</span>
+        <span class="tag">Strategy</span>
+        <span class="tag">UX / UI</span>
+        <span class="tag">Brand</span>
+        <span class="tag">Development</span>
+        <span class="tag">Launch</span>
+      </div>
+      <div class="project__cta">
+        <a href="/case-studies/vest-self" class="btn btn-ghost-dark">
+          See it
+          <span class="arrow">
+            <svg viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+      </div>
+      <div class="project__footer">
+        <span class="project__status" style="color:var(--snow);">
+          <span style="width:6px;height:6px;border-radius:50%;background:#E6C15A;display:inline-block;"></span>
+          App Store approval pending
+        </span>
+        <span style="font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--snow-3);">2026</span>
+      </div>
+    </div>
+  </article>
+
+  <!-- Project 02 — PromptShop -->
+  <article class="project">
+    <div class="project__media has-img" style="align-self:start;"><img src="assets/promptshop-mockup.png" alt="PromptShop: AI agent workspace and marketplace"></div>
     <div class="project__meta">
       <span class="project__index">AI Agent Platform &amp; Marketplace</span>
       <div>
@@ -324,14 +339,14 @@
           <span style="width:6px;height:6px;border-radius:50%;background:#7CE0A6;display:inline-block;"></span>
           Launched
         </span>
-        <span style="font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--snow-3);">2025 — present</span>
+        <span style="font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--snow-3);">2026</span>
       </div>
     </div>
   </article>
 
-  <!-- Project 02 — Cuanto -->
+  <!-- Project 03 — Cuanto -->
   <article class="project">
-    <div class="project__media has-img"><img src="assets/cuanto-mockup.png" alt="Cuanto — B2B2C fintech AI rewards app"></div>
+    <div class="project__media has-img"><img src="assets/cuanto-mockup.png" alt="Cuanto: B2B2C fintech AI rewards app"></div>
     <div class="project__meta">
       <span class="project__index">B2B2C Fintech AI Rewards App</span>
       <div>
@@ -356,9 +371,9 @@
       <div class="project__footer">
         <span class="project__status" style="color:var(--snow);">
           <span style="width:6px;height:6px;border-radius:50%;background:#7CE0A6;display:inline-block;"></span>
-          Launched — 10k users in 6 months
+          Launched · 10k users in 6 months
         </span>
-        <span style="font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--snow-3);">2024</span>
+        <span style="font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--snow-3);">2025–2026</span>
       </div>
     </div>
   </article>
@@ -379,119 +394,112 @@
 <section class="light-skin deliverables shell" id="services" data-screen-label="05 Services">
   <div class="section-head" style="text-align: left; align-items: flex-start; font-family: Inter">
     <div style="text-align: left;">
-      <span class="section-head__num">(01)</span>
+      <span class="section-head__num">(03)</span>
       <span class="section-head__tag">Deliverables</span>
     </div>
-    <div style="width: 1000px">
+    <div>
       <h2 class="display h-large" style="margin: 0 0 24px; max-width: 18ch;">End<span style="color:var(--pop)">-</span>to<span style="color:var(--pop)">-</span>end product delivery<span class="accent" style="color:var(--pop)">.</span></h2>
       <p class="body-l muted-light" style="max-width: 54ch; margin: 0; font-family: 'Inter', system-ui, sans-serif; font-size: 16px">Startups move fast and good product decisions need to be made from the start. I work across strategy, product design, conversion and launch support. Built independently, strategically, and around what your business truly needs.</p>
     </div>
   </div>
 
-  <div class="service-grid" style="margin-bottom: 60px">
-    <article class="service service--gradient">
+  <!-- categories mirror js/services-data.js — update both together -->
+  <div class="service-grid service-grid--8">
+    <a class="service service--gradient" href="/services#product-strategy">
       <div>
         <div class="service__head">
           <p class="service__num">(01)</p>
-          <svg class="service__icon" style="opacity: 0.6" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <rect x="7" y="6" width="18" height="22" rx="1.5"/>
-            <rect x="12" y="3" width="8" height="5" rx="1"/>
-            <path d="M11 14h10M11 18h10M11 22h6"/>
-          </svg>
+          <svg class="service__icon" style="opacity: 0.6" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="6" width="18" height="22" rx="1.5"/><rect x="12" y="3" width="8" height="5" rx="1"/><path d="M11 14h10M11 18h10M11 22h6"/></svg>
         </div>
         <h3 class="service__title">Product Strategy</h3>
-        <p class="service__desc">Shaping decisions around user behaviour, business goals, prioritisation, positioning, onboarding, retention, and growth.</p>
+        <p class="service__desc">Discovery, user research, MVP planning, UX audits and defining exactly what to build.</p>
       </div>
-    </article>
-    <article class="service">
+    </a>
+    <a class="service" href="/services#ux-ui">
       <div>
         <div class="service__head">
           <p class="service__num">(02)</p>
-          <svg class="service__icon" style="opacity: 0.6" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <rect x="2" y="6" width="20" height="13" rx="1.5"/>
-            <path d="M2 22h20"/>
-            <rect x="20" y="11" width="10" height="17" rx="1.5" fill="var(--paper, #fff)"/>
-            <path d="M23 25h4"/>
-          </svg>
+          <svg class="service__icon" style="opacity: 0.6" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="6" width="20" height="13" rx="1.5"/><path d="M2 22h20"/><rect x="20" y="11" width="10" height="17" rx="1.5" fill="var(--paper, #fff)"/><path d="M23 25h4"/></svg>
         </div>
-        <h3 class="service__title">UX/UI &amp; Graphic Design</h3>
-        <p class="service__desc">Turning complex app ideas into seamless interfaces that users can understand, trust, and use.</p>
+        <h3 class="service__title">UX/UI Design</h3>
+        <p class="service__desc">Mobile apps, web apps, product redesigns, design systems, prototypes and product demos.</p>
       </div>
-    </article>
-    <article class="service">
+    </a>
+    <a class="service" href="/services#web-conversion">
       <div>
         <div class="service__head">
           <p class="service__num">(03)</p>
-          <svg class="service__icon" style="opacity: 0.6" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <circle cx="16" cy="14" r="4"/>
-            <path d="M9 24c1-3 4-5 7-5s6 2 7 5"/>
-            <path d="M27 8l3 3-3 3"/>
-            <path d="M30 11H22"/>
-            <path d="M5 24l-3-3 3-3"/>
-            <path d="M2 21h8"/>
-          </svg>
+          <svg class="service__icon" style="opacity: 0.6" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="14" r="4"/><path d="M9 24c1-3 4-5 7-5s6 2 7 5"/><path d="M27 8l3 3-3 3"/><path d="M30 11H22"/><path d="M5 24l-3-3 3-3"/><path d="M2 21h8"/></svg>
         </div>
         <h3 class="service__title">Web &amp; Conversion</h3>
-        <p class="service__desc">Designing landing pages, websites and funnels that build trust, drive action, and improve conversions.</p>
+        <p class="service__desc">Websites, landing pages, redesigns, customer journeys and conversion optimisation.</p>
       </div>
-    </article>
-    <article class="service">
+    </a>
+    <a class="service" href="/services#brand-identity">
       <div>
         <div class="service__head">
           <p class="service__num">(04)</p>
-          <svg class="service__icon" style="opacity: 0.6" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M16 3l11 11-11 15L5 14z"/>
-            <path d="M5 14h22"/>
-            <path d="M11 14l5 15 5-15"/>
-            <path d="M11 14l5-11 5 11"/>
-          </svg>
+          <svg class="service__icon" style="opacity: 0.6" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 3l11 11-11 15L5 14z"/><path d="M5 14h22"/><path d="M11 14l5 15 5-15"/><path d="M11 14l5-11 5 11"/></svg>
         </div>
-        <h3 class="service__title">Brand Identity </h3>
-        <p class="service__desc">Building a face for your startup that encapsulates and instantly communicates exactly what you stand for.</p>
+        <h3 class="service__title">Brand Identity</h3>
+        <p class="service__desc">Logos, visual identity systems, brand refreshes, guidelines and branded visual assets.</p>
       </div>
-    </article>
-    <article class="service">
+    </a>
+    <a class="service" href="/services#graphic-design">
       <div>
         <div class="service__head">
           <p class="service__num">(05)</p>
-          <svg class="service__icon" style="opacity: 0.6" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M28 6v20l-16-5V11z"/>
-            <path d="M12 11H6a3 3 0 0 0 0 6h6"/>
-            <path d="M11 21l2 6h4l-2-6"/>
-            <path d="M28 11h2M28 16h3M28 21h2"/>
-          </svg>
+          <svg class="service__icon" style="opacity: 0.6" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 4l8 12-5 11h-6L8 16z"/><path d="M16 4v9.5"/><circle cx="16" cy="16" r="2.5"/><path d="M12 30h8"/></svg>
         </div>
-        <h3 class="service__title">Launch &amp; Marketing </h3>
-        <p class="service__desc">Investor decks, app store visuals, social templates, and everything needed to get your product out there.</p>
+        <h3 class="service__title">Graphic Design</h3>
+        <p class="service__desc">Illustrations, icons, digital graphics, print, merchandise, GIFs and motion assets.</p>
       </div>
-    </article>
-    <article class="service" style="background:var(--ink); color:var(--snow);">
+    </a>
+    <a class="service" href="/services#launch-marketing">
       <div>
         <div class="service__head">
-          <p class="service__num" style="color: var(--snow-3);">(06)</p>
-          <svg class="service__icon" style="opacity: 0.6; color: var(--snow);" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M16 2c5 3 8 8 8 14v6l-4-3h-8l-4 3v-6c0-6 3-11 8-14z"/>
-            <circle cx="16" cy="13" r="2.5"/>
-            <path d="M12 25l-2 5 4-2M20 25l2 5-4-2"/>
-          </svg>
+          <p class="service__num">(06)</p>
+          <svg class="service__icon" style="opacity: 0.6" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M28 6v20l-16-5V11z"/><path d="M12 11H6a3 3 0 0 0 0 6h6"/><path d="M11 21l2 6h4l-2-6"/><path d="M28 11h2M28 16h3M28 21h2"/></svg>
         </div>
-        <h3 class="service__title">Development</h3>
-        <p class="service__desc" style="color: var(--snow-2);">No code builds or developer collaborations to launch websites, web platforms and mobile apps.</p>
+        <h3 class="service__title">Launch &amp; Marketing</h3>
+        <p class="service__desc">App Store assets, social content, videos, ad creatives, collateral and launch campaigns.</p>
       </div>
-    </article>
+    </a>
+    <a class="service service--dark" href="/services#no-code-development">
+      <div>
+        <div class="service__head">
+          <p class="service__num">(07)</p>
+          <svg class="service__icon" style="opacity: 0.6" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 2c5 3 8 8 8 14v6l-4-3h-8l-4 3v-6c0-6 3-11 8-14z"/><circle cx="16" cy="13" r="2.5"/><path d="M12 25l-2 5 4-2M20 25l2 5-4-2"/></svg>
+        </div>
+        <h3 class="service__title">No-Code Development</h3>
+        <p class="service__desc">Framer websites, functional prototypes, no-code builds and AI-assisted MVP development.</p>
+      </div>
+    </a>
+    <a class="service" href="/services#business-events">
+      <div>
+        <div class="service__head">
+          <p class="service__num">(08)</p>
+          <svg class="service__icon" style="opacity: 0.6" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5" width="24" height="15" rx="1"/><path d="M9 15l4-4 3 3 6-6"/><path d="M16 20v4M11 29l5-5 5 5"/></svg>
+        </div>
+        <h3 class="service__title">Business &amp; Events</h3>
+        <p class="service__desc">Pitch decks, presentations, company documents, exhibition stands, signage and event props.</p>
+      </div>
+    </a>
   </div>
 
-  <div class="need-more" style="height: 148px">
+  <div class="need-more">
     <div>
       <p class="need-more__label">Need more?</p>
-      <p class="need-more__copy" style="font-size: 18px; width: 600px">Offering flexible product support to help your business scale and adapt <span style="color:var(--ink-3);">— go beyond the scope.</span></p>
+      <p class="need-more__copy" style="font-size: 18px; max-width: 600px">39 services across eight categories, from MVP planning to exhibition stands<span style="color:var(--ink-3);">, and if it isn't listed, just ask.</span></p>
     </div>
-    <a href="#contact" class="btn btn-light">
-      Get in touch
-      <span class="arrow">
-        <svg viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </span>
-    </a>
+    <div class="need-more__actions">
+      <a href="/services" class="btn btn-light">
+        Explore all services
+        <span class="arrow">
+          <svg viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -499,47 +507,71 @@
      7 — TESTIMONIALS (light)
      ========================================================= -->
 <section class="light-skin testimonials shell" data-screen-label="07 Testimonials">
-  <div class="section-head" style="align-items: flex-start; margin-bottom: clamp(24px, 2.5vw, 40px);">
+  <div class="section-head" style="align-items: flex-start;">
     <div>
-      <span class="section-head__num">(03)</span>
+      <span class="section-head__num">(04)</span>
       <span class="section-head__tag">Testimonials</span>
     </div>
-    <div style="width: 1000px">
+    <div>
       <h2 class="display h-large" style="margin: 0 0 24px;">Built <em style="font-family:var(--display);font-style:italic;font-weight:400;">with</em> founders<span style="color:var(--pop)">,</span> not just for them<span class="accent" style="color:var(--pop)">.</span></h2>
-      <p class="body-l muted-light" style="max-width: 54ch; margin:0; font-size: 16px">Some founders want close collaboration. Others need someone who can move independently and make strong calls. I work both ways — the goal stays the same.</p>
+      <p class="body-l muted-light" style="max-width: 54ch; margin:0; font-size: 16px">Some founders want close collaboration, others need someone to move independently. I work both ways.</p>
     </div>
   </div>
 
   <div class="t-grid">
-    <article class="t-card" style="background:#ffffff; border-radius: 0px 12px 12px 12px;">
-      <div>
-        <p class="t-card__pull">"An integral part of the team."</p>
-        <p class="t-card__quote">"Kayla's creativity, thoughtful work, and incredible drive for design are truly inspiring — an integral part of the team. Lucky to work beside someone super talented and supportive."</p>
-      </div>
-      <div class="t-card__org">
-        <div class="t-card__org-logo"><img src="assets/testimonial-mvst.png" alt="MVST Agency logo"></div>
+    <div class="t-stack">
+      <article class="t-card" style="background:#ffffff; border-radius: 0px 12px 12px 12px;">
         <div>
-          <p class="t-card__org-name">MVST Agency</p>
-          <p class="t-card__org-role">Team of 50+ tech experts</p>
+          <p class="t-card__pull">"An integral part of the team."</p>
+          <p class="t-card__quote">"Kayla's creativity, thoughtful work, and incredible drive for design are truly inspiring, an integral part of the team. Lucky to work beside someone super talented and supportive."</p>
         </div>
-      </div>
-    </article>
+        <div class="t-card__org">
+          <div class="t-card__org-logo"><img src="assets/testimonial-mvst.png" alt="MVST Agency logo"></div>
+          <div>
+            <p class="t-card__org-name">MVST Agency</p>
+            <p class="t-card__org-role">Team of 50+ tech experts</p>
+          </div>
+        </div>
+      </article>
+      <article class="t-card t-card--sm" style="border-radius: 12px 12px 12px 0px;">
+        <p class="t-card__quote">"Kayla has done a fantastic job. We reached a very good level of quality, it looks really good."</p>
+        <div class="t-card__org">
+          <div class="t-card__org-logo"><img src="assets/testimonial-kalipso.png" alt="Kalipso logo"></div>
+          <div>
+            <p class="t-card__org-name">Virginia</p>
+            <p class="t-card__org-role">COO, Kalipso</p>
+          </div>
+        </div>
+      </article>
+    </div>
 
-    <article class="t-card" style="background:#ffffff; border-radius: 12px 12px 0px 1px;">
-      <div class="t-card__person">
-        <div class="t-card__avatar"><img src="assets/testimonial-rafael.jpg" alt="Rafael Rubio"></div>
+    <div class="t-stack">
+      <article class="t-card t-card--sm" style="border-radius: 0px 12px 12px 12px;">
+        <div class="t-card__org">
+          <div class="t-card__org-logo"><img src="assets/testimonial-promptshop.png" alt="PromptShop logo"></div>
+          <div>
+            <p class="t-card__org-name">Erik</p>
+            <p class="t-card__org-role">CTO, PromptShop</p>
+          </div>
+        </div>
+        <p class="t-card__quote">"Yep, this is an improvement for sure."</p>
+      </article>
+      <article class="t-card" style="background:#ffffff; border-radius: 12px 12px 0px 1px;">
+        <div class="t-card__person">
+          <div class="t-card__avatar"><img src="assets/testimonial-rafael.jpg" alt="Rafael Rubio"></div>
+          <div>
+            <p class="t-card__name">Rafael</p>
+            <p class="t-card__role">CEO, Cuanto</p>
+          </div>
+        </div>
         <div>
-          <p class="t-card__name">Rafael. R</p>
-          <p class="t-card__role">Co-Founder / CEO at Cuanto</p>
+          <p class="t-card__pull">"She consistently makes my job easier."</p>
+          <p class="t-card__quote">"I've worked with Kayla on four different projects. She thinks strategically, takes ownership, and leads projects with very little direction. She adds far more value than just great design, and I'd recommend her to any founder building a product."</p>
         </div>
-      </div>
-      <div>
-        <p class="t-card__pull">"She consistently makes my job easier."</p>
-        <p class="t-card__quote">"I've worked with Kayla on four different projects because she consistently makes my job easier. She thinks strategically, takes ownership, challenges ideas constructively, and leads projects with very little direction while always keeping me in the loop. She adds far more value than just great design, and I'd recommend her to any founder building a product."</p>
-      </div>
-    </article>
+      </article>
+    </div>
 
-    <article class="t-card t-card--profile" style="background:#ffffff; border-radius: 0px;">
+    <article class="t-card t-card--profile t-card--dark" style="border-radius: 0px;">
       <div class="t-profile">
         <div class="t-profile__top">
           <svg class="t-profile__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
@@ -571,11 +603,11 @@
   <div class="about__grid" style="text-align: left;">
     <div class="about__copy" style="text-align: left">
       <div class="about__head">
-        <span class="section-head__num">(04)</span>
+        <span class="section-head__num">(05)</span>
         <span class="section-head__tag">About</span>
       </div>
       <h2 class="display h-large about__title" style="margin: 0 0 32px; max-width: 18ch;">Founder<span style="color:var(--pop)">-</span>level mentality<span style="color:var(--pop)">,</span> child<span style="color:var(--pop)">-</span>level creativity<span style="color:var(--pop)">.</span></h2>
-      <p class="body-l" style="margin:0 0 18px; font-size: 16px">I love everything behind good design — the psychology of understanding people, the strategies of solving problems, and the tactics of making things feel simple for everyone else.</p>
+      <p class="body-l" style="margin:0 0 18px; font-size: 16px">I love everything behind good design: the psychology of understanding people, the strategies of solving problems, and the tactics of making things feel simple for everyone else.</p>
       <p class="body-l" style="margin:0 0 18px; font-size: 16px">But the best ideas come from curiosity. That inner child who asks <em>"but why?"</em> is usually where the best product decisions start.</p>
       <p class="body-l" style="margin:0 0 32px; font-size: 16px">Outside of work, I paint, read, write music, stay active, travel, and spend as much time around animals as possible. Everything that feeds the mind, feeds the work.</p>
 
@@ -607,7 +639,7 @@
   <div class="contact__grid">
     <div class="contact__copy">
       <div class="contact__head">
-        <span class="section-head__num" style="color:var(--snow-3)">(05)</span>
+        <span class="section-head__num" style="color:var(--snow-3)">(06)</span>
         <span class="section-head__tag" style="color:var(--snow-2)">Contact</span>
       </div>
       <h2 class="contact__h" style="margin: 0 0 32px;">Pitch me a product<span style="color:var(--pop)">,</span> and I'll build it for you<span style="color: rgb(247, 79, 79)">.</span></h2>
@@ -665,9 +697,9 @@
       <p class="body-m muted-dark" style="max-width:34ch; margin:0;">Independent product studio. Run by Kayla, designing apps, brands and websites for ambitious founders.</p>
       <nav class="footer__nav">
         <a href="/projects">Projects</a>
-        <a href="#services">Services</a>
+        <a href="/services">Services</a>
         <a href="#about">About</a>
-        <a href="#contact">Contact</a>
+        <a href="/contact">Contact</a>
       </nav>
     </div>
   </div>
@@ -675,7 +707,7 @@
   <div class="footer__bottom">
     <small>© 2026 Copo Studio · Kayla Piscopo</small>
     <small>REMOTE → WORLDWIDE</small>
-    <small id="footerClock" style="font-family:var(--mono);letter-spacing:.14em;">— : — —</small>
+    <small id="footerClock" style="font-family:var(--mono);letter-spacing:.14em;">--:--</small>
   </div>
 </footer>
 

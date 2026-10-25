@@ -40,6 +40,19 @@
   --copo-gradient: linear-gradient(135deg, #1A0533 0%, #6B1480 12%, #D6177B 32%, #F03B3B 52%, #F77428 68%, #F9B47A 84%, #C6A8E8 100%);
   --copo-gradient-soft: linear-gradient(135deg, rgba(214,23,123,0.18), rgba(240,59,59,0.18), rgba(247,116,40,0.18));
 
+  /* ===== BRAND GRADIENT + TEXTURE — the ONLY recipe. Never hand-write another. =====
+     surface / text on light:  background: var(--copo-texture); background-size: var(--copo-texture-size);
+                               background-blend-mode: var(--copo-texture-blend); filter: var(--copo-texture-filter);
+     text on dark (hero only): .copo-text--bright   ·   utilities: .copo-fill  .copo-text  (see bottom of file) */
+  --copo-noise-fine:   url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.6' numOctaves='2' stitchTiles='stitch' seed='9'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.95 -0.05'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  --copo-noise-coarse: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch' seed='4'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1.4 -0.2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  --copo-gradient-bright: linear-gradient(135deg, #D6177B 0%, #F74F4F 20%, #F74F4F 75%, #D860C4 88%, #A860E8 100%);
+  --copo-texture:        var(--copo-noise-fine), var(--copo-noise-coarse), var(--copo-gradient);
+  --copo-texture-bright: var(--copo-noise-fine), var(--copo-noise-coarse), var(--copo-gradient-bright);
+  --copo-texture-size:   110px 110px, 240px 240px, 100% 100%;
+  --copo-texture-blend:  multiply, overlay, normal;
+  --copo-texture-filter: saturate(1.2) contrast(1.08);
+
   /* type */
   --display:  "Quasimoda", "Inter", system-ui, sans-serif;
   --body:     "Inter", system-ui, sans-serif;
@@ -257,8 +270,8 @@ p.lead.on-dark { color: var(--snow); }
   height: 36px;
   border-radius: 50%;
   background:
-    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.6' numOctaves='2' stitchTiles='stitch' seed='9'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.95 -0.05'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>") repeat,
-    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch' seed='4'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1.4 -0.2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>") repeat,
+    var(--copo-noise-fine) repeat,
+    var(--copo-noise-coarse) repeat,
     var(--copo-gradient);
   background-size: 90px 90px, 200px 200px, 100% 100%;
   background-blend-mode: multiply, overlay, normal;
@@ -317,8 +330,8 @@ p.lead.on-dark { color: var(--snow); }
   position: absolute;
   inset: 0;
   background:
-    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.6' numOctaves='2' stitchTiles='stitch' seed='9'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.95 -0.05'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>") repeat,
-    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch' seed='4'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1.4 -0.2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>") repeat,
+    var(--copo-noise-fine) repeat,
+    var(--copo-noise-coarse) repeat,
     var(--copo-gradient);
   background-size: 110px 110px, 240px 240px, 100% 100%;
   background-blend-mode: multiply, overlay, normal;
@@ -442,8 +455,8 @@ section, footer { scroll-margin-top: 80px; }
   aspect-ratio: 1 / 1;
   height: auto;
   background:
-    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.6' numOctaves='2' stitchTiles='stitch' seed='9'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.95 -0.05'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>") repeat,
-    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch' seed='4'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1.4 -0.2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>") repeat,
+    var(--copo-noise-fine) repeat,
+    var(--copo-noise-coarse) repeat,
     var(--copo-gradient);
   background-size: 110px 110px, 240px 240px, 100% 100%;
   background-blend-mode: multiply, overlay, normal;
@@ -636,8 +649,8 @@ section, footer { scroll-margin-top: 80px; }
   pointer-events: none;
   opacity: 0.55;
   background:
-    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.6' numOctaves='2' stitchTiles='stitch' seed='9'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.95 -0.05'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>") repeat,
-    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch' seed='4'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1.4 -0.2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>") repeat,
+    var(--copo-noise-fine) repeat,
+    var(--copo-noise-coarse) repeat,
     radial-gradient(140% 165% at 92% -5%,
       rgba(214,23,123,0.9) 0%,
       rgba(240,59,59,0.6) 28%,
@@ -761,8 +774,8 @@ section, footer { scroll-margin-top: 80px; }
   position: absolute;
   inset: 0;
   background:
-    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.6' numOctaves='2' stitchTiles='stitch' seed='9'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.95 -0.05'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>") repeat,
-    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch' seed='4'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1.4 -0.2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>") repeat,
+    var(--copo-noise-fine) repeat,
+    var(--copo-noise-coarse) repeat,
     var(--copo-gradient);
   background-size: 110px 110px, 240px 240px, 100% 100%;
   background-blend-mode: multiply, overlay, normal;
@@ -947,7 +960,7 @@ section, footer { scroll-margin-top: 80px; }
 
 /* testimonials */
 .testimonials {
-  padding-block: clamp(80px, 10vw, 160px);
+  padding-block: clamp(60px, 8.33vw, 120px);
 }
 .testimonials .section-head { border-bottom: none; padding-bottom: 0; }
 .t-grid {
@@ -959,17 +972,31 @@ section, footer { scroll-margin-top: 80px; }
 @media (max-width: 1000px) { .t-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 700px)  { .t-grid { grid-template-columns: 1fr; } }
 .t-card {
-  padding: clamp(28px, 3vw, 44px);
+  padding: clamp(16px, 1.8vw, 26px);
   border: 1px solid var(--rule-light);
-  background: var(--paper);
+  background: transparent;      /* no fill — outline only, blends with the section */
   border-radius: 12px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 36px;
+  gap: 28px;
   transition: background .35s var(--ease), border-color .35s var(--ease);
 }
-.t-card:hover { background: var(--paper-2); border-color: var(--ink-4); }
+.t-card:hover { border-color: var(--ink-4); }
+/* case-study hero quote / traction cards keep their light paper fill on the dark hero */
+.cs-hero__quote.t-card { background: var(--paper); border-color: var(--paper); }
+/* stacked columns: a main testimonial + a smaller one */
+.t-stack { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.t-stack > .t-card:not(.t-card--sm) { flex: 1; }
+.t-card--sm { gap: 20px; justify-content: flex-start; }
+.t-card--sm .t-card__quote { opacity: 0.75; }
+.t-card--sm { background: #ffffff; }   /* all homepage quote cards are white */
+/* Kayla's profile card: brand black */
+.t-card--dark { background: var(--void); border-color: var(--void); }
+.t-card--dark:hover { border-color: var(--void-3); }
+.t-card--dark .t-profile__name { color: var(--snow); }
+.t-card--dark .t-profile__role { color: var(--snow-2); }
+.t-card--dark .t-profile__plus { color: var(--snow-3); }
 .t-card__org {
   display: flex;
   align-items: center;
@@ -995,7 +1022,7 @@ section, footer { scroll-margin-top: 80px; }
   font-family: var(--display);
   font-style: italic;
   font-weight: 400;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.44;
   color: var(--ink);
   opacity: 0.6;
@@ -1003,6 +1030,7 @@ section, footer { scroll-margin-top: 80px; }
 }
 .t-card__pull {
   font-family: var(--display);
+  font-style: italic;
   font-weight: 500;
   font-size: clamp(24px, 2.2vw, 32px);
   letter-spacing: -0.02em;
@@ -1078,15 +1106,19 @@ section, footer { scroll-margin-top: 80px; }
 }
 .t-profile__link:hover { text-decoration: underline; }
 .t-card__portrait {
-  flex: 1;
-  min-height: 240px;
+  flex: 1;                 /* fills the rest of the profile card */
+  min-height: 200px;
+  position: relative;
   overflow: hidden;
   background: var(--void);
 }
 .t-card__portrait img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 30%;
   display: block;
 }
 
@@ -1171,8 +1203,8 @@ section, footer { scroll-margin-top: 80px; }
   font-family: var(--display);
   font-weight: 500;
   font-size: clamp(32px, 3.33vw, 48px);
-  letter-spacing: -0.03em;
-  line-height: 0.98;
+  letter-spacing: -0.035em;   /* same as .display headings */
+  line-height: 0.92;
   margin: 0;
   max-width: 14ch;
 }
@@ -1187,8 +1219,8 @@ section, footer { scroll-margin-top: 80px; }
   opacity: 0;
   transition: opacity .5s var(--ease);
   background:
-    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.6' numOctaves='2' stitchTiles='stitch' seed='9'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.95 -0.05'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>") repeat,
-    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch' seed='4'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1.4 -0.2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>") repeat,
+    var(--copo-noise-fine) repeat,
+    var(--copo-noise-coarse) repeat,
     radial-gradient(circle 460px at var(--mx, 50%) var(--my, 50%),
       rgba(214,23,123,0.42) 0%,
       rgba(240,59,59,0.30) 30%,
@@ -1339,9 +1371,9 @@ section, footer { scroll-margin-top: 80px; }
 @supports ((-webkit-background-clip: text) or (background-clip: text)) {
   .contact__result-h {
     background-image:
-      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.6' numOctaves='2' stitchTiles='stitch' seed='9'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.95 -0.05'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>"),
-      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch' seed='4'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1.4 -0.2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>"),
-      linear-gradient(100deg, #B355CE 0%, #D6177B 28%, #F03B3B 52%, #F77428 78%, #F9B47A 100%);
+      var(--copo-noise-fine),
+      var(--copo-noise-coarse),
+      var(--copo-gradient-bright);
     background-repeat: repeat, repeat, no-repeat;
     background-size: 110px 110px, 240px 240px, 100% 100%;
     background-blend-mode: multiply, overlay, normal;
@@ -1736,8 +1768,8 @@ section, footer { scroll-margin-top: 80px; }
   aspect-ratio: 620 / 280;
   height: auto;
   background:
-    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.6' numOctaves='2' stitchTiles='stitch' seed='9'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.95 -0.05'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>") repeat,
-    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch' seed='4'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1.4 -0.2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>") repeat,
+    var(--copo-noise-fine) repeat,
+    var(--copo-noise-coarse) repeat,
     var(--copo-gradient);
   background-size: 110px 110px, 240px 240px, 100% 100%;
   background-blend-mode: multiply, overlay, normal;
@@ -1772,6 +1804,18 @@ section, footer { scroll-margin-top: 80px; }
 @media (max-width: 580px) {
   .problems__cards { grid-template-columns: 1fr; }
 }
+.problem-card + .problem-card { border-left: 1px solid var(--rule-light); }
+/* 4-up: reserve two title lines so every description starts on the same line */
+@media (min-width: 901px) { .problem-card__title { min-height: 2.2em; } }
+@media (max-width: 900px) {
+  .problem-card:nth-child(odd) { border-left: 0; }
+  .problem-card:nth-child(n+3) { border-top: 1px solid var(--rule-light); }
+}
+@media (max-width: 580px) {
+  .problem-card + .problem-card { border-left: 0; border-top: 1px solid var(--rule-light); }
+  .problem-card { min-height: 0; padding-block: 28px 32px; }
+  .problem-card .problem-card__head { margin-bottom: 24px; }
+}
 .problem-card {
   padding: clamp(20px, 2vw, 32px) clamp(16px, 2vw, 28px);
   background: var(--paper);
@@ -1784,7 +1828,7 @@ section, footer { scroll-margin-top: 80px; }
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  margin-bottom: 24px;
+  margin-bottom: 48px;
 }
 .problem-card__num {
   font-family: var(--mono);
@@ -1803,11 +1847,11 @@ section, footer { scroll-margin-top: 80px; }
 .problem-card__title {
   font-family: var(--display);
   font-weight: 500;
-  font-size: clamp(22px, 2.2vw, 32px);
+  font-size: clamp(22px, 1.9vw, 28px);
   letter-spacing: -0.02em;
   line-height: 1.1;
-  color: var(--pop);
-  margin: 0 0 16px;
+  color: var(--ink);
+  margin: 0 0 14px;
 }
 .problem-card__subtitle {
   font-weight: 600;
@@ -1932,3 +1976,159 @@ section, footer { scroll-margin-top: 80px; }
   /* keep the decorative hero orb from poking past the viewport edge */
   .hero { overflow-x: clip; }
 }
+
+/* --- top nav (corner, right side) --- */
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 2vw, 28px);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.site-nav a {
+  position: relative;
+  opacity: 0.7;
+  transition: opacity .2s var(--ease);
+}
+.site-nav a:hover,
+.site-nav a[aria-current="page"] { opacity: 1; }
+.site-nav a[aria-current="page"]::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -5px;
+  height: 1px;
+  background: currentColor;
+}
+@media (max-width: 520px) {
+  .corner .brand__c { display: none; }
+  .site-nav { gap: 14px; font-size: 10px; }
+}
+
+/* --- service categories: 8 cards (4 x 2), cards link to /services --- */
+@media (min-width: 1100px) {
+  .service-grid--8 { grid-template-columns: repeat(4, 1fr); }
+  /* sized so the longest title ("No-Code Development") stays on one line */
+  .service-grid--8 .service__title { font-size: clamp(18px, 1.65vw, 32px); }
+  .service-grid--8 .service__desc { font-size: clamp(13px, 1.11vw, 16px); }
+  .service-grid--8 .service { padding-inline: clamp(20px, 1.8vw, 36px); }
+}
+/* category descriptions: always exactly three lines — same measure at every width */
+.service-grid--8 .service__desc {
+  max-width: 16em;
+  min-height: 4.5em;            /* 3 lines x 1.5 line-height */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+a.service { color: inherit; text-decoration: none; }
+.service--dark { background: var(--ink); color: var(--snow); }
+.service--dark:hover { background: var(--ink-2); }
+.service--dark .service__num { color: var(--snow-3); }
+.service--dark .service__icon { color: var(--snow); }
+.service--dark .service__desc { color: var(--snow-2); }
+.service--dark .service__title, a.service.service--dark, button.service.service--dark { color: var(--snow); }
+button.service { color: var(--ink); }
+button.service.service--gradient { color: var(--snow); }
+.need-more__actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+/* --- Why founders partner: big outlined numbers, 4 across (distinct from the service cards) --- */
+.reasons {
+  list-style: none; margin: 0; padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid var(--rule-light);
+  border-bottom: 1px solid var(--rule-light);
+}
+.reason {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(24px, 2.4vw, 36px) clamp(18px, 2vw, 32px) clamp(28px, 2.6vw, 40px);
+}
+.reason:first-child { padding-left: 0; }
+.reason + .reason { border-left: 1px solid var(--rule-light); }
+.reason__num {
+  position: relative;
+  align-self: flex-start;
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: clamp(56px, 5.6vw, 92px);
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--pop);   /* outline in brand red, fills with the texture on hover */
+  margin-bottom: clamp(28px, 3.4vw, 56px);
+}
+/* hover: the number fills with the brand gradient */
+.reason__num::after {
+  content: attr(data-n);
+  position: absolute;
+  inset: 0;
+  -webkit-text-stroke: 0;
+  background-image: var(--copo-texture);
+  background-size: var(--copo-texture-size);
+  background-blend-mode: var(--copo-texture-blend);
+  filter: var(--copo-texture-filter);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 0;
+  transition: opacity .45s var(--ease);
+}
+.reason:hover .reason__num::after { opacity: 1; }
+.reason__num { transition: -webkit-text-stroke-color .45s var(--ease); }
+.reason:hover .reason__num { -webkit-text-stroke-color: transparent; }
+.reason__title {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: clamp(22px, 1.9vw, 30px);
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+  color: var(--ink);
+  margin: 0 0 12px;
+  min-height: 2.16em;   /* two lines reserved so descriptions align */
+}
+.reason__desc {
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--ink-3);
+  margin: 0;
+  max-width: 34ch;
+}
+@media (max-width: 1100px) {
+  .reasons { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .reason:nth-child(3) { padding-left: 0; border-left: 0; }
+  .reason:nth-child(n+3) { border-top: 1px solid var(--rule-light); }
+}
+@media (max-width: 600px) {
+  .reasons { grid-template-columns: 1fr; }
+  .reason { padding-left: 0 !important; padding-right: 0; border-left: 0 !important; }
+  .reason + .reason { border-top: 1px solid var(--rule-light); }
+  .reason__num { font-size: 56px; margin-bottom: 20px; }
+  .reason__title { min-height: 0; }
+}
+@media (hover: none) { .reason__num::after { opacity: 1; } .reason__num { -webkit-text-stroke: 0; } }
+
+/* ==========================================================================
+   BRAND TEXTURE UTILITIES — use these instead of writing a gradient
+   ========================================================================== */
+.copo-fill {
+  background-image: var(--copo-texture);
+  background-size: var(--copo-texture-size);
+  background-blend-mode: var(--copo-texture-blend);
+  filter: var(--copo-texture-filter);
+}
+.copo-text, .copo-text--bright {
+  background-image: var(--copo-texture);
+  background-size: var(--copo-texture-size);
+  background-blend-mode: var(--copo-texture-blend);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+/* text on dark backgrounds: brighter stops so the deep-purple start doesn't vanish */
+.copo-text--bright { background-image: var(--copo-texture-bright); filter: saturate(1.2) brightness(1.4); }

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Projects &amp; Case Studies | Copo Studio</title>
-<meta name="description" content="A working index of Copo Studio's client work — AI platforms, fintech, health, energy and ecommerce products across 12 industries, shipped and in development.">
+<meta name="description" content="A working index of Copo Studio's client work: AI platforms, fintech, health, energy and ecommerce products across 12 industries, shipped and in development.">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#0A0A0A">
 <link rel="canonical" href="https://copostudio.com/projects">
@@ -19,20 +19,20 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:url" content="https://copostudio.com/projects">
 <meta property="og:title" content="Projects &amp; Case Studies | Copo Studio">
-<meta property="og:description" content="A working index of Copo Studio's client work — AI platforms, fintech, health, energy and ecommerce products across 12 industries, shipped and in development.">
+<meta property="og:description" content="A working index of Copo Studio's client work: AI platforms, fintech, health, energy and ecommerce products across 12 industries, shipped and in development.">
 <meta property="og:image" content="https://copostudio.com/assets/social-preview.jpg">
 <meta property="og:image:secure_url" content="https://copostudio.com/assets/social-preview.jpg">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Copo Studio — app design and build">
+<meta property="og:image:alt" content="Copo Studio: app design and build">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Projects &amp; Case Studies | Copo Studio">
-<meta name="twitter:description" content="A working index of Copo Studio's client work — AI platforms, fintech, health, energy and ecommerce products across 12 industries, shipped and in development.">
+<meta name="twitter:description" content="A working index of Copo Studio's client work: AI platforms, fintech, health, energy and ecommerce products across 12 industries, shipped and in development.">
 <meta name="twitter:image" content="https://copostudio.com/assets/social-preview.jpg">
-<meta name="twitter:image:alt" content="Copo Studio — app design and build">
+<meta name="twitter:image:alt" content="Copo Studio: app design and build">
 
 <link rel="stylesheet" href="css/site.css">
 <script>
@@ -183,6 +183,16 @@
     color: var(--snow-3);
   }
   .preview-img.has-img::after { display: none; }
+  /* in-development rows: no work shown yet, just a quiet placeholder */
+  .preview-img.is-soon,
+  .idx-mobile-media.is-soon {
+    background:
+      radial-gradient(120% 90% at 80% 110%, rgba(247, 79, 79, 0.22), transparent 60%),
+      radial-gradient(90% 80% at 10% -10%, rgba(168, 96, 232, 0.16), transparent 60%),
+      var(--void-2);
+  }
+  .preview-img.is-soon::after { color: var(--snow-2); }
+  .index-row a[aria-disabled] { cursor: default; }
 
   /* mobile: inline mockup that reveals on scroll (touch has no hover) */
   .idx-mobile-media { display: none; }
@@ -211,6 +221,7 @@
     }
     .idx-mobile-media.in-view { opacity: 1; transform: none; }
     .idx-mobile-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .idx-mobile-media.is-soon { display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--snow-2); }
   }
 
   /* category filter bar */
@@ -248,7 +259,7 @@
   .filter-pill.is-active { background: var(--snow); color: var(--ink); border-color: var(--snow); }
 </style>
 </head>
-<body class="dark-skin" data-page-label="Selected Work · 2021—2026">
+<body class="dark-skin" data-page-label="Selected Work · 2021–2026">
 
 <!-- corner -->
 <div class="corner">
@@ -256,9 +267,11 @@
     <span class="brand__mark"></span>
     <span class="brand__c">©26</span>
   </a>
-  <a href="/" style="font-family:var(--mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;display:inline-flex;align-items:center;gap:8px;">
-    ← Back to start
-  </a>
+  <nav class="site-nav" aria-label="Main">
+    <a href="/projects" aria-current="page">Projects</a>
+    <a href="/services">Services</a>
+    <a href="/contact">Contact</a>
+  </nav>
 </div>
 
 <!-- floating preview -->
@@ -269,7 +282,7 @@
      ========================================================= -->
 <section class="dark-skin projects-hero shell" data-screen-label="01 Index Header">
   <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom: 40px;flex-wrap:wrap;gap:20px;">
-    <span class="eyebrow on-dark">Projects · Index 01 — 12</span>
+    <span class="eyebrow on-dark">Projects · Index 01–15</span>
     <span style="font-family:var(--mono);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--snow-3);">
       <span style="color:var(--pop);">●</span> Currently booking Q3 / Q4 ‘26
     </span>
@@ -282,10 +295,10 @@
 
   <div class="projects-hero__meta">
     <div>
-      <p class="muted-dark body-m" style="margin:0;max-width:46ch;">A working index of client work — shipped, in development, or recently wrapped. From AI platforms and fintech to health, energy and ecommerce, across 12 industries.</p>
+      <p class="muted-dark body-m" style="margin:0;max-width:46ch;">A working index of client work: shipped, in development, or recently wrapped. From AI platforms and fintech to health, energy and ecommerce, across 12 industries.</p>
     </div>
     <div style="display:flex;align-items:flex-end;justify-content:flex-end;">
-      <a href="/#contact" class="btn btn-light">
+      <a href="#contact" class="btn btn-light">
         Start a project
         <span class="arrow">
           <svg viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -302,7 +315,7 @@
 
   <!-- filter bar -->
   <div class="filter-bar">
-    <span class="filter-bar__label">Filter —</span>
+    <span class="filter-bar__label">Filter</span>
     <div class="filters">
       <button class="filter-pill is-active" data-filter="all">All</button>
       <button class="filter-pill" data-filter="product">Product</button>
@@ -314,6 +327,7 @@
       <button class="filter-pill" data-filter="mobile">Mobile</button>
       <button class="filter-pill" data-filter="app">App</button>
       <button class="filter-pill" data-filter="web">Web</button>
+      <button class="filter-pill" data-filter="development">Development</button>
       <button class="filter-pill" data-filter="extension">Extension</button>
       <button class="filter-pill" data-filter="brand">Brand</button>
       <button class="filter-pill" data-filter="growth">Growth</button>
@@ -337,9 +351,23 @@
 
   <ol class="index-list" id="indexList">
 
+    <li class="index-row" data-cats="product uxui strategy ai mobile app web development brand growth launch marketing graphics" data-preview="Vest Self · cover" data-img="assets/vestself-mockup.jpg">
+      <a href="/case-studies/vest-self">
+        <span class="idx-num">01</span>
+        <div class="idx-project">
+          <h3 class="idx-title">AI Goal-Achievement App, Brand &amp; Waitlist Website</h3>
+          <p class="idx-company">Vest Self <svg viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></p>
+        </div>
+        <div class="idx-tags"><span class="idx-tag">Product</span><span class="idx-tag">UX/UI</span><span class="idx-tag">Strategy</span><span class="idx-tag">AI</span><span class="idx-tag">Mobile</span><span class="idx-tag">App</span><span class="idx-tag">Web</span><span class="idx-tag">Development</span><span class="idx-tag">Brand</span><span class="idx-tag">Launch</span><span class="idx-tag">Marketing</span></div>
+        <span class="idx-sub"><span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#E6C15A;margin-right:6px;vertical-align:middle;"></span>App Store approval pending</span>
+        <span class="idx-year">'26</span>
+        <span class="idx-arrow"><svg viewBox="0 0 12 12" fill="none" style="width:12px;height:12px;color:var(--snow);"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+    </li>
+
     <li class="index-row" data-cats="product uxui strategy ai marketplace platform web systems management" data-preview="PromptShop · cover" data-img="assets/promptshop-mockup.png">
       <a href="https://promptshop.co" target="_blank" rel="noopener">
-        <span class="idx-num">01</span>
+        <span class="idx-num">02</span>
         <div class="idx-project">
           <h3 class="idx-title">B2B AI Agent Platform &amp; Marketplace Website</h3>
           <p class="idx-company">PromptShop <svg viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></p>
@@ -353,21 +381,49 @@
 
     <li class="index-row" data-cats="product uxui strategy ai marketplace mobile app brand growth launch marketing print" data-preview="Cuanto · cover" data-img="assets/cuanto-mockup.png">
       <a href="https://play.google.com/store/apps/details?id=ai.getcuanto.mobile&hl=es_CR" target="_blank" rel="noopener">
-        <span class="idx-num">02</span>
+        <span class="idx-num">03</span>
         <div class="idx-project">
           <h3 class="idx-title">B2B2C Fintech AI Rewards App &amp; Platform</h3>
           <p class="idx-company">Cuanto <svg viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></p>
         </div>
         <div class="idx-tags"><span class="idx-tag">Product</span><span class="idx-tag">UX/UI</span><span class="idx-tag">Strategy</span><span class="idx-tag">AI</span><span class="idx-tag">Marketplace</span><span class="idx-tag">Mobile</span><span class="idx-tag">App</span><span class="idx-tag">Brand</span><span class="idx-tag">Growth</span><span class="idx-tag">Launch</span><span class="idx-tag">Marketing</span><span class="idx-tag">Print</span></div>
         <span class="idx-sub"><span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#7CE0A6;margin-right:6px;vertical-align:middle;"></span>Launched · 10k users</span>
+        <span class="idx-year">'25–'26</span>
+        <span class="idx-arrow"><svg viewBox="0 0 12 12" fill="none" style="width:12px;height:12px;color:var(--snow);"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+    </li>
+
+    <li class="index-row" data-cats="uxui strategy ai web brand marketing print graphics" data-preview="In development · coming soon" data-soon>
+      <a href="https://kalipso.ai" target="_blank" rel="noopener">
+        <span class="idx-num">04</span>
+        <div class="idx-project">
+          <h3 class="idx-title">AI RegTech Brand System, Website &amp; Event Design</h3>
+          <p class="idx-company">Kalipso <svg viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></p>
+        </div>
+        <div class="idx-tags"><span class="idx-tag">UX/UI</span><span class="idx-tag">Strategy</span><span class="idx-tag">AI</span><span class="idx-tag">Web</span><span class="idx-tag">Brand</span><span class="idx-tag">Marketing</span><span class="idx-tag">Print</span><span class="idx-tag">Graphics</span></div>
+        <span class="idx-sub"><span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#E6C15A;margin-right:6px;vertical-align:middle;"></span>In development</span>
         <span class="idx-year">'26</span>
         <span class="idx-arrow"><svg viewBox="0 0 12 12" fill="none" style="width:12px;height:12px;color:var(--snow);"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </a>
     </li>
 
+    <li class="index-row" data-cats="uxui strategy web development brand" data-preview="In development · coming soon" data-soon>
+      <a aria-disabled="true">
+        <span class="idx-num">05</span>
+        <div class="idx-project">
+          <h3 class="idx-title">Startup Advisory &amp; Venture Partner Website</h3>
+          <p class="idx-company">MOAI Ventures</p>
+        </div>
+        <div class="idx-tags"><span class="idx-tag">UX/UI</span><span class="idx-tag">Strategy</span><span class="idx-tag">Web</span><span class="idx-tag">Development</span><span class="idx-tag">Brand</span></div>
+        <span class="idx-sub"><span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#E6C15A;margin-right:6px;vertical-align:middle;"></span>In development</span>
+        <span class="idx-year">'26</span>
+        <span></span>
+      </a>
+    </li>
+
     <li class="index-row" data-cats="product uxui strategy ai mobile app growth launch marketing" data-preview="MyPhi · cover" data-img="assets/myphi-mockup.png">
       <a href="https://apps.apple.com/at/app/myphi-active/id6738081271" target="_blank" rel="noopener">
-        <span class="idx-num">03</span>
+        <span class="idx-num">06</span>
         <div class="idx-project">
           <h3 class="idx-title">AI Child Health Tracking Mobile App</h3>
           <p class="idx-company">MyPhi <svg viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></p>
@@ -381,21 +437,21 @@
 
     <li class="index-row" data-cats="product uxui strategy mobile app web extension growth launch marketing graphics" data-preview="Qoala · cover" data-img="assets/qoala-mockup.png">
       <a href="https://chromewebstore.google.com/detail/qoala-cashback-y-cupones/gpilpagnmpikakpjiokkabbigneigoln" target="_blank" rel="noopener">
-        <span class="idx-num">04</span>
+        <span class="idx-num">07</span>
         <div class="idx-project">
           <h3 class="idx-title">Cashback Browser Extension &amp; Mobile App</h3>
           <p class="idx-company">Qoala <svg viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></p>
         </div>
         <div class="idx-tags"><span class="idx-tag">Product</span><span class="idx-tag">UX/UI</span><span class="idx-tag">Strategy</span><span class="idx-tag">Mobile</span><span class="idx-tag">App</span><span class="idx-tag">Web</span><span class="idx-tag">Extension</span><span class="idx-tag">Growth</span><span class="idx-tag">Launch</span><span class="idx-tag">Marketing</span><span class="idx-tag">Graphics</span></div>
         <span class="idx-sub"><span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#7CE0A6;margin-right:6px;vertical-align:middle;"></span>Live · 250k users</span>
-        <span class="idx-year">'23 — '24</span>
+        <span class="idx-year">'23–'24</span>
         <span class="idx-arrow"><svg viewBox="0 0 12 12" fill="none" style="width:12px;height:12px;color:var(--snow);"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </a>
     </li>
 
     <li class="index-row" data-cats="product uxui strategy platform mobile app web extension marketing print" data-preview="Cada · cover" data-img="assets/cada-mockup.png">
       <a href="https://cada.com/en-ch/" target="_blank" rel="noopener">
-        <span class="idx-num">05</span>
+        <span class="idx-num">08</span>
         <div class="idx-project">
           <h3 class="idx-title">Health Management Mobile App, Web Platform &amp; Informative Website</h3>
           <p class="idx-company">Cada <svg viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></p>
@@ -409,7 +465,7 @@
 
     <li class="index-row" data-cats="uxui strategy web" data-preview="Dennemeyer · cover" data-img="assets/dennemeyer-mockup.png">
       <a href="https://www.dennemeyer.com/" target="_blank" rel="noopener">
-        <span class="idx-num">06</span>
+        <span class="idx-num">09</span>
         <div class="idx-project">
           <h3 class="idx-title">Legal &amp; Patent Enterprise 100+ Page Website</h3>
           <p class="idx-company">Dennemeyer <svg viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></p>
@@ -423,7 +479,7 @@
 
     <li class="index-row" data-cats="product uxui mobile web brand" data-preview="Smart Meter Atlas · cover" data-img="assets/smart-meter-atlas-mockup.png">
       <a href="https://www.smartmeteratlas.com/" target="_blank" rel="noopener">
-        <span class="idx-num">07</span>
+        <span class="idx-num">10</span>
         <div class="idx-project">
           <h3 class="idx-title">Interactive Smart Meter Rollout Data Platform</h3>
           <p class="idx-company">Smart Meter Atlas <svg viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></p>
@@ -437,7 +493,7 @@
 
     <li class="index-row" data-cats="product uxui strategy web" data-preview="Uni Saarland · cover" data-img="assets/saarland-mockup.png">
       <a href="https://www.uni-saarland.de/en/study/organisation/more/certificates.html" target="_blank" rel="noopener">
-        <span class="idx-num">08</span>
+        <span class="idx-num">11</span>
         <div class="idx-project">
           <h3 class="idx-title">University Document Portal &amp; Security Platform</h3>
           <p class="idx-company">Uni Saarland <svg viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></p>
@@ -451,7 +507,7 @@
 
     <li class="index-row" data-cats="uxui strategy web brand" data-preview="Oqtox · cover" data-img="assets/oqtox-mockup.png">
       <a href="https://oqto-x.com/" target="_blank" rel="noopener">
-        <span class="idx-num">09</span>
+        <span class="idx-num">12</span>
         <div class="idx-project">
           <h3 class="idx-title">Large Energy Enterprise Collaboration Brand &amp; Landing Page</h3>
           <p class="idx-company">Oqtox <svg viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></p>
@@ -465,7 +521,7 @@
 
     <li class="index-row" data-cats="uxui strategy web" data-preview="Feld Energy · cover" data-img="assets/feld-mockup.png">
       <a href="https://www.feld.energy/" target="_blank" rel="noopener">
-        <span class="idx-num">10</span>
+        <span class="idx-num">13</span>
         <div class="idx-project">
           <h3 class="idx-title">Energy Platform Website Extension</h3>
           <p class="idx-company">Feld Energy <svg viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></p>
@@ -479,7 +535,7 @@
 
     <li class="index-row" data-cats="uxui strategy web" data-preview="Keyoniq · cover" data-img="assets/keyoniq-mockup.png">
       <a href="https://www.keyoniq-health.com/" target="_blank" rel="noopener">
-        <span class="idx-num">11</span>
+        <span class="idx-num">14</span>
         <div class="idx-project">
           <h3 class="idx-title">Modern Longevity Health Clinic Launch Website</h3>
           <p class="idx-company">Keyoniq <svg viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></p>
@@ -493,7 +549,7 @@
 
     <li class="index-row" data-cats="uxui strategy web brand" data-preview="Maldonado’s Knives · cover" data-img="assets/maldonado-mockup.png">
       <a href="https://www.maldonadoknife.com/en" target="_blank" rel="noopener">
-        <span class="idx-num">12</span>
+        <span class="idx-num">15</span>
         <div class="idx-project">
           <h3 class="idx-title">Premium Branding &amp; Converting Marketplace Website</h3>
           <p class="idx-company">Maldonado’s Knives <svg viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></p>
@@ -510,12 +566,51 @@
   <!-- bottom cta -->
   <div style="display:flex;justify-content:space-between;align-items:center;padding-top:48px;flex-wrap:wrap;gap:20px;">
     <p class="body-l muted-dark" style="margin:0;max-width:40ch;">Selected project details and additional work samples available upon request.</p>
-    <a href="/#contact" class="btn btn-light">
+    <a href="#contact" class="btn btn-light">
       Request access
       <span class="arrow">
         <svg viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </span>
     </a>
+  </div>
+</section>
+
+<!-- =========================================================
+     CONTACT (dark) — sits directly above the footer on every page
+     ========================================================= -->
+<section class="dark-skin contact shell" id="contact" data-screen-label="09 Contact">
+  <div class="contact__glow" aria-hidden="true"></div>
+
+  <div class="contact__grid">
+    <div class="contact__copy">
+      <div class="contact__head">
+        <span class="section-head__tag" style="color:var(--snow-2)">Contact</span>
+      </div>
+      <h2 class="contact__h" style="margin: 0 0 32px;">Pitch me a product<span style="color:var(--pop)">,</span> and I'll build it for you<span style="color: rgb(247, 79, 79)">.</span></h2>
+      <p class="body-l muted-dark" style="margin: 0 0 24px; font-size: 16px">Reach out and I'll help you move your product forward. Whether you need direction, a quick audit, or a clear plan; expect honest advice and a partner who cares about the outcome as much as you do.</p>
+      <p class="body-l muted-dark" style="margin: 0; font-size: 16px">If you're exploring an idea or ready to build, let's talk product.</p>
+    </div>
+
+    <form>
+      <div class="field">
+        <label for="f-name">Name *</label>
+        <input id="f-name" type="text" placeholder="Your name" required>
+      </div>
+      <div class="field">
+        <label for="f-email">E-mail *</label>
+        <input id="f-email" type="email" placeholder="you@yourstartup.com" required>
+      </div>
+      <div class="field">
+        <label for="f-goal">Project &amp; goals *</label>
+        <textarea id="f-goal" placeholder="Tell me what you're building, where you're stuck, what success looks like." required></textarea>
+      </div>
+      <button type="submit" class="btn btn-light" style="align-self:flex-start; margin-top: 10px;">
+        Let's talk product
+        <span class="arrow">
+          <svg viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </button>
+    </form>
   </div>
 </section>
 
@@ -544,9 +639,9 @@
       <p class="body-m muted-dark" style="max-width:34ch; margin:0;">Independent product studio. Run by Kayla, designing apps, brands and websites for ambitious founders.</p>
       <nav class="footer__nav">
         <a href="/projects">Projects</a>
-        <a href="/#services">Services</a>
+        <a href="/services">Services</a>
         <a href="/#about">About</a>
-        <a href="/#contact">Contact</a>
+        <a href="/contact">Contact</a>
       </nav>
     </div>
   </div>
@@ -554,7 +649,7 @@
   <div class="footer__bottom">
     <small>© 2026 Copo Studio · Kayla Piscopo</small>
     <small>REMOTE → WORLDWIDE</small>
-    <small id="footerClock" style="font-family:var(--mono);letter-spacing:.14em;">— : — —</small>
+    <small id="footerClock" style="font-family:var(--mono);letter-spacing:.14em;">--:--</small>
   </div>
 </footer>
 
@@ -573,6 +668,7 @@
         preview.style.backgroundImage = '';
         preview.classList.remove('has-img');
       }
+      preview.classList.toggle('is-soon', row.hasAttribute('data-soon'));
       preview.setAttribute('data-label', label);
       preview.classList.add('is-on');
     });
@@ -600,16 +696,23 @@
   // mobile: inject mockup images that reveal one-by-one on scroll (no hover on touch)
   (function () {
     if (!window.matchMedia('(max-width: 800px)').matches) return;
-    const rows = document.querySelectorAll('#indexList .index-row[data-img]');
+    const rows = document.querySelectorAll('#indexList .index-row[data-img], #indexList .index-row[data-soon]');
     const io = ('IntersectionObserver' in window) ? new IntersectionObserver((entries) => {
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view'); io.unobserve(e.target); } });
     }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' }) : null;
     rows.forEach(row => {
       const src = row.dataset.img;
       const proj = row.querySelector('.idx-project');
-      if (!src || !proj) return;
+      if (!proj) return;
       const fig = document.createElement('div');
       fig.className = 'idx-mobile-media';
+      if (!src) {
+        fig.classList.add('is-soon');
+        fig.textContent = row.dataset.preview || 'Coming soon';
+        proj.appendChild(fig);
+        if (io) io.observe(fig); else fig.classList.add('in-view');
+        return;
+      }
       const im = document.createElement('img');
       im.src = src;
       im.loading = 'lazy';
@@ -628,7 +731,27 @@
   }
   tick(); setInterval(tick, 30000);
 </script>
+<script>
+  // ---- Contact: textured gradient follows the cursor ----
+  (function () {
+    const contact = document.getElementById('contact');
+    if (!contact) return;
+    let raf = null, px = 0, py = 0;
+    contact.addEventListener('pointermove', (e) => {
+      const r = contact.getBoundingClientRect();
+      px = e.clientX - r.left;
+      py = e.clientY - r.top;
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        contact.style.setProperty('--mx', px + 'px');
+        contact.style.setProperty('--my', py + 'px');
+        raf = null;
+      });
+    }, { passive: true });
+  })();
+</script>
 <script src="js/frame.js"></script>
+<script src="js/contact.js"></script>
 
 </body>
 </html>
