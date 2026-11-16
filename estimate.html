@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Request a Project Estimate | Copo Studio</title>
+<meta name="description" content="Request a project estimate from Copo Studio in about 2 minutes. Tell me what you're building and get an initial estimate by email, or book a free discovery call.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0A0A0A">
+<link rel="canonical" href="https://copostudio.com/estimate">
+
+<!-- Favicons -->
+<link rel="icon" type="image/png" href="/assets/favicon.png">
+<link rel="apple-touch-icon" href="/assets/favicon.png">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Copo Studio">
+<meta property="og:locale" content="en_US">
+<meta property="og:url" content="https://copostudio.com/estimate">
+<meta property="og:title" content="Request a Project Estimate | Copo Studio">
+<meta property="og:description" content="Request a project estimate from Copo Studio in about 2 minutes. Tell me what you're building and get an initial estimate by email, or book a free discovery call.">
+<meta property="og:image" content="https://copostudio.com/assets/social-preview.jpg">
+<meta property="og:image:secure_url" content="https://copostudio.com/assets/social-preview.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Copo Studio: app design and build">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Request a Project Estimate | Copo Studio">
+<meta name="twitter:description" content="Request a project estimate from Copo Studio in about 2 minutes. Tell me what you're building and get an initial estimate by email, or book a free discovery call.">
+<meta name="twitter:image" content="https://copostudio.com/assets/social-preview.jpg">
+<meta name="twitter:image:alt" content="Copo Studio: app design and build">
+
+<link rel="stylesheet" href="css/site.css">
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<style>
+  /* estimate funnel: one question per screen, the page never scrolls on desktop */
+  html, body { height: 100%; }
+  body.ef-page { overflow: hidden; background: var(--paper); }
+  .ef {
+    height: 100vh; height: 100dvh;
+    display: flex; flex-direction: column;
+    padding: clamp(84px, 12vh, 120px) var(--shell-pad) clamp(20px, 3.5vh, 36px);
+    max-width: 1100px; margin: 0 auto; box-sizing: border-box;
+  }
+  .ef__bar { flex: none; }
+  .ef__progress { height: 2px; background: var(--rule-light); position: relative; overflow: hidden; }
+  .ef__progress span { position: absolute; inset: 0 auto 0 0; width: 0; background: var(--pop); transition: width .5s var(--ease); }
+  .ef__meta { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-top: 14px; font-family: var(--mono); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-3); }
+  .ef__count { white-space: nowrap; }
+  .ef__alt { color: var(--ink-3); text-decoration: underline; text-underline-offset: 3px; text-align: right; }
+  .ef__alt:hover { color: var(--pop); }
+  .ef__alt[hidden] { display: none; }
+
+  .ef__form { flex: 1; min-height: 0; display: flex; flex-direction: column; justify-content: center; position: relative; }
+  .ef__q, .ef__done { display: flex; flex-direction: column; min-height: 0; max-height: 100%; padding: 24px 0; outline: none; }
+  .ef__q[hidden], .ef__done[hidden] { display: none; }
+  .ef__q.is-in, .ef__done.is-in { animation: efIn .5s var(--ease); }
+  .ef__q.is-back { animation: efBack .5s var(--ease); }
+  @keyframes efIn { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+  @keyframes efBack { from { opacity: 0; transform: translateY(-18px); } to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) { .ef__q.is-in, .ef__q.is-back, .ef__done.is-in { animation: none; } }
+
+  .ef__title { font-family: var(--display); font-weight: 500; font-size: clamp(28px, 3.8vw, 54px); letter-spacing: -0.03em; line-height: 1.04; margin: 0 0 12px; color: var(--ink); max-width: 22ch; outline: none; }
+  .ef__title label { cursor: text; }
+  .ef__hint { font-size: 16px; line-height: 1.5; color: var(--ink-3); margin: 0 0 clamp(20px, 3.5vh, 36px); max-width: 60ch; }
+  .ef__note, .ef__privacy { font-size: 13.5px; line-height: 1.55; color: var(--ink-3); margin: clamp(16px, 2.6vh, 28px) 0 0; max-width: 70ch; }
+  .ef__note { border-left: 2px solid var(--pop); padding-left: 14px; }
+  .ef__note a, .ef__empty a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+  .ef__privacy { font-size: 12.5px; }
+
+  /* options: real radio/checkbox inputs, visually hidden */
+  .ef__card input, .ef__chip input { position: absolute; opacity: 0; pointer-events: none; }
+  .ef__cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+  .ef__cards--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 760px; }
+  .ef__card { position: relative; cursor: pointer; }
+  .ef__card > span { display: flex; flex-direction: column; gap: 8px; height: 100%; box-sizing: border-box; padding: clamp(16px, 2.4vh, 24px) 20px; border: 1px solid var(--rule-light); transition: border-color .25s var(--ease), background .25s var(--ease), box-shadow .25s var(--ease); }
+  .ef__card b { font-family: var(--display); font-weight: 500; font-size: 20px; letter-spacing: -0.015em; line-height: 1.15; }
+  .ef__card small { font-size: 14px; line-height: 1.5; color: var(--ink-3); }
+  .ef__card:hover > span { border-color: var(--ink); }
+  .ef__card input:checked + span { border-color: var(--ink); background: var(--paper-2); box-shadow: inset 0 0 0 1px var(--ink); }
+  .ef__card input:checked + span b::after { content: " \2713"; color: var(--pop); }
+  .ef__card input:focus-visible + span, .ef__chip input:focus-visible + span { outline: 2px solid var(--pop); outline-offset: 2px; }
+
+  .ef__chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .ef__chips--col { flex-direction: column; align-items: flex-start; }
+  .ef__chip { position: relative; cursor: pointer; }
+  .ef__chip > span { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; box-sizing: border-box; padding: 10px 16px; border: 1px solid var(--rule-light); font-size: 15px; color: var(--ink-2); transition: border-color .25s var(--ease), background .25s var(--ease), color .25s var(--ease); }
+  .ef__chip:hover > span { border-color: var(--ink); }
+  .ef__chip input:checked + span { background: var(--ink); border-color: var(--ink); color: var(--snow); }
+  .ef__chip input:checked + span::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--pop); }
+
+  /* long service lists scroll inside the screen, never the page */
+  .ef__scroll { flex: 0 1 auto; min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding-right: 6px; scrollbar-width: thin; }
+  .ef__scroll.has-more { -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 40px), transparent); mask-image: linear-gradient(to bottom, #000 calc(100% - 40px), transparent); }
+  .ef__group + .ef__group { margin-top: 18px; }
+  .ef__group-h { font-family: var(--mono); font-weight: 400; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 10px; }
+  .ef__empty { font-size: 15px; color: var(--ink-2); padding: 16px 18px; border: 1px dashed var(--rule-light); margin: 0; max-width: 60ch; }
+
+  .ef__field { display: flex; flex-direction: column; gap: 10px; border-bottom: 1px solid var(--ink-4); padding-bottom: 10px; transition: border-color .25s var(--ease); max-width: 760px; }
+  .ef__field:focus-within { border-color: var(--ink); }
+  .ef__opt { color: var(--ink-4); margin-left: 6px; }
+  .ef__field label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-3); }
+  .ef__field input, .ef__field textarea { background: transparent; border: 0; outline: 0; color: var(--ink); font-family: var(--body); font-size: clamp(18px, 1.8vw, 22px); line-height: 1.45; padding: 4px 0; resize: none; width: 100%; }
+  .ef__field input::placeholder, .ef__field textarea::placeholder { color: var(--ink-4); }
+  .ef__field--inline { margin-top: clamp(20px, 3vh, 32px); margin-bottom: 8px; }
+  .ef__field--inline input { font-size: 16px; }
+  .ef__links { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(16px, 2.6vh, 26px) 28px; max-width: 900px; }
+  .ef__links .ef__field { max-width: none; }
+  .ef__links .ef__field[hidden] { display: none; }
+  .ef__links .ef__field input, .ef__links .ef__field textarea { font-size: 17px; }
+  .ef__links-wide { grid-column: 1 / -1; }
+  .ef__row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 760px; }
+
+  .ef__foot { flex: none; border-top: 1px solid var(--rule-light); padding-top: 16px; }
+  .ef__foot[hidden] { display: none; }
+  .ef__error { margin: 0 0 12px; font-size: 14px; line-height: 1.5; color: var(--pop); }
+  .ef__error a, .ef__copy { color: var(--pop); text-decoration: underline; background: none; border: 0; padding: 0; font: inherit; cursor: pointer; }
+  .ef__nav { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+  .ef__nav-r { display: flex; align-items: center; gap: 20px; }
+  .ef__back, .ef__skip { display: inline-flex; align-items: center; gap: 8px; background: none; border: 0; padding: 10px 0; cursor: pointer; font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-3); }
+  .ef__back:hover, .ef__skip:hover { color: var(--ink); }
+  .ef__skip[hidden] { display: none; }
+  .ef__back svg { width: 12px; height: 12px; }
+  .ef__enter { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-4); }
+  .ef__nav .btn[disabled] { opacity: .55; cursor: progress; }
+  .ef__hp { position: absolute !important; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+
+  .ef__done { flex: 1; }
+  .ef__book { flex: 1; min-height: 0; display: flex; flex-direction: column; margin-top: 4px; }
+  .ef__book[hidden] { display: none; }
+  .ef__book .ef__note { margin: 0 0 14px; }
+  .ef__book iframe { flex: 1; min-height: 320px; width: 100%; border: 1px solid var(--rule-light); background: #fff; }
+  .ef__done.is-booking .ef__done-mark, .ef__done.is-booking .ef__done-actions, .ef__done.is-booking > .ef__note { display: none; }
+  .ef__done.is-booking .ef__hint { margin-bottom: 14px; }
+  .ef__done-mark { display: inline-flex; width: 52px; height: 52px; border: 1px solid var(--ink); align-items: center; justify-content: center; color: var(--pop); margin-bottom: 24px; }
+  .ef__done-mark svg { width: 26px; height: 26px; }
+  .ef__done-actions { margin-top: 28px; }
+
+  @media (hover: none), (max-width: 760px) { .ef__enter { display: none; } }
+  @media (max-width: 760px) {
+    .ef { padding-top: 76px; padding-bottom: calc(14px + env(safe-area-inset-bottom)); }
+    .ef__label { display: none; }
+    .ef__cards, .ef__cards--2, .ef__row { grid-template-columns: 1fr; gap: 8px; }
+    .ef__row { gap: 18px; }
+    .ef__links { grid-template-columns: 1fr; gap: 14px; }
+    .ef__card small { font-size: 13px; }
+    .ef__card b { font-size: 18px; }
+    .ef__hint { font-size: 15px; }
+    .ef__chip > span { font-size: 14px; padding: 9px 13px; min-height: 42px; }
+    .ef__q, .ef__done { padding: 16px 0; }
+    /* on small phones the whole question can scroll inside its screen if it must */
+    .ef__q { overflow-y: auto; }
+  }
+</style>
+</head>
+<body class="ef-page" data-page-label="Project Estimate · Copo Studio">
+
+<!-- corner -->
+<div class="corner">
+  <a href="/" class="brand">
+    <span class="brand__mark"></span>
+    <span class="brand__c">©26</span>
+  </a>
+  <nav class="site-nav" aria-label="Main">
+    <a href="/projects">Projects</a>
+    <a href="/services">Services</a>
+    <a href="/pricing">Pricing</a>
+    <a href="/contact">Contact</a>
+  </nav>
+</div>
+
+<!-- =========================================================
+     PROJECT ESTIMATE — one question per screen, fits the viewport
+     ========================================================= -->
+<main class="ef light-skin" id="ef">
+  <div class="ef__bar">
+    <div class="ef__progress" aria-hidden="true"><span id="efFill"></span></div>
+    <div class="ef__meta">
+      <span class="ef__count"><span class="ef__label">Project estimate · </span><span id="efCount">01 / 10</span></span>
+      <a class="ef__alt" href="/contact?call=1#contact">Book a discovery call instead</a>
+    </div>
+  </div>
+
+  <form id="estForm" class="ef__form" novalidate>
+    <!-- spam trap: real people never see or tick this -->
+    <input type="checkbox" name="botcheck" id="estBot" class="ef__hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+    <section class="ef__q" data-auto>
+      <h1 class="ef__title" tabindex="-1">How would you like to work together?</h1>
+      <p class="ef__hint">Pick one, or skip if you're not sure.</p>
+      <div class="ef__cards">
+        <label class="ef__card"><input type="radio" name="engagement" value="Fixed-scope project"><span><b>A fixed-scope project</b><small>A defined piece of work with a clear outcome, like an app, a website or a brand.</small></span></label>
+        <label class="ef__card"><input type="radio" name="engagement" value="Ongoing monthly product partnership"><span><b>An ongoing product partnership</b><small>Monthly support with capped hours, for continuous strategy, design and build.</small></span></label>
+        <label class="ef__card"><input type="radio" name="engagement" value="Not sure yet"><span><b>Not sure yet</b><small>I'll recommend the best fit after reading your answers.</small></span></label>
+      </div>
+    </section>
+
+    <section class="ef__q" hidden>
+      <h2 class="ef__title" tabindex="-1">Which areas do you need help with?</h2>
+      <p class="ef__hint">Pick any that apply, or skip if you're not sure.</p>
+      <div class="ef__chips" id="estCats"></div>
+    </section>
+
+    <section class="ef__q" hidden>
+      <h2 class="ef__title" tabindex="-1">Which services are you interested in?</h2>
+      <p class="ef__hint">Optional. Only services from the areas you picked are shown.</p>
+      <div class="ef__scroll" id="estScroll">
+        <div id="estSvcs"></div>
+        <div class="ef__field ef__field--inline">
+          <label for="estOther">Something not listed?</label>
+          <input id="estOther" name="other" type="text" placeholder="Describe anything else you need">
+        </div>
+      </div>
+    </section>
+
+    <section class="ef__q" hidden data-auto>
+      <h2 class="ef__title" tabindex="-1">Where is the project today?</h2>
+      <p class="ef__hint">Optional.</p>
+      <div class="ef__chips ef__chips--col">
+        <label class="ef__chip"><input type="radio" name="stage" value="Starting from scratch"><span>Starting from scratch</span></label>
+        <label class="ef__chip"><input type="radio" name="stage" value="Planning or validating an idea"><span>Planning or validating an idea</span></label>
+        <label class="ef__chip"><input type="radio" name="stage" value="Existing product to build on"><span>Existing product to build on</span></label>
+        <label class="ef__chip"><input type="radio" name="stage" value="Redesigning something existing"><span>Redesigning something existing</span></label>
+      </div>
+    </section>
+
+    <section class="ef__q" hidden>
+      <h2 class="ef__title" tabindex="-1"><label for="estGoal">What are you building or hoping to achieve?</label></h2>
+      <p class="ef__hint">A few lines is perfect: the product, who it's for, and what you need next. Or skip, and we can talk it through.</p>
+      <div class="ef__field">
+        <textarea id="estGoal" name="goal" rows="4" placeholder="Type your answer here"></textarea>
+      </div>
+    </section>
+
+    <section class="ef__q" hidden>
+      <h2 class="ef__title" tabindex="-1">Do you have any of these on your team?</h2>
+      <p class="ef__hint" id="estTeamHint">Copo Studio can work alongside your existing team or fill the gaps.</p>
+      <div class="ef__chips" id="estTeam"></div>
+      <div class="ef__field ef__field--inline" id="estTeamOtherWrap" hidden>
+        <label for="estTeamOther">Who else?</label>
+        <input id="estTeamOther" name="teamOther" type="text" placeholder="e.g. a freelance copywriter">
+      </div>
+    </section>
+
+    <section class="ef__q" hidden data-auto>
+      <h2 class="ef__title" tabindex="-1">What's your timeline?</h2>
+      <p class="ef__hint">Optional.</p>
+      <div class="ef__chips">
+        <label class="ef__chip"><input type="radio" name="timeline" value="As soon as possible"><span>As soon as possible</span></label>
+        <label class="ef__chip"><input type="radio" name="timeline" value="Within a month"><span>Within a month</span></label>
+        <label class="ef__chip"><input type="radio" name="timeline" value="1 to 3 months"><span>1 to 3 months</span></label>
+        <label class="ef__chip"><input type="radio" name="timeline" value="3+ months"><span>3+ months</span></label>
+        <label class="ef__chip"><input type="radio" name="timeline" value="Flexible"><span>Flexible</span></label>
+      </div>
+      <p class="ef__note" id="estAsap" hidden>On a tight deadline? The <a href="/48-hour-mvp" target="_blank" rel="noopener">48-Hour MVP</a> gets a functional, agreed version of your MVP live within 48 hours.</p>
+    </section>
+
+    <section class="ef__q" hidden>
+      <h2 class="ef__title" tabindex="-1">Anything I should look at?</h2>
+      <p class="ef__hint">All optional. Only fill in what you have and what's relevant.</p>
+      <div class="ef__links" id="estLinksBox">
+        <div class="ef__field" data-for="website">
+          <label for="estWebsite">Current website</label>
+          <input id="estWebsite" name="website" type="text" inputmode="url" autocomplete="url" placeholder="yourstartup.com">
+        </div>
+        <div class="ef__field" data-for="figma">
+          <label for="estFigma">Figma link</label>
+          <input id="estFigma" name="figma" type="text" inputmode="url" placeholder="figma.com/…">
+        </div>
+        <div class="ef__field" data-for="drive">
+          <label for="estDrive">Google Drive or Docs link <span class="ef__opt">For decks, docs and files</span></label>
+          <input id="estDrive" name="drive" type="text" inputmode="url" placeholder="drive.google.com/…">
+        </div>
+        <div class="ef__field" data-for="social">
+          <label for="estSocial">Social media</label>
+          <input id="estSocial" name="social" type="text" inputmode="url" placeholder="instagram.com/… or @handle">
+        </div>
+        <div class="ef__field ef__links-wide">
+          <label for="estLinks">Anything else?</label>
+          <textarea id="estLinks" name="links" rows="2" placeholder="Other links, references you like, or anything I should know"></textarea>
+        </div>
+      </div>
+    </section>
+
+    <section class="ef__q" hidden data-required>
+      <h2 class="ef__title" tabindex="-1">Where should I send it?</h2>
+      <p class="ef__hint">The only thing I need is an email, so I can reply personally.</p>
+      <div class="ef__row">
+        <div class="ef__field">
+          <label for="estName">Name <span class="ef__opt">Optional</span></label>
+          <input id="estName" name="name" type="text" autocomplete="name" placeholder="Your name">
+        </div>
+        <div class="ef__field">
+          <label for="estEmail">E-mail</label>
+          <input id="estEmail" name="email" type="email" autocomplete="email" required placeholder="you@yourstartup.com">
+        </div>
+      </div>
+    </section>
+
+    <section class="ef__q" hidden data-required data-last>
+      <h2 class="ef__title" tabindex="-1">What would you like next?</h2>
+      <div class="ef__cards ef__cards--2">
+        <label class="ef__card"><input type="radio" name="next" value="Initial estimate by email" checked><span><b>Send me an initial estimate</b><small>I'll review your answers and reply by email with a rough estimate and next steps.</small></span></label>
+        <label class="ef__card"><input type="radio" name="next" value="Free discovery call"><span><b>Book a free discovery call</b><small>A free 20-minute Google Meet. You'll pick a time on the next screen.</small></span></label>
+      </div>
+      <p class="ef__note">There's no instant price: services combined into one project usually cost less than adding them up, so every estimate is put together by hand. Final pricing depends on complexity, scope and deliverables. Starting points are on <a href="/pricing" target="_blank" rel="noopener">Pricing</a>.</p>
+      <p class="ef__privacy">Your answers are only used to reply to this enquiry. They're sent to Copo Studio by email through Web3Forms and never shared or sold.</p>
+    </section>
+
+    <div class="ef__done" id="estDone" hidden tabindex="-1">
+      <span class="ef__done-mark" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none"><path d="M5 17.5 12.5 25 27 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <h2 class="ef__title" id="estDoneH">Request received.</h2>
+      <p class="ef__hint" id="estDoneP"></p>
+      <p class="ef__note">Final pricing depends on complexity, scope and deliverables. Starting points for complete engagements are on <a href="/pricing">Pricing</a>.</p>
+      <!-- Google Calendar appointment schedule "Copo Studio discovery call" (Google Meet, 20 min, Mon to Fri 10:00 to 17:00 Madrid).
+           Earliest 10:00 and 24 hours' notice are set in Google Calendar, not here. -->
+      <div class="ef__book" id="estBook" data-url="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0deZKwqp_aT03gzAmeaVVgTvZLxXJkXoId6h4-nO_MeTuPdlDzTenEY6iGDrOLqN41QQPAzohV?gv=true" hidden>
+        <p class="ef__note" id="estBookNote" hidden>Ideally pick a time at least 48 hours away, so I can review your answers and define the scope. Need it sooner? Any available time works.</p>
+        <iframe id="estBookFrame" title="Book a free discovery call" loading="lazy"></iframe>
+      </div>
+      <div class="ef__done-actions">
+        <a href="/projects" class="btn btn-light">See recent work <span class="arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+      </div>
+    </div>
+  </form>
+
+  <div class="ef__foot" id="efFoot">
+    <p class="ef__error" id="estError" role="alert" hidden></p>
+    <div class="ef__nav">
+      <button type="button" class="ef__back" id="estBack">
+        <svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M10 6H2M2 6l4-4M2 6l4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Back
+      </button>
+      <div class="ef__nav-r">
+        <span class="ef__enter" aria-hidden="true">press Enter ↵</span>
+        <button type="button" class="ef__skip" id="estSkip">Skip</button>
+        <button type="submit" form="estForm" class="btn btn-light" id="estNext">
+          <span id="estNextLabel">Continue</span>
+          <span class="arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</main>
+
+
+<script src="js/frame.js"></script>
+<script src="js/services-data.js"></script>
+<script src="js/estimate.js"></script>
+
+</body>
+</html>

@@ -566,27 +566,15 @@
         <label for="f-goal">Project summary *</label>
         <textarea id="f-goal" placeholder="A few lines on what you're building and where you need help." required></textarea>
       </div>
-      <div class="field-row">
-        <div class="field">
-          <label for="f-timeline">Timeline (optional)</label>
-          <select id="f-timeline">
-            <option value="">Not sure yet</option>
-            <option>As soon as possible</option>
-            <option>Within a month</option>
-            <option>1 to 3 months</option>
-            <option>3+ months</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="f-budget">Budget (optional)</label>
-          <select id="f-budget">
-            <option value="">Prefer not to say</option>
-            <option>Under €2,000</option>
-            <option>€2,000 to €5,000</option>
-            <option>€5,000 to €10,000</option>
-            <option>€10,000+</option>
-          </select>
-        </div>
+      <div class="field">
+        <label for="f-timeline">Timeline (optional)</label>
+        <select id="f-timeline">
+          <option value="">Not sure yet</option>
+          <option>As soon as possible</option>
+          <option>Within a month</option>
+          <option>1 to 3 months</option>
+          <option>3+ months</option>
+        </select>
       </div>
       <label class="field-check" for="f-call"><input id="f-call" type="checkbox"><span>I'd like a free 20-minute discovery call</span></label>
       <button type="submit" class="btn btn-light" style="align-self:flex-start; margin-top: 10px;">
@@ -680,6 +668,15 @@
       t = t > 0 ? t - 1 : 48 * 3600;
       el.textContent = `${pad(Math.floor(t / 3600))}:${pad(Math.floor(t % 3600 / 60))}:${pad(t % 60)}`;
     }, 1000);
+  })();
+</script>
+<script>
+  // footer clock (Barcelona time)
+  (function () {
+    const el = document.getElementById('footerClock');
+    if (!el) return;
+    const tick = () => { el.textContent = new Intl.DateTimeFormat('en-GB', { hour: '2-digit', minute: '2-digit', hour12: false, timeZone: 'Europe/Madrid' }).format(new Date()) + ' · Barcelona'; };
+    tick(); setInterval(tick, 30000);
   })();
 </script>
 <script src="js/frame.js"></script>

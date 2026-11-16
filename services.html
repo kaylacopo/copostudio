@@ -209,6 +209,11 @@
   .svc-item__inc { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule-light); }
   .svc-item__inc li { font-size: 15px; padding: 10px 0; border-bottom: 1px solid var(--rule-light); display: flex; gap: 12px; }
   .svc-item__inc li::before { content: "·"; color: var(--pop); }
+  .svc-hero__ctas { display: flex; align-items: center; justify-content: flex-end; flex-wrap: wrap; gap: 16px 28px; }
+  .svc-est-link { font-family: var(--mono); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink); display: inline-flex; gap: 8px; align-items: center; }
+  .svc-est-link:hover { color: var(--pop); }
+  .svc-est-link svg { width: 10px; height: 10px; }
+  @media (max-width: 800px) { .svc-hero__ctas { justify-content: flex-start; flex-direction: row-reverse; } }
   .svc-pricing-link { font-size: 14px; color: var(--ink-3); margin: 24px 0 0; }
   .svc-pricing-link a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
   .svc-pricing-link a:hover { color: var(--pop); }
@@ -312,7 +317,8 @@
 
   <div class="svc-hero__meta">
     <p class="body-l muted-light" style="margin:0; max-width:58ch; font-size: 16px;">Copo Studio is a design-led product partner for startups, founders and growing businesses. Beyond UX/UI, I help with everything around the product: the strategy before it, the brand and website around it, and the launch, pitch and event materials after it. Explore by category, or search for exactly what you need.</p>
-    <div style="display:flex;align-items:flex-end;justify-content:flex-end;">
+    <div class="svc-hero__ctas">
+      <a href="/estimate" class="svc-est-link">Request a project estimate <svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       <a href="#contact" class="btn btn-light">
         Discuss your project
         <span class="arrow">
@@ -396,27 +402,15 @@
         <label for="f-goal">Project summary *</label>
         <textarea id="f-goal" placeholder="A few lines on what you're building and where you need help." required></textarea>
       </div>
-      <div class="field-row">
-        <div class="field">
-          <label for="f-timeline">Timeline (optional)</label>
-          <select id="f-timeline">
-            <option value="">Not sure yet</option>
-            <option>As soon as possible</option>
-            <option>Within a month</option>
-            <option>1 to 3 months</option>
-            <option>3+ months</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="f-budget">Budget (optional)</label>
-          <select id="f-budget">
-            <option value="">Prefer not to say</option>
-            <option>Under €2,000</option>
-            <option>€2,000 to €5,000</option>
-            <option>€5,000 to €10,000</option>
-            <option>€10,000+</option>
-          </select>
-        </div>
+      <div class="field">
+        <label for="f-timeline">Timeline (optional)</label>
+        <select id="f-timeline">
+          <option value="">Not sure yet</option>
+          <option>As soon as possible</option>
+          <option>Within a month</option>
+          <option>1 to 3 months</option>
+          <option>3+ months</option>
+        </select>
       </div>
       <label class="field-check" for="f-call"><input id="f-call" type="checkbox"><span>I'd like a free 20-minute discovery call</span></label>
       <button type="submit" class="btn btn-light" style="align-self:flex-start; margin-top: 10px;">

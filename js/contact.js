@@ -106,7 +106,6 @@
         email: emailEl ? emailEl.value.trim() : "",
         message: goalEl ? goalEl.value.trim() : "",
         timeline: val("#f-timeline") || "Not given",
-        budget: val("#f-budget") || "Not given",
         discovery_call: callEl && callEl.checked ? "Yes, wants a free 20-minute discovery call" : "No"
       };
 
@@ -184,6 +183,11 @@
   function init() {
     var forms = document.querySelectorAll(".contact form");
     for (var i = 0; i < forms.length; i++) initForm(forms[i]);
+    // /contact?call=1 (e.g. from the estimate page) pre-ticks the discovery call box
+    if (/[?&]call=1\b/.test(location.search)) {
+      var call = document.getElementById("f-call");
+      if (call) call.checked = true;
+    }
   }
 
   if (document.readyState === "loading") {
