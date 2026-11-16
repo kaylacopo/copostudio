@@ -43,11 +43,19 @@
   /* contact landing: the contact section fills the first screen, footer below */
   .contact--page {
     min-height: 100vh;
-    display: flex;
-    align-items: center;
-    padding-top: clamp(120px, 14vh, 160px);
+    padding-top: clamp(140px, 18vh, 200px);
   }
-  .contact--page .contact__grid { width: 100%; }
+  .contact--page .contact__grid { width: 100%; padding-top: 28px; border-top: 1px solid var(--rule-dark); margin-top: 36px; }
+  /* page heading: same size as the Services / Pricing / Projects heroes */
+  .contact-hero__h {
+    position: relative;
+    font-size: clamp(48px, 8vw, 132px);
+    letter-spacing: -0.045em;
+    line-height: 0.9;
+    margin: 0;
+    max-width: 16ch;
+    color: var(--snow);
+  }
   @media (max-width: 768px) { section.contact--page.shell:not(.hero) { padding-top: 96px !important; min-height: 0; } }
 </style>
 </head>
@@ -70,12 +78,13 @@
 <section class="dark-skin contact contact--page shell" id="contact" data-screen-label="09 Contact">
   <div class="contact__glow" aria-hidden="true"></div>
 
+  <div class="contact__head">
+    <span class="section-head__tag" style="color:var(--snow-2)">Contact</span>
+  </div>
+  <h1 class="display contact-hero__h">Pitch me a product<span style="color:var(--pop)">,</span> and I'll build it for&nbsp;you<span style="color: rgb(247, 79, 79)">.</span></h1>
+
   <div class="contact__grid">
     <div class="contact__copy">
-      <div class="contact__head">
-        <span class="section-head__tag" style="color:var(--snow-2)">Contact</span>
-      </div>
-      <h1 class="contact__h" style="margin: 0 0 32px;">Pitch me a product<span style="color:var(--pop)">,</span> and I'll build it for you<span style="color: rgb(247, 79, 79)">.</span></h1>
       <p class="body-l muted-dark" style="margin: 0 0 24px; font-size: 16px">Reach out and I'll help you move your product forward. Whether you need direction, a quick audit, or a clear plan; expect honest advice and a partner who cares about the outcome as much as you do.</p>
       <p class="body-l muted-dark" style="margin: 0; font-size: 16px">If you're exploring an idea or ready to build, let's talk product. Prefer to talk it through first? Tick the box for a free 30-minute discovery call. Want an estimate instead? <a href="/estimate" style="color:var(--snow);text-decoration:underline;text-underline-offset:3px;">Answer a few quick questions</a>.</p>
     </div>

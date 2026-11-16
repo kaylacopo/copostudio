@@ -1205,7 +1205,7 @@ section, footer { scroll-margin-top: 80px; }
   letter-spacing: -0.035em;   /* same as .display headings */
   line-height: 0.92;
   margin: 0;
-  max-width: 14ch;
+  max-width: 16ch;
 }
 .contact__h em { font-style: italic; font-weight: 400; }
 
@@ -2094,17 +2094,15 @@ button.service.service--gradient { color: var(--snow); }
   opacity: 1;
   transition: opacity .35s var(--ease);
 }
-/* hover (mouse only): the box turns black; the gradient number stays, text goes light */
+/* hover (mouse only): same soft paper fill as the service cards */
 @media (hover: hover) and (min-width: 601px) {
   .reason {
-    transition: background-color .35s var(--ease);
+    transition: background .35s var(--ease);
     padding-left: clamp(18px, 2vw, 32px) !important;
   }
-  .reason__title, .reason__desc { transition: color .35s var(--ease); }
-  .reason:hover { background-color: var(--void); }
-  .reason:hover .reason__title { color: var(--snow); }
-  .reason:hover .reason__desc { color: var(--snow-2); }
+  .reason:hover { background: var(--paper-2); }
 }
+
 
 .reason__title {
   font-family: var(--display);
