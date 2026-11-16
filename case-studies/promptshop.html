@@ -164,6 +164,12 @@
     border-top: 1px solid var(--rule-light);
   }
   @media (max-width: 900px) { .cs-meta { grid-template-columns: 1fr 1fr; } }
+  /* "where it is now" note at the end of a case study */
+  .cs-note { margin-top: 48px; padding: 20px 22px; border-left: 2px solid var(--pop); background: var(--paper-2); }
+  .cs-body .cs-note .cs-note__label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 10px; }
+  .cs-body .cs-note p:not(.cs-note__label) { margin: 0; font-size: 16px; line-height: 1.6; color: var(--ink-2); }
+  .cs-body .cs-note a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+  .cs-body .cs-note a:hover { color: var(--pop); }
   .cs-meta__label {
     font-family: var(--mono);
     font-size: 10px;
@@ -543,11 +549,16 @@
       <h2 class="cs-sticky__h">Built to keep shipping<span style="color:var(--pop);">.</span></h2>
     </div>
     <div class="cs-body">
-      <p style="color: rgb(0, 0, 0); opacity: 0.6;">PromptShop is still in development as the new direction rolls out across the platform. Early signals are strong. The team is shipping faster against shared foundations, and the rebuilt experience is already driving strong results.</p>
+      <p style="color: rgb(0, 0, 0); opacity: 0.6;">At handoff, the new direction was rolling out across the platform. Early signals were strong. The team was shipping faster against shared foundations, and the rebuilt experience was already driving strong results.</p>
 
       <div class="cs-media has-img"><img src="../assets/promptshop-app.png" alt="PromptShop: workspace & dashboard UI"></div>
 
       <p style="margin-top: 48px; color: rgb(0, 0, 0); opacity: 0.6;">The design system now carries the product forward. Future features land on the same foundations, the same components, and the same visual language instead of reinventing the experience every sprint.</p>
+
+      <div class="cs-note">
+        <p class="cs-note__label">Where PromptShop is now</p>
+        <p>In true startup style, the team has since pivoted. They now build <a href="https://www.meuze.ai" target="_blank" rel="noopener">Meuze</a>, a demand forecasting platform for food and hospitality businesses, so the PromptShop marketplace shown here is no longer live. This case study reflects the product during our 2026 engagement.</p>
+      </div>
     </div>
   </div>
 </section>
