@@ -2076,7 +2076,7 @@ button.service.service--gradient { color: var(--snow); }
   line-height: 0.85;
   letter-spacing: -0.04em;
   color: transparent;
-  -webkit-text-stroke: 1px var(--pop);   /* outline in brand red, fills with the texture on hover */
+  -webkit-text-stroke: 0;   /* always filled with the brand texture (::after) */
   margin-bottom: clamp(28px, 3.4vw, 56px);
 }
 /* hover: the number fills with the brand gradient */
@@ -2092,12 +2092,24 @@ button.service.service--gradient { color: var(--snow); }
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  opacity: 0;
-  transition: opacity .45s var(--ease);
+  opacity: 1;
+  transition: opacity .35s var(--ease);
 }
-.reason:hover .reason__num::after { opacity: 1; }
-.reason__num { transition: -webkit-text-stroke-color .45s var(--ease); }
-.reason:hover .reason__num { -webkit-text-stroke-color: transparent; }
+/* hover (mouse only): the whole box turns brand red, number and text go light/dark for contrast */
+@media (hover: hover) and (min-width: 601px) {
+  .reason {
+    transition: background-color .35s var(--ease);
+    padding-left: clamp(18px, 2vw, 32px) !important;
+  }
+  .reason__num { transition: color .35s var(--ease); }
+  .reason__title, .reason__desc { transition: color .35s var(--ease); }
+  .reason:hover { background-color: var(--pop); }
+  .reason:hover .reason__num { color: var(--snow); }
+  .reason:hover .reason__num::after { opacity: 0; }
+  .reason:hover .reason__title { color: var(--void); }
+  .reason:hover .reason__title span { color: var(--void) !important; }
+  .reason:hover .reason__desc { color: rgba(10, 10, 10, 0.78); }
+}
 .reason__title {
   font-family: var(--display);
   font-weight: 500;
@@ -2127,7 +2139,6 @@ button.service.service--gradient { color: var(--snow); }
   .reason__num { font-size: 56px; margin-bottom: 20px; }
   .reason__title { min-height: 0; }
 }
-@media (hover: none) { .reason__num::after { opacity: 1; } .reason__num { -webkit-text-stroke: 0; } }
 
 /* ==========================================================================
    BRAND TEXTURE UTILITIES — use these instead of writing a gradient
