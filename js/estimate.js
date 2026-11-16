@@ -389,14 +389,14 @@
       // enforced by the Google Calendar schedule; the 48h note is only a suggestion.
       $("estDone").classList.add("is-booking");
       $("estDoneH").textContent = "Pick a time for your call" + (first ? ", " + first : "") + ".";
-      $("estDoneP").textContent = "Your answers are in. Choose a time below for a free 20-minute Google Meet, and you'll get a calendar invite with the link.";
+      $("estDoneP").textContent = "Your answers are in. Choose a time below for a free 30-minute Google Meet, and you'll get a calendar invite with the link.";
       $("estBookNote").hidden = !!little; // nothing to review, so no reason to wait
       $("estBookFrame").src = bookingUrl;
       $("estBook").hidden = false;
     } else {
       $("estDoneH").textContent = "Request received" + (first ? ", " + first : "") + ".";
       $("estDoneP").textContent = isCall
-        ? "Thanks. I'll be in touch by email to set up your free 20-minute call."
+        ? "Thanks. I'll be in touch by email to set up your free 30-minute call."
         : little
           ? "Thanks. I'll reach out by email to learn a bit more about your project, then follow up with an initial estimate."
           : "Thanks for the details. I'll review your answers personally and reply by email with an initial estimate and suggested next steps.";

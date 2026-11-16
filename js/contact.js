@@ -96,7 +96,6 @@
       var emailEl = form.querySelector("#f-email");
       var goalEl = form.querySelector("#f-goal");
       var callEl = form.querySelector("#f-call");
-      var val = function (sel) { var el = form.querySelector(sel); return el ? el.value.trim() : ""; };
 
       var payload = {
         access_key: ACCESS_KEY,
@@ -105,8 +104,7 @@
         name: nameEl ? nameEl.value.trim() : "",
         email: emailEl ? emailEl.value.trim() : "",
         message: goalEl ? goalEl.value.trim() : "",
-        timeline: val("#f-timeline") || "Not given",
-        discovery_call: callEl && callEl.checked ? "Yes, wants a free 20-minute discovery call" : "No"
+        discovery_call: callEl && callEl.checked ? "Yes, wants a free 30-minute discovery call" : "No"
       };
 
       setLoading(true);
