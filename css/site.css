@@ -1284,6 +1284,21 @@ section, footer { scroll-margin-top: 80px; }
 .field input::placeholder,
 .field textarea::placeholder { color: var(--snow-3); }
 .field textarea { min-height: 80px; }
+.field select {
+  appearance: none; -webkit-appearance: none;
+  background: transparent url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none'><path d='M2 4.5l4 4 4-4' stroke='%23F1EEE7' stroke-opacity='.6' stroke-width='1.4'/></svg>") right 2px center / 12px no-repeat;
+  border: 0; outline: 0; border-radius: 0;
+  color: var(--snow); font-family: var(--body); font-size: 17px;
+  padding: 4px 22px 4px 0; cursor: pointer; width: 100%;
+}
+.field select option { color: var(--ink); background: var(--paper); }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media (max-width: 520px) { .field-row { grid-template-columns: 1fr; } }
+.field-check { display: flex; align-items: center; gap: 12px; font-size: 15px; color: var(--snow-2); cursor: pointer; }
+.field-check input { appearance: none; -webkit-appearance: none; width: 18px; height: 18px; margin: 0; border: 1px solid var(--snow-3); display: grid; place-items: center; flex-shrink: 0; cursor: pointer; }
+.field-check input:checked { background: var(--pop); border-color: var(--pop); }
+.field-check input:checked::after { content: ""; width: 9px; height: 5px; border: solid var(--void); border-width: 0 0 1.6px 1.6px; transform: translateY(-1px) rotate(-45deg); }
+.field-check input:focus-visible { outline: 1px solid var(--snow); outline-offset: 3px; }
 
 /* contact form — submitting / error / success states (functionality only) */
 .contact form button[type="submit"][disabled] { opacity: 0.55; cursor: progress; }
@@ -1297,6 +1312,8 @@ section, footer { scroll-margin-top: 80px; }
 }
 .contact__result { display: none; }
 .contact form.is-sent .field,
+.contact form.is-sent .field-row,
+.contact form.is-sent .field-check,
 .contact form.is-sent button[type="submit"],
 .contact form.is-sent .btn-wrap,
 .contact form.is-sent .contact__error { display: none; }

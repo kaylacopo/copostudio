@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Services | Copo Studio</title>
-<meta name="description" content="Design-led product services for startups and growing businesses: product strategy, UX/UI, websites, brand, graphic design, launch marketing, no-code development, pitch decks and event design.">
+<meta name="description" content="Design-led product services for startups and growing businesses: product strategy, UX/UI, websites, brand, graphic design, launch marketing, AI-assisted development, pitch decks and event design.">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#0A0A0A">
 <link rel="canonical" href="https://copostudio.com/services">
@@ -19,7 +19,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:url" content="https://copostudio.com/services">
 <meta property="og:title" content="Services | Copo Studio">
-<meta property="og:description" content="Design-led product services for startups and growing businesses: product strategy, UX/UI, websites, brand, graphic design, launch marketing, no-code development, pitch decks and event design.">
+<meta property="og:description" content="Design-led product services for startups and growing businesses: product strategy, UX/UI, websites, brand, graphic design, launch marketing, AI-assisted development, pitch decks and event design.">
 <meta property="og:image" content="https://copostudio.com/assets/social-preview.jpg">
 <meta property="og:image:secure_url" content="https://copostudio.com/assets/social-preview.jpg">
 <meta property="og:image:type" content="image/jpeg">
@@ -30,7 +30,7 @@
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Services | Copo Studio">
-<meta name="twitter:description" content="Design-led product services for startups and growing businesses: product strategy, UX/UI, websites, brand, graphic design, launch marketing, no-code development, pitch decks and event design.">
+<meta name="twitter:description" content="Design-led product services for startups and growing businesses: product strategy, UX/UI, websites, brand, graphic design, launch marketing, AI-assisted development, pitch decks and event design.">
 <meta name="twitter:image" content="https://copostudio.com/assets/social-preview.jpg">
 <meta name="twitter:image:alt" content="Copo Studio: app design and build">
 
@@ -76,7 +76,7 @@
     color: var(--ink-3);
   }
 
-  /* toolbar: view switch + count */
+  /* section toolbars: subheading + count */
   .svc-dir { padding-bottom: clamp(80px, 10vw, 140px); }
   .svc-toolbar {
     display: flex; justify-content: space-between; align-items: flex-end;
@@ -84,23 +84,29 @@
     border-bottom: 1px solid var(--rule-light);
     margin-bottom: clamp(24px, 2.5vw, 40px);
   }
-  .svc-views { display: flex; gap: clamp(20px, 3vw, 40px); }
-  .svc-view {
+  .svc-subhead {
     font-family: var(--display);
     font-weight: 500;
     font-size: clamp(22px, 2.2vw, 32px);
     letter-spacing: -0.02em;
     line-height: 1;
     padding: 0 0 18px;
-    margin-bottom: -1px;
-    background: none; border: 0; border-bottom: 2px solid transparent;
-    color: var(--ink-4);
-    cursor: pointer;
-    transition: color .25s var(--ease), border-color .25s var(--ease);
+    margin: 0 0 -1px;
+    border-bottom: 2px solid var(--pop);
+    color: var(--ink);
   }
-  .svc-view:hover { color: var(--ink); }
-  .svc-view.is-active { color: var(--ink); border-bottom-color: var(--pop); }
   .svc-toolbar .mono-label { padding-bottom: 20px; }
+  .svc-more {
+    display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%;
+    margin-top: -1px; padding: 22px 12px;
+    background: transparent; border: 1px solid var(--rule-light); cursor: pointer;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink);
+    transition: background .3s var(--ease), border-color .3s var(--ease);
+  }
+  .svc-more:hover { background: var(--paper-2); border-color: var(--ink); }
+  .svc-more svg { width: 11px; height: 11px; transition: transform .35s var(--ease); }
+  .svc-more[aria-expanded="true"] svg { transform: rotate(45deg); }
+  .svc-all { margin-top: clamp(72px, 8vw, 128px); scroll-margin-top: 90px; }
 
   /* explore: category cards = homepage .service cards + their service list */
   .svc-cat { cursor: pointer; text-align: left; font: inherit; border: 0; }
@@ -176,6 +182,7 @@
     margin: 0 0 10px;
   }
   .svc-item__cats { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); }
+  .svc-item__q { display: block; font-family: var(--display); font-weight: 500; font-size: 17px; letter-spacing: -0.01em; color: var(--ink); margin: 0 0 6px; }
   .svc-item__sum { font-size: 15px; line-height: 1.5; color: var(--ink-3); margin: 0; padding-top: 4px; }
   .svc-item__match { display: block; margin-top: 8px; font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--pop); }
   .svc-item__toggle {
@@ -202,6 +209,9 @@
   .svc-item__inc { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule-light); }
   .svc-item__inc li { font-size: 15px; padding: 10px 0; border-bottom: 1px solid var(--rule-light); display: flex; gap: 12px; }
   .svc-item__inc li::before { content: "·"; color: var(--pop); }
+  .svc-pricing-link { font-size: 14px; color: var(--ink-3); margin: 24px 0 0; }
+  .svc-pricing-link a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+  .svc-pricing-link a:hover { color: var(--pop); }
   .svc-item__side { display: flex; flex-direction: column; gap: 20px; align-items: flex-start; }
   .svc-item__side p { font-size: 15px; line-height: 1.55; margin: 0; color: var(--ink-2); max-width: 46ch; }
   .svc-item__ask { font-family: var(--mono); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--pop); display: inline-flex; gap: 8px; align-items: center; }
@@ -214,12 +224,54 @@
   .svc-empty { padding: 48px 0; font-family: var(--display); font-size: clamp(20px, 2vw, 28px); letter-spacing: -0.015em; margin: 0; }
   .svc-empty a { color: var(--pop); text-decoration: underline; }
 
+  /* floating preview that follows the cursor (same as /projects) */
+  .preview-img {
+    position: fixed; top: 0; left: 0;
+    width: 380px; aspect-ratio: 1.9 / 1;
+    background: var(--void-2) center / cover no-repeat;
+    border-radius: 6px;
+    pointer-events: none;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.9);
+    transition: opacity .35s var(--ease), transform .5s var(--ease);
+    z-index: 80; overflow: hidden;
+    border: 1px solid var(--rule-dark);
+  }
+  .preview-img.is-on { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  .preview-img::after {
+    content: attr(data-label);
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--snow-2);
+  }
+  .preview-img.has-img::after { display: none; }
+  .preview-img.is-soon,
+  .svc-item__media.is-soon {
+    background:
+      radial-gradient(120% 90% at 80% 110%, rgba(247, 79, 79, 0.22), transparent 60%),
+      radial-gradient(90% 80% at 10% -10%, rgba(168, 96, 232, 0.16), transparent 60%),
+      var(--void-2);
+  }
+  @media (hover: none), (max-width: 800px) { .preview-img { display: none; } }
+
+  /* touch: the work image sits inside the opened row */
+  .svc-item__media { display: none; }
+
   @media (max-width: 760px) {
     .svc-item__btn { grid-template-columns: 40px minmax(0, 1fr) 36px; }
     .svc-item__sum { display: none; }
     .svc-item__panel { grid-template-columns: 1fr; padding-inline: 12px; }
     .svc-item__panel > .spacer { display: none; }
     .svc-item__sum-m { display: block; }
+    .svc-item__media {
+      display: block; width: 100%; aspect-ratio: 1.9 / 1;
+      border-radius: 6px; overflow: hidden;
+      background: var(--void-2) center / cover no-repeat;
+      border: 1px solid var(--rule-light);
+      margin-bottom: 20px;
+    }
+    .svc-item__media.is-soon { display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--snow-2); }
     .svc-filters { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin-inline: calc(var(--shell-pad) * -1); padding-inline: var(--shell-pad); }
     .svc-filters::-webkit-scrollbar { display: none; }
     .svc-filter { white-space: nowrap; flex-shrink: 0; }
@@ -230,6 +282,9 @@
 </head>
 <body class="light-skin" data-page-label="Services · Everything I do">
 
+<!-- floating work preview (desktop hover) -->
+<div class="preview-img" id="previewImg" aria-hidden="true"></div>
+
 <!-- corner -->
 <div class="corner">
   <a href="/" class="brand">
@@ -239,6 +294,7 @@
   <nav class="site-nav" aria-label="Main">
     <a href="/projects">Projects</a>
     <a href="/services" aria-current="page">Services</a>
+    <a href="/pricing">Pricing</a>
     <a href="/contact">Contact</a>
   </nav>
 </div>
@@ -258,7 +314,7 @@
     <p class="body-l muted-light" style="margin:0; max-width:58ch; font-size: 16px;">Copo Studio is a design-led product partner for startups, founders and growing businesses. Beyond UX/UI, I help with everything around the product: the strategy before it, the brand and website around it, and the launch, pitch and event materials after it. Explore by category, or search for exactly what you need.</p>
     <div style="display:flex;align-items:flex-end;justify-content:flex-end;">
       <a href="#contact" class="btn btn-light">
-        Start a project
+        Discuss your project
         <span class="arrow">
           <svg viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </span>
@@ -271,21 +327,19 @@
      DIRECTORY
      ========================================================= -->
 <section class="light-skin svc-dir shell" id="directory" data-screen-label="02 Services Directory">
+  <!-- the eight categories (click one to filter the list below) -->
   <div class="svc-toolbar">
-    <div class="svc-views" role="tablist" aria-label="Browse services">
-      <button class="svc-view is-active" role="tab" aria-selected="true" aria-controls="viewExplore" id="tabExplore" data-view="explore">Explore</button>
-      <button class="svc-view" role="tab" aria-selected="false" aria-controls="viewAll" id="tabAll" data-view="all">All services</button>
+    <h2 class="svc-subhead">Explore by category</h2>
+    <span class="mono-label" id="catCount"></span>
+  </div>
+  <div class="service-grid service-grid--8" id="catGrid"></div>
+
+  <!-- all services: search + filter + expandable list -->
+  <div class="svc-all" id="all">
+    <div class="svc-toolbar">
+      <h2 class="svc-subhead">All services</h2>
+      <span class="mono-label" id="svcCount"></span>
     </div>
-    <span class="mono-label" id="svcCount"></span>
-  </div>
-
-  <!-- Explore: the eight categories -->
-  <div id="viewExplore" role="tabpanel" aria-labelledby="tabExplore">
-    <div class="service-grid service-grid--8" id="catGrid"></div>
-  </div>
-
-  <!-- All services: search + filter + expandable list -->
-  <div id="viewAll" role="tabpanel" aria-labelledby="tabAll" hidden>
     <div class="svc-search">
       <label for="svcSearch">Search services</label>
       <input id="svcSearch" type="search" placeholder="e.g. wireframes, pitch deck" autocomplete="off">
@@ -293,7 +347,9 @@
     <div class="svc-filters" id="svcFilters" role="group" aria-label="Filter by category"></div>
     <p class="svc-note" id="svcNote" hidden></p>
     <ul class="svc-list" id="svcList"></ul>
+    <button type="button" class="svc-more" id="svcMore" aria-controls="svcList" hidden>See all services <svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></button>
     <p class="svc-empty" id="svcEmpty" hidden></p>
+    <p class="svc-pricing-link">Every project is quoted on its scope. For starting prices on complete engagements, <a href="/pricing">see pricing</a>.</p>
   </div>
 
   <!-- need something else (homepage "Need more?" block) -->
@@ -303,7 +359,7 @@
       <p class="need-more__copy">If it helps your product move forward, I'll see if I can make it happen<span style="color:var(--ink-3);">. Just ask.</span></p>
     </div>
     <a href="#contact" class="btn btn-light">
-      Get in touch
+      Discuss your project
       <span class="arrow">
         <svg viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </span>
@@ -324,7 +380,7 @@
       </div>
       <h2 class="contact__h" style="margin: 0 0 32px;">Pitch me a product<span style="color:var(--pop)">,</span> and I'll build it for you<span style="color: rgb(247, 79, 79)">.</span></h2>
       <p class="body-l muted-dark" style="margin: 0 0 24px; font-size: 16px">Reach out and I'll help you move your product forward. Whether you need direction, a quick audit, or a clear plan; expect honest advice and a partner who cares about the outcome as much as you do.</p>
-      <p class="body-l muted-dark" style="margin: 0; font-size: 16px">If you're exploring an idea or ready to build, let's talk product.</p>
+      <p class="body-l muted-dark" style="margin: 0; font-size: 16px">If you're exploring an idea or ready to build, let's talk product. Prefer to talk it through first? Tick the box for a free 20-minute discovery call.</p>
     </div>
 
     <form>
@@ -337,11 +393,34 @@
         <input id="f-email" type="email" placeholder="you@yourstartup.com" required>
       </div>
       <div class="field">
-        <label for="f-goal">Project &amp; goals *</label>
-        <textarea id="f-goal" placeholder="Tell me what you're building, where you're stuck, what success looks like." required></textarea>
+        <label for="f-goal">Project summary *</label>
+        <textarea id="f-goal" placeholder="A few lines on what you're building and where you need help." required></textarea>
       </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="f-timeline">Timeline (optional)</label>
+          <select id="f-timeline">
+            <option value="">Not sure yet</option>
+            <option>As soon as possible</option>
+            <option>Within a month</option>
+            <option>1 to 3 months</option>
+            <option>3+ months</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="f-budget">Budget (optional)</label>
+          <select id="f-budget">
+            <option value="">Prefer not to say</option>
+            <option>Under €2,000</option>
+            <option>€2,000 to €5,000</option>
+            <option>€5,000 to €10,000</option>
+            <option>€10,000+</option>
+          </select>
+        </div>
+      </div>
+      <label class="field-check" for="f-call"><input id="f-call" type="checkbox"><span>I'd like a free 20-minute discovery call</span></label>
       <button type="submit" class="btn btn-light" style="align-self:flex-start; margin-top: 10px;">
-        Let's talk product
+        Discuss your project
         <span class="arrow">
           <svg viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </span>
@@ -376,6 +455,8 @@
       <nav class="footer__nav">
         <a href="/projects">Projects</a>
         <a href="/services">Services</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/48-hour-mvp">48-Hour MVP</a>
         <a href="/#about">About</a>
         <a href="/contact">Contact</a>
       </nav>
@@ -402,14 +483,20 @@
   const ARROW = '<svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
   const PLUS = '<svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>';
   const inCat = (s, id) => s.categories.includes(id);
+  // work previews (hover image on desktop, image in the opened row on phones): off until Kayla adds photos
+  const SHOW_IMAGES = false;
+  // the unfiltered list shows this many rows, then a "See all" button
+  const LIMIT = 6;
+  let expanded = false;
 
   $('svcTotals').textContent = `${CATS.length} categories · ${SVCS.length} services`;
+  $('catCount').textContent = `${CATS.length} categories`;
 
   /* ---------- Explore view ---------- */
   $('catGrid').innerHTML = CATS.map((c, i) => {
     const items = SVCS.filter(s => s.categories[0] === c.id);
     const extra = SVCS.filter(s => s.categories[0] !== c.id && inCat(s, c.id)).length;
-    const cls = 'service svc-cat' + (i === 0 ? ' service--gradient' : '') + (c.id === 'no-code-development' ? ' service--dark' : '');
+    const cls = 'service svc-cat' + (i === 0 ? ' service--gradient' : '') + (c.id === 'development' ? ' service--dark' : '');
     return `<button class="${cls}" data-cat="${c.id}" id="${c.id}" aria-label="Show ${esc(c.title)} services">
       <div style="width:100%">
         <div class="service__head">
@@ -421,7 +508,7 @@
         ${c.note ? `<p class="svc-cat__note">${esc(c.note)}</p>` : ''}
         <ul class="svc-cat__list">${items.map(s => `<li>${esc(s.title)}</li>`).join('')}</ul>
       </div>
-      <span class="svc-cat__more">View ${items.length + extra} services ${ARROW}</span>
+      <span class="svc-cat__more">See ${items.length + extra} services ${ARROW}</span>
     </button>`;
   }).join('');
 
@@ -433,7 +520,7 @@
     CATS.map(c => `<button class="svc-filter" data-filter="${c.id}" aria-pressed="false">${esc(c.title)}<span>${counts[c.id]}</span></button>`).join('');
 
   $('svcList').innerHTML = SVCS.map((s, i) => `
-    <li class="svc-item" id="svc-${s.id}" data-id="${s.id}">
+    <li class="svc-item" id="svc-${s.id}" data-id="${s.id}"${s.img ? ` data-img="${s.img}"` : ''}>
       <button class="svc-item__btn" aria-expanded="false" aria-controls="panel-${s.id}">
         <span class="svc-item__num">${String(i + 1).padStart(2, '0')}</span>
         <span>
@@ -441,22 +528,23 @@
           <span class="svc-item__cats">${s.categories.map(id => esc(CAT[id].title)).join(' · ')}</span>
           <span class="svc-item__match" hidden></span>
         </span>
-        <p class="svc-item__sum">${esc(s.summary)}</p>
+        <p class="svc-item__sum">${s.subtitle ? `<span class="svc-item__q">${esc(s.subtitle)}</span>` : ''}${esc(s.summary)}</p>
         <span class="svc-item__toggle">${PLUS}</span>
       </button>
       <div class="svc-item__panel" id="panel-${s.id}" role="region" aria-label="${esc(s.title)} details">
         <span class="spacer"></span>
         <div>
-          <span class="mono-label">What's included</span>
-          <ul class="svc-item__inc">${s.includes.map(x => `<li>${esc(x)}</li>`).join('')}</ul>
+          ${!SHOW_IMAGES ? '' : s.img ? `<div class="svc-item__media" data-bg="${s.img}" role="img" aria-label="${esc(s.title)} work example"></div>` : `<div class="svc-item__media is-soon">Work coming soon</div>`}
+          ${s.includes ? `<span class="mono-label">What's included</span>
+          <ul class="svc-item__inc">${s.includes.map(x => `<li>${esc(x)}</li>`).join('')}</ul>` : ''}
         </div>
         <div class="svc-item__side">
-          <p class="svc-item__sum-m">${esc(s.summary)}</p>
+          <p class="svc-item__sum-m">${s.subtitle ? `<span class="svc-item__q">${esc(s.subtitle)}</span>` : ''}${esc(s.summary)}</p>
           <div>
             <span class="mono-label">Find it under</span>
             <div class="svc-item__in">${s.categories.map(id => `<a href="#${id}" data-goto="${id}">${esc(CAT[id].title)}</a>`).join('')}</div>
           </div>
-          ${s.categories.includes('no-code-development') && CAT['no-code-development'].note ? `<p style="font-size:13px;color:var(--ink-3);font-style:italic;">${esc(CAT['no-code-development'].note)}</p>` : ''}
+          ${s.categories.includes('development') && CAT['development'].note ? `<p style="font-size:13px;color:var(--ink-3);font-style:italic;">${esc(CAT['development'].note)}</p>` : ''}
           <a class="svc-item__ask" href="#contact">Ask about ${esc(s.title.toLowerCase())} ${ARROW}</a>
         </div>
         <span class="spacer"></span>
@@ -467,11 +555,12 @@
   const norm = t => t.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[’']/g, '');
   const index = SVCS.map(s => ({
     primary: norm([s.title, s.summary, ...s.categories.map(id => CAT[id].title)].join(' ')),
-    deep: s.includes.concat(s.keywords || []).map(norm)
+    deep: (s.includes || []).concat(s.keywords || []).map(norm)
   }));
 
   function apply() {
     const terms = norm(query).trim().split(/\s+/).filter(Boolean);
+    const limited = filter === 'all' && !terms.length && !expanded;
     let shown = 0;
     items.forEach((el, i) => {
       const s = SVCS[i], ix = index[i];
@@ -481,14 +570,18 @@
         ok = terms.every(t => ix.primary.includes(t) || ix.deep.some(d => d.includes(t)));
         if (ok && !terms.every(t => ix.primary.includes(t))) {
           via = ix.deep.find(d => terms.some(t => d.includes(t)));
-          if (via) via = s.includes.concat(s.keywords || []).find(x => norm(x) === via);
+          if (via) via = (s.includes || []).concat(s.keywords || []).find(x => norm(x) === via);
         }
       }
-      el.hidden = !ok;
+      if (ok) shown++;
+      el.hidden = !ok || (limited && shown > LIMIT);
       const m = el.querySelector('.svc-item__match');
       m.hidden = !via; m.textContent = via ? `Includes ${via}` : '';
-      if (ok) shown++;
     });
+    const more = $('svcMore');
+    more.hidden = !(filter === 'all' && !terms.length && shown > LIMIT);
+    more.firstChild.textContent = expanded ? 'Show fewer ' : `See all ${shown} services `;
+    more.setAttribute('aria-expanded', expanded);
     $('svcCount').textContent = `${shown} of ${SVCS.length} services`;
     const note = filter !== 'all' && CAT[filter].note;
     $('svcNote').hidden = !note; $('svcNote').textContent = note || '';
@@ -505,32 +598,50 @@
     apply();
   }
 
-  function setView(v) {
-    const all = v === 'all';
-    $('viewAll').hidden = !all; $('viewExplore').hidden = all;
-    $('tabAll').classList.toggle('is-active', all); $('tabExplore').classList.toggle('is-active', !all);
-    $('tabAll').setAttribute('aria-selected', all); $('tabExplore').setAttribute('aria-selected', !all);
-    $('svcCount').textContent = all ? $('svcCount').textContent : `${CATS.length} categories`;
-    if (all) apply();
-  }
-
   function toggleItem(el, open) {
     const on = open ?? !el.classList.contains('is-open');
     el.classList.toggle('is-open', on);
     el.querySelector('.svc-item__btn').setAttribute('aria-expanded', on);
+    const media = el.querySelector('.svc-item__media[data-bg]');
+    if (on && media && !media.style.backgroundImage) media.style.backgroundImage = `url("${media.dataset.bg}")`;
   }
 
   const toDirectory = () => {
-    const top = $('directory').getBoundingClientRect().top + window.scrollY - 90;
+    const top = $('all').getBoundingClientRect().top + window.scrollY - 90;
     window.scrollTo({ top, behavior: 'smooth' });
   };
 
-  document.querySelectorAll('.svc-view').forEach(b => b.addEventListener('click', () => {
-    setView(b.dataset.view);
-    history.replaceState(null, '', b.dataset.view === 'all' ? '#all' : location.pathname);
-  }));
-  document.querySelectorAll('.svc-cat').forEach(b => b.addEventListener('click', () => {
-    setView('all'); setFilter(b.dataset.cat); toDirectory();
+  /* floating work preview on row hover (same behaviour as /projects) */
+  const preview = $('previewImg');
+  const canHover = window.matchMedia('(hover: hover) and (min-width: 801px)').matches;
+  if (SHOW_IMAGES && canHover) {
+    items.forEach(el => {
+      const btn = el.querySelector('.svc-item__btn');
+      btn.addEventListener('mouseenter', () => {
+        const img = el.dataset.img;
+        preview.style.backgroundImage = img ? `url("${img}")` : '';
+        preview.classList.toggle('has-img', !!img);
+        preview.classList.toggle('is-soon', !img);
+        preview.setAttribute('data-label', img ? '' : 'Work coming soon');
+        preview.classList.add('is-on');
+      });
+      btn.addEventListener('mouseleave', () => preview.classList.remove('is-on'));
+    });
+    window.addEventListener('mousemove', e => {
+      preview.style.left = e.clientX + 'px';
+      preview.style.top = e.clientY + 'px';
+    }, { passive: true });
+    // scrolling moves rows out from under a still cursor without firing mouseleave
+    window.addEventListener('scroll', () => preview.classList.remove('is-on'), { passive: true });
+    // warm the cache once the page is idle so the first hover is instant
+    const warm = () => SVCS.forEach(s => { if (s.img) { const i = new Image(); i.src = s.img; } });
+    ('requestIdleCallback' in window) ? requestIdleCallback(warm, { timeout: 3000 }) : setTimeout(warm, 1500);
+  }
+
+  document.querySelectorAll('.svc-cat').forEach(b => b.addEventListener('click', e => {
+    e.preventDefault();
+    $('svcSearch').value = ''; query = '';
+    setFilter(b.dataset.cat); toDirectory();
     history.replaceState(null, '', '#' + b.dataset.cat);
   }));
   document.querySelectorAll('.svc-filter').forEach(b => b.addEventListener('click', () => {
@@ -543,17 +654,22 @@
     setFilter(a.dataset.goto); toDirectory(); history.replaceState(null, '', '#' + a.dataset.goto);
   }));
   $('svcSearch').addEventListener('input', e => { query = e.target.value; apply(); });
+  $('svcMore').addEventListener('click', () => {
+    expanded = !expanded; apply();
+    if (!expanded) toDirectory();
+  });
 
   // deep links: /services#ux-ui (category) · /services#all · /services#svc-investor-pitch-decks
   function fromHash() {
-    const h = decodeURIComponent(location.hash.slice(1));
-    if (!h) { setView('explore'); return; }
-    if (CAT[h] || h === 'all') { setView('all'); setFilter(h); setTimeout(toDirectory, 50); return; }
+    let h = decodeURIComponent(location.hash.slice(1));
+    if (!h) return;
+    if (h === 'no-code-development') h = 'development'; // old category id
+    if (CAT[h] || h === 'all') { setFilter(h); setTimeout(toDirectory, 50); return; }
     const el = document.getElementById(h);
-    if (el && el.classList.contains('svc-item')) { setView('all'); setFilter('all'); toggleItem(el, true); setTimeout(() => el.scrollIntoView({ block: 'center' }), 50); }
+    if (el && el.classList.contains('svc-item')) { $('svcSearch').value = ''; query = ''; expanded = true; setFilter('all'); toggleItem(el, true); setTimeout(() => el.scrollIntoView({ block: 'center' }), 50); }
   }
   window.addEventListener('hashchange', fromHash);
-  setView('explore');
+  apply();
   fromHash();
 })();
 

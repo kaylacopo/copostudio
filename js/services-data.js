@@ -1,7 +1,11 @@
 /* =========================================================
    COPO STUDIO — SERVICES DATA (single source of truth)
-   Edit titles, descriptions, categories and inclusions here.
+   Approved catalogue: 8 categories, 48 services (brief, 16 Nov 2026).
    The /services page renders entirely from this file.
+
+   PUBLIC FILE. Never add prices here. Service-level starting prices are
+   internal quoting references only and live outside the deployed site.
+   Public engagement prices are on /pricing.
 
    categories: shown in this order everywhere.
      id      — used in links, e.g. /services#ux-ui
@@ -10,343 +14,386 @@
      categories — first id is the primary category; add more ids to
                   tag a service under several categories (it is still
                   one record, never duplicated).
-     includes   — what the client gets (shown when expanded)
+     subtitle   — optional question shown above the description
+     summary    — approved public description (do not reword silently)
+     img        — hover preview (760px wide JPEG in assets/services/); leave out to
+                  show the "work coming soon" placeholder until a photo is added
      keywords   — extra search terms that aren't services of their own
-                  (e.g. "wireframes" finds the UX/UI services)
    ========================================================= */
 window.COPO_SERVICES = {
   categories: [
     {
       id: 'product-strategy', num: '01', title: 'Product Strategy',
-      desc: 'Discovery, user research, MVP planning, UX audits and defining exactly what to build.',
+      desc: 'Business, product, brand, marketing, investor and user research strategy.',
       icon: '<rect x="7" y="6" width="18" height="22" rx="1.5"/><rect x="12" y="3" width="8" height="5" rx="1"/><path d="M11 14h10M11 18h10M11 22h6"/>'
     },
     {
       id: 'ux-ui', num: '02', title: 'UX/UI Design',
-      desc: 'Mobile apps, web apps, product redesigns, design systems, prototypes and demos.',
+      desc: 'Mobile apps, web apps, product redesigns, interactive prototypes and demos.',
       icon: '<rect x="2" y="6" width="20" height="13" rx="1.5"/><path d="M2 22h20"/><rect x="20" y="11" width="10" height="17" rx="1.5" fill="var(--paper, #fff)"/><path d="M23 25h4"/>'
     },
     {
       id: 'web-conversion', num: '03', title: 'Web & Conversion',
-      desc: 'Websites, landing pages, redesigns, customer journeys and conversion optimisation.',
+      desc: 'Websites, landing pages, redesigns, conversion audits, features and integrations.',
       icon: '<circle cx="16" cy="14" r="4"/><path d="M9 24c1-3 4-5 7-5s6 2 7 5"/><path d="M27 8l3 3-3 3"/><path d="M30 11H22"/><path d="M5 24l-3-3 3-3"/><path d="M2 21h8"/>'
     },
     {
       id: 'brand-identity', num: '04', title: 'Brand Identity',
-      desc: 'Logos, visual identity systems, brand refreshes, guidelines and branded visual assets.',
+      desc: 'Visual foundations, logos, brand refreshes, naming, brand audits and brand & UI guidelines.',
       icon: '<path d="M16 3l11 11-11 15L5 14z"/><path d="M5 14h22"/><path d="M11 14l5 15 5-15"/><path d="M11 14l5-11 5 11"/>'
     },
     {
       id: 'graphic-design', num: '05', title: 'Graphic Design',
-      desc: 'Illustrations, icons, digital graphics, print, merchandise, GIFs and motion assets.',
+      desc: 'Illustration, print, motion, video, infographics, presentations, packaging and editorial.',
       icon: '<path d="M16 4l8 12-5 11h-6L8 16z"/><path d="M16 4v9.5"/><circle cx="16" cy="16" r="2.5"/><path d="M12 30h8"/>'
     },
     {
       id: 'launch-marketing', num: '06', title: 'Launch & Marketing',
-      desc: 'App Store assets, social content, videos, ad creatives, collateral and launch campaigns.',
+      desc: 'App Store assets, social content, ads, email templates, copywriting and campaign direction.',
       icon: '<path d="M28 6v20l-16-5V11z"/><path d="M12 11H6a3 3 0 0 0 0 6h6"/><path d="M11 21l2 6h4l-2-6"/><path d="M28 11h2M28 16h3M28 21h2"/>'
     },
     {
-      id: 'no-code-development', num: '07', title: 'No-Code Development',
-      desc: 'Framer websites, functional prototypes, no-code builds and AI-assisted MVP development.',
+      id: 'development', num: '07', title: 'Development Services',
+      desc: 'AI-assisted development of websites, web apps, mobile app MVPs and working prototypes.',
       note: 'Full custom development can also be supported through trusted technical collaborators, depending on project scope.',
       icon: '<path d="M16 2c5 3 8 8 8 14v6l-4-3h-8l-4 3v-6c0-6 3-11 8-14z"/><circle cx="16" cy="13" r="2.5"/><path d="M12 25l-2 5 4-2M20 25l2 5-4-2"/>'
     },
     {
       id: 'business-events', num: '08', title: 'Business & Events',
-      desc: 'Pitch decks, presentations, documents, exhibition stands, signage and event props.',
+      desc: 'Product advisory, pitch decks, stands, activations, merch and production.',
       icon: '<rect x="4" y="5" width="24" height="15" rx="1"/><path d="M9 15l4-4 3 3 6-6"/><path d="M16 20v4M11 29l5-5 5 5"/>'
     }
   ],
 
   services: [
-    /* ---------- 01 Product Strategy ---------- */
+    /* ---------- 01 Product Strategy (6) ---------- */
     {
-      id: 'discovery-planning', title: 'Discovery & Planning',
+      id: 'business-strategy', title: 'Business Strategy', subtitle: 'What is the business?',
+      img: 'assets/services/business-strategy.jpg',
       categories: ['product-strategy'],
-      summary: 'A focused kick-off to understand your users, market and goals, then turn them into a clear plan for what to design and build first.',
-      includes: ['Stakeholder & founder workshops', 'User & market research', 'Problem definition & positioning', 'User journeys & key flows', 'Prioritised product roadmap'],
-      keywords: ['research', 'workshop', 'roadmap', 'user research', 'interviews', 'personas', 'positioning', 'value proposition', 'strategy', 'kick-off']
+      summary: 'Problem definition, market research, positioning, competitor analysis and business model.',
+      keywords: ['competitors', 'benchmark', 'market research', 'positioning', 'business model', 'value proposition', 'differentiation']
     },
     {
-      id: 'mvp-planning', title: 'MVP Planning',
-      categories: ['product-strategy'],
-      summary: 'Define the smallest version of your product that proves the idea, so you launch faster without building the wrong thing.',
-      includes: ['Feature scoping & prioritisation', 'Core user flows', 'Launch scope & phasing', 'Success metrics', 'Developer-ready brief'],
-      keywords: ['mvp', 'scope', 'scoping', 'prioritisation', 'feature list', 'roadmap', 'startup', 'validate', 'idea']
+      id: 'brand-strategy', title: 'Brand Strategy', subtitle: 'Who is the brand?',
+      categories: ['product-strategy', 'brand-identity'],
+      summary: 'Purpose, mission, vision, target audience and brand identity direction.',
+      keywords: ['purpose', 'mission', 'vision', 'values', 'audience', 'brand direction']
     },
     {
-      id: 'ux-audits', title: 'UX Audits',
+      id: 'product-roadmap-strategy', title: 'Product Strategy', subtitle: 'What are we building?',
+      img: 'assets/services/product-roadmap-strategy.jpg',
+      categories: ['product-strategy'],
+      summary: 'Product vision, user journey, information architecture, MVP scope, roadmap and timeline.',
+      keywords: ['mvp', 'mvp planning', 'scope', 'scoping', 'roadmap', 'information architecture', 'prioritisation', 'feature list', 'discovery', 'planning']
+    },
+    {
+      id: 'marketing-strategy', title: 'Marketing Strategy', subtitle: 'How will we reach and grow our audience?',
+      categories: ['product-strategy', 'launch-marketing'],
+      summary: 'Marketing channels, website, waitlist, campaigns, partnerships, referrals and launch planning.',
+      keywords: ['go to market', 'gtm', 'growth', 'channels', 'waitlist', 'referrals', 'launch plan']
+    },
+    {
+      id: 'investor-strategy', title: 'Investor Strategy', subtitle: 'How will we fundraise?',
+      categories: ['product-strategy', 'business-events'],
+      summary: 'Investor fit, fundraising approach, meeting preparation and investor FAQs. Specialist support may be provided through a trusted partner.',
+      keywords: ['fundraising', 'investors', 'seed', 'pre-seed', 'vc', 'investor meetings']
+    },
+    {
+      id: 'user-research-strategy', title: 'User Research & Strategy', subtitle: 'Who are we building for?',
+      img: 'assets/services/user-research-strategy.jpg',
       categories: ['product-strategy', 'ux-ui'],
-      summary: 'An honest review of where your product or website loses users, with clear, prioritised fixes your team can act on.',
-      includes: ['Heuristic & usability review', 'Onboarding & funnel review', 'Accessibility check', 'Prioritised recommendations', 'Annotated before/after examples'],
-      keywords: ['audit', 'review', 'usability', 'heuristics', 'accessibility', 'drop-off', 'retention', 'onboarding', 'app store readiness', 'pre-launch']
-    },
-    {
-      id: 'competitor-analysis', title: 'Competitor Analysis',
-      categories: ['product-strategy'],
-      summary: 'A clear picture of your market: what competitors do well, where they fall short and the gap your product should own.',
-      includes: ['Competitor & feature benchmarking', 'UX & brand comparison', 'Pricing & business model review', 'Opportunity gaps', 'Positioning recommendations'],
-      keywords: ['competitors', 'benchmark', 'market research', 'landscape', 'positioning', 'pricing', 'differentiation']
+      summary: 'Target users, interviews, audience needs, pain points, user personas, journey mapping and A/B testing strategy.',
+      keywords: ['user research', 'interviews', 'personas', 'journey mapping', 'a/b testing', 'usability', 'discovery']
     },
 
-    /* ---------- 02 UX/UI Design ---------- */
+    /* ---------- 02 UX/UI Design (4) ---------- */
     {
       id: 'mobile-app-design', title: 'Mobile App Design',
+      img: 'assets/services/mobile-app-design.jpg',
       categories: ['ux-ui'],
-      summary: 'iOS and Android apps designed end to end, from first flows to polished, developer-ready screens.',
-      includes: ['User flows & wireframes', 'High-fidelity UI design', 'Onboarding & empty states', 'Interaction & micro-animation specs', 'Developer handoff in Figma'],
-      keywords: ['ios', 'android', 'app', 'mobile', 'wireframes', 'wireframing', 'user flows', 'ui', 'ux', 'screens', 'onboarding', 'figma']
+      summary: 'End-to-end UX/UI design for iOS and Android apps, including user flows, wireframes, interface design, responsive states, prototypes and developer-ready files.',
+      keywords: ['ios', 'android', 'app', 'mobile', 'wireframes', 'user flows', 'ui', 'ux', 'screens', 'onboarding', 'figma', 'handoff']
     },
     {
       id: 'web-app-design', title: 'Web App Design',
+      img: 'assets/services/web-app-design.jpg',
       categories: ['ux-ui'],
-      summary: 'Web platforms, dashboards and SaaS products that make complex data and actions feel simple.',
-      includes: ['Information architecture', 'User flows & wireframes', 'Dashboard & data-heavy UI', 'Responsive layouts', 'Developer handoff in Figma'],
-      keywords: ['saas', 'dashboard', 'platform', 'b2b', 'portal', 'admin', 'wireframes', 'wireframing', 'information architecture', 'data visualisation', 'ai product', 'chat interface']
+      summary: 'UX/UI design for SaaS products, web applications, dashboards and digital platforms, including navigation, workflows, responsive layouts and component design.',
+      keywords: ['saas', 'dashboard', 'platform', 'b2b', 'portal', 'admin', 'wireframes', 'components', 'design system', 'ai product', 'handoff']
     },
     {
       id: 'product-redesign', title: 'Product Redesign',
+      img: 'assets/services/product-redesign.jpg',
       categories: ['ux-ui'],
-      summary: 'Modernise an existing product so it is easier to use and looks as good as it works, without starting from scratch.',
-      includes: ['UX audit of the current product', 'Redesigned key flows', 'Updated visual language', 'Migration plan for your team', 'Developer handoff'],
-      keywords: ['redesign', 'revamp', 'refresh', 'modernise', 'improve', 'ui update', 'usability']
-    },
-    {
-      id: 'design-systems', title: 'Design Systems',
-      categories: ['ux-ui'],
-      summary: 'Scalable Figma systems with tokens, components and clear rules, so your product stays consistent as it grows.',
-      includes: ['Colour, type & spacing tokens', 'Component library', 'Icon set', 'Usage guidelines', 'Dev-ready token handover'],
-      keywords: ['components', 'component library', 'tokens', 'figma', 'ui kit', 'style guide', 'variables', 'consistency']
+      summary: 'Redesign existing mobile apps or platforms to improve usability, visual consistency, navigation and the overall product experience.',
+      keywords: ['redesign', 'revamp', 'refresh', 'modernise', 'improve', 'ux audit', 'usability']
     },
     {
       id: 'interactive-prototypes-demos', title: 'Interactive Prototypes & Demos',
-      categories: ['ux-ui', 'business-events'],
-      summary: 'Clickable prototypes that feel like the real thing, for user testing, investor demos and getting buy-in before you build.',
-      includes: ['Clickable Figma prototypes', 'Investor & sales demo flows', 'User testing prototypes', 'Screen recordings of key flows'],
-      keywords: ['prototype', 'prototyping', 'clickable', 'demo', 'investor demo', 'user testing', 'wireframes', 'figma']
+      img: 'assets/services/interactive-prototypes-demos.jpg',
+      categories: ['ux-ui'],
+      summary: 'Clickable Figma prototypes and interactive product demos for testing concepts, presenting to investors and demonstrating key journeys.',
+      keywords: ['prototype', 'prototyping', 'clickable', 'demo', 'investor demo', 'user testing', 'figma']
     },
 
-    /* ---------- 03 Web & Conversion ---------- */
+    /* ---------- 03 Web & Conversion (5) ---------- */
     {
       id: 'website-design', title: 'Website Design',
+      img: 'assets/services/website-design.jpg',
       categories: ['web-conversion'],
-      summary: 'Company and marketing websites that explain what you do, build trust and turn visitors into customers.',
-      includes: ['Sitemap & page structure', 'Copy direction', 'Responsive page designs', 'Interaction details', 'SEO-ready structure'],
-      keywords: ['website', 'marketing site', 'company website', 'responsive', 'seo', 'multi-page', 'enterprise website', 'ecommerce']
+      summary: 'Custom UX/UI design for business and marketing websites, including sitemap, responsive layouts and conversion-focused page design.',
+      keywords: ['website', 'marketing site', 'company website', 'responsive', 'sitemap', 'multi-page']
     },
     {
       id: 'landing-page-design', title: 'Landing Page Design',
-      categories: ['web-conversion', 'launch-marketing'],
-      summary: 'Focused, single-goal pages for launches, waitlists, campaigns and ads, designed to convert.',
-      includes: ['Conversion-led page structure', 'Headline & copy direction', 'Responsive design', 'Waitlist or sign-up flow', 'A/B test variations'],
-      keywords: ['landing page', 'waitlist', 'pre-launch', 'sign up', 'campaign page', 'lead generation', 'conversion']
+      img: 'assets/services/landing-page-design.jpg',
+      categories: ['web-conversion'],
+      summary: 'Single-page designs for campaigns, launches, waitlists and lead generation.',
+      keywords: ['landing page', 'waitlist', 'pre-launch', 'sign up', 'campaign page', 'lead generation']
     },
     {
       id: 'website-redesign', title: 'Website Redesign',
+      img: 'assets/services/website-redesign.jpg',
       categories: ['web-conversion'],
-      summary: 'Rework an existing site so it reflects where your business is today and performs better.',
-      includes: ['Review of the current site', 'Updated structure & navigation', 'Redesigned key pages', 'Responsive design', 'Launch support'],
-      keywords: ['redesign', 'refresh', 'revamp', 'website update', 'rebrand website']
+      summary: 'Refresh existing websites to improve usability, visual design, messaging and conversions.',
+      keywords: ['redesign', 'refresh', 'revamp', 'website update']
     },
     {
-      id: 'conversion-optimisation', title: 'Conversion Optimisation',
-      categories: ['web-conversion', 'product-strategy'],
-      summary: 'Find where visitors drop off across your site, funnel or onboarding, and redesign the journey to fix it.',
-      includes: ['Funnel & journey review', 'Drop-off analysis', 'Redesigned pages & steps', 'Test ideas & variations', 'Tracking recommendations'],
-      keywords: ['cro', 'conversion', 'funnel', 'customer journey', 'drop-off', 'a/b testing', 'checkout', 'sign-up flow', 'onboarding']
+      id: 'conversion-audit-optimisation', title: 'Conversion Audit & Optimisation',
+      img: 'assets/services/conversion-audit-optimisation.jpg',
+      categories: ['web-conversion'],
+      summary: 'Audit website performance, user journeys, calls to action, forms and conversion funnels, with actionable recommendations and optional design improvements.',
+      keywords: ['cro', 'conversion', 'funnel', 'customer journey', 'drop-off', 'a/b testing', 'checkout', 'audit']
+    },
+    {
+      id: 'website-features-integrations', title: 'Website Features & Integrations',
+      categories: ['web-conversion', 'development'],
+      summary: 'Additional website functionality including blogs, CMS, booking funnels, e-commerce, marketplaces, forms, payments and third-party integrations. Quoted according to complexity.',
+      keywords: ['blog', 'cms', 'booking', 'ecommerce', 'e-commerce', 'shop', 'marketplace', 'forms', 'payments', 'stripe', 'integrations']
     },
 
-    /* ---------- 04 Brand Identity ---------- */
+    /* ---------- 04 Brand Identity (7) ---------- */
     {
-      id: 'brand-identity-design', title: 'Brand Identity Design',
+      id: 'visual-brand-foundations', title: 'Visual Brand Foundations',
+      img: 'assets/services/visual-brand-foundations.jpg',
       categories: ['brand-identity'],
-      summary: 'A complete visual identity that instantly communicates what your company stands for.',
-      includes: ['Logo & logo system', 'Colour palette', 'Typography', 'Imagery direction', 'Core brand applications'],
-      keywords: ['logo', 'branding', 'visual identity', 'colour', 'typography', 'wordmark', 'brand mark', 'art direction']
+      summary: 'Establish the essential visual identity for a brand, including colour palette, typography, visual direction and basic brand guidelines. Ideal for businesses that already have a logo.',
+      keywords: ['branding', 'visual identity', 'brand identity', 'colour', 'typography', 'art direction']
     },
     {
       id: 'brand-refresh', title: 'Brand Refresh',
+      img: 'assets/services/brand-refresh.jpg',
       categories: ['brand-identity'],
-      summary: 'Evolve an existing brand for a new market, audience or stage, without losing what people already recognise.',
-      includes: ['Brand review', 'Logo refinements', 'Updated palette & type', 'Refreshed key assets'],
+      summary: 'Refine an existing visual identity, including relevant updates to the logo, colours, typography and overall visual direction.',
       keywords: ['rebrand', 'refresh', 'evolve', 'update logo', 'modernise brand']
     },
     {
-      id: 'brand-guidelines', title: 'Brand Guidelines',
+      id: 'logo-design', title: 'Logo Design',
+      img: 'assets/services/logo-design.jpg',
       categories: ['brand-identity'],
-      summary: 'Clear rules for using your brand, so it stays consistent whoever is designing.',
-      includes: ['Logo usage & clear space', 'Colour & type rules', 'Imagery & tone', 'Do’s and don’ts', 'Shareable guideline document'],
-      keywords: ['brand book', 'style guide', 'guidelines', 'brand rules', 'logo usage']
+      summary: 'Custom logo design with relevant variations, export formats and usage guidance.',
+      keywords: ['logo', 'wordmark', 'brand mark', 'logomark', 'icon']
     },
     {
       id: 'brand-asset-design', title: 'Brand Asset Design',
-      categories: ['brand-identity', 'graphic-design'],
-      summary: 'Everyday branded assets your team actually needs, ready to use across digital and print.',
-      includes: ['Business cards & stationery', 'Email signatures', 'Templates for decks & documents', 'Social profile assets', 'Print-ready logo files'],
-      keywords: ['business cards', 'stationery', 'templates', 'email signature', 'logo files', 'cmyk', 'eps', 'brand kit']
+      img: 'assets/services/brand-asset-design.jpg',
+      categories: ['brand-identity'],
+      summary: 'Supporting brand visuals such as backgrounds, patterns, textures, imagery direction and simple graphic elements.',
+      keywords: ['patterns', 'backgrounds', 'textures', 'graphics', 'brand kit']
+    },
+    {
+      id: 'brand-naming-verbal-identity', title: 'Brand Naming & Verbal Identity',
+      categories: ['brand-identity'],
+      summary: 'Brand name development, slogans, taglines, tone of voice and core messaging.',
+      keywords: ['naming', 'name', 'slogan', 'tagline', 'tone of voice', 'messaging', 'copy']
+    },
+    {
+      id: 'brand-audit', title: 'Brand Audit',
+      img: 'assets/services/brand-audit.jpg',
+      categories: ['brand-identity'],
+      summary: "Evaluate an existing brand's visual consistency, messaging and presentation, with actionable recommendations.",
+      keywords: ['audit', 'review', 'consistency', 'brand review']
+    },
+    {
+      id: 'brand-ui-guidelines', title: 'Brand & UI Guidelines',
+      img: 'assets/services/brand-ui-guidelines.jpg',
+      categories: ['brand-identity', 'ux-ui'],
+      summary: 'Document visual identity usage and digital interface rules, including typography scales, buttons, components, border radii, spacing, padding and layout conventions.',
+      keywords: ['brand book', 'style guide', 'guidelines', 'logo usage', 'ui kit', 'components', 'tokens', 'design system']
     },
 
-    /* ---------- 05 Graphic Design ---------- */
+    /* ---------- 05 Graphic Design (8) ---------- */
     {
-      id: 'illustration-icon-design', title: 'Illustration & Icon Design',
+      id: 'custom-illustration-design', title: 'Custom Illustration Design',
       categories: ['graphic-design'],
-      summary: 'Custom illustrations and icon sets that give your product and brand a personality of their own.',
-      includes: ['Custom icon sets', 'Spot & hero illustrations', 'Empty-state illustrations', 'SVG & PNG exports'],
-      keywords: ['icons', 'iconography', 'illustration', 'svg', 'graphics']
-    },
-    {
-      id: 'digital-graphic-design', title: 'Digital Graphic Design',
-      categories: ['graphic-design'],
-      summary: 'On-brand graphics for web, email, product and presentations, delivered in the right formats.',
-      includes: ['Web & email graphics', 'Banners & headers', 'Infographics', 'Image editing & compositing'],
-      keywords: ['graphics', 'banners', 'infographics', 'email design', 'newsletter', 'image editing']
+      summary: 'Bespoke illustrations, characters, mascots and original artwork for brands, websites, products and campaigns. Excludes custom icon sets.',
+      keywords: ['illustration', 'characters', 'mascot', 'artwork', 'drawing']
     },
     {
       id: 'print-design', title: 'Print Design',
-      categories: ['graphic-design', 'business-events'],
-      summary: 'Flyers, brochures and printed collateral, supplied as production-ready files for your printer.',
-      includes: ['Flyers & brochures', 'Posters', 'Packaging & labels', 'Print-ready files with bleed & CMYK'],
-      keywords: ['print', 'flyers', 'brochures', 'posters', 'packaging', 'cmyk', 'printer']
-    },
-    {
-      id: 'merchandise-design', title: 'Merchandise Design',
-      categories: ['graphic-design', 'business-events'],
-      summary: 'Tees, caps and branded merch people actually want to wear, from concept to print files.',
-      includes: ['Apparel concepts', 'Print placement & sizing', 'Colourway options', 'Mock-ups', 'Print-ready files'],
-      keywords: ['merch', 'merchandise', 't-shirt', 'tee', 'apparel', 'caps', 'swag', 'team merch']
+      categories: ['graphic-design'],
+      summary: 'Print-ready artwork for posters, flyers, brochures, business cards, signage and other single-page or short-form printed materials.',
+      keywords: ['print', 'flyers', 'posters', 'brochures', 'business cards', 'stationery', 'cmyk', 'printer']
     },
     {
       id: 'motion-graphics-gifs', title: 'Motion Graphics & GIFs',
+      categories: ['graphic-design'],
+      summary: 'Animated graphic elements, GIFs, typography animations, logo animations and short motion assets.',
+      keywords: ['motion', 'animation', 'gif', 'animated', 'lottie', 'logo animation']
+    },
+    {
+      id: 'custom-video-production', title: 'Custom Video Production',
       categories: ['graphic-design', 'launch-marketing'],
-      summary: 'Short animations, GIFs and animated assets that bring your product and brand to life.',
-      includes: ['Animated logos', 'Product & UI animations', 'GIFs & stickers', 'Loading & micro-animations'],
-      keywords: ['motion', 'animation', 'gif', 'animated', 'lottie', 'micro-interactions']
+      summary: 'Edited or AI-generated videos, including product demos, explainer videos, promotional videos, animated walkthroughs and AI avatar videos. No live filming.',
+      keywords: ['video', 'demo', 'product demo', 'walkthrough', 'explainer', 'promo video', 'ai video', 'avatar']
+    },
+    {
+      id: 'infographics-data-visualisation', title: 'Infographics & Data Visualisation',
+      categories: ['graphic-design'],
+      summary: 'Visual explanations of statistics, processes, comparisons, research and complex information for websites, reports and presentations.',
+      keywords: ['infographic', 'charts', 'data', 'diagrams', 'statistics']
+    },
+    {
+      id: 'presentation-design', title: 'Presentation Design',
+      categories: ['graphic-design', 'business-events'],
+      summary: 'Professionally designed slides for business presentations, workshops, sales meetings, conferences and internal communications.',
+      keywords: ['presentation', 'slides', 'keynote', 'powerpoint', 'google slides', 'sales deck', 'conference']
+    },
+    {
+      id: 'packaging-label-design', title: 'Packaging & Label Design',
+      categories: ['graphic-design'],
+      summary: 'Branded product packaging, labels, packaging layouts and print-ready production artwork.',
+      keywords: ['packaging', 'labels', 'box', 'product packaging']
+    },
+    {
+      id: 'editorial-publication-design', title: 'Editorial & Publication Design',
+      categories: ['graphic-design'],
+      summary: 'Multi-page layout and design for booklets, ebooks, guides, reports, catalogues and extensive brochures.',
+      keywords: ['report', 'ebook', 'booklet', 'guide', 'catalogue', 'brochure', 'whitepaper', 'documents', 'pdf', 'annual report']
     },
 
-    /* ---------- 06 Launch & Marketing ---------- */
+    /* ---------- 06 Launch & Marketing (7) ---------- */
     {
       id: 'app-store-assets', title: 'App Store Assets',
+      img: 'assets/services/app-store-assets.jpg',
       categories: ['launch-marketing'],
-      summary: 'App Store and Google Play screenshots and previews that sell your product within seconds.',
-      includes: ['Store screenshots', 'Feature graphics', 'App icon refinement', 'Listing copy direction'],
-      keywords: ['app store', 'play store', 'screenshots', 'aso', 'app icon', 'store listing']
-    },
-    {
-      id: 'product-demo-videos', title: 'Product Demo Videos',
-      categories: ['launch-marketing', 'ux-ui'],
-      summary: 'Clear walkthrough videos that show how your product works, for your website, sales and investors.',
-      includes: ['Script & storyboard', 'Screen recordings', 'Edited walkthroughs', 'Captions & formats for each channel'],
-      keywords: ['video', 'demo', 'walkthrough', 'explainer', 'product video', 'screen recording']
+      summary: 'App Store and Google Play listing visuals, including screenshots, feature graphics and promotional artwork.',
+      keywords: ['app store', 'play store', 'screenshots', 'aso', 'store listing']
     },
     {
       id: 'social-media-design', title: 'Social Media Design',
+      img: 'assets/services/social-media-design.jpg',
       categories: ['launch-marketing'],
-      summary: 'Reusable, on-brand social templates and content so posting stays fast and consistent.',
-      includes: ['Post & carousel templates', 'Profile & highlight assets', 'Content pillars', 'Content calendar'],
-      keywords: ['social media', 'instagram', 'linkedin', 'carousel', 'templates', 'content calendar', 'posts']
+      summary: 'Branded social media posts, carousels, stories and reusable graphics for different platforms.',
+      keywords: ['social media', 'instagram', 'linkedin', 'carousel', 'templates', 'posts', 'stories']
     },
     {
       id: 'social-media-video-content', title: 'Social Media Video Content',
       categories: ['launch-marketing'],
-      summary: 'Scroll-stopping short-form videos for TikTok, Instagram Reels and LinkedIn.',
-      includes: ['Hooks & scripts', 'Video editing', 'Captions & text overlays', 'Covers & formats'],
+      summary: 'Short-form videos, Reels, TikToks and social ads created using supplied footage, existing assets or AI-generated content. No live filming.',
       keywords: ['reels', 'tiktok', 'short-form', 'video', 'video editing', 'shorts', 'ugc']
     },
     {
       id: 'digital-ad-design', title: 'Digital Ad Design',
-      categories: ['launch-marketing', 'graphic-design'],
-      summary: 'Advertising creatives for social and display, built to stop the scroll and drive clicks.',
-      includes: ['Static ad creatives', 'Ad variations for testing', 'Sizes for each platform', 'Animated ads'],
-      keywords: ['ads', 'advertising', 'paid social', 'meta ads', 'display ads', 'creatives', 'banners']
-    },
-    {
-      id: 'launch-campaign-design', title: 'Launch Campaign Design',
+      img: 'assets/services/digital-ad-design.jpg',
       categories: ['launch-marketing'],
-      summary: 'Coordinated assets across web, social, email and events for the moment your product goes live.',
-      includes: ['Campaign concept', 'Key visual', 'Asset set across channels', 'Launch timeline'],
-      keywords: ['launch', 'campaign', 'go to market', 'gtm', 'product launch', 'announcement']
+      summary: 'Static and animated advertising creatives for Meta, Google, LinkedIn and other digital platforms.',
+      keywords: ['ads', 'advertising', 'paid social', 'meta ads', 'google ads', 'display ads', 'creatives', 'banners']
     },
     {
-      id: 'marketing-collateral', title: 'Marketing Collateral',
-      categories: ['launch-marketing', 'business-events'],
-      summary: 'Sales and marketing materials that help your team explain the product and close deals.',
-      includes: ['One-pagers & sales sheets', 'Case study layouts', 'Email templates', 'Brochures'],
-      keywords: ['one-pager', 'sales sheet', 'collateral', 'case studies', 'brochure', 'sales enablement']
+      id: 'email-template-design', title: 'Email Template Design',
+      categories: ['launch-marketing'],
+      summary: 'Branded, reusable email templates for newsletters, announcements, promotions and customer communications.',
+      keywords: ['email', 'newsletter', 'mailchimp', 'klaviyo', 'email design']
+    },
+    {
+      id: 'marketing-copywriting', title: 'Marketing Copywriting',
+      categories: ['launch-marketing'],
+      summary: 'Campaign headlines, advertising copy, promotional messaging, email copy and calls to action.',
+      keywords: ['copy', 'copywriting', 'headlines', 'messaging', 'cta']
+    },
+    {
+      id: 'campaign-strategy-creative-direction', title: 'Campaign Strategy & Creative Direction',
+      img: 'assets/services/campaign-strategy-creative-direction.jpg',
+      categories: ['launch-marketing'],
+      summary: 'End-to-end planning for a specific marketing objective, such as an event, product launch or user acquisition campaign. Includes campaign concept, audience, messaging, channels, creative direction and an execution plan. Asset production and campaign management scoped separately.',
+      keywords: ['launch', 'campaign', 'product launch', 'creative direction', 'concept', 'announcement', 'user acquisition']
     },
 
-    /* ---------- 07 No-Code Development ---------- */
+    /* ---------- 07 Development Services (5) ---------- */
     {
-      id: 'framer-website-development', title: 'Framer Website Development',
-      categories: ['no-code-development', 'web-conversion'],
-      summary: 'Your website designed and built in Framer, so your team can update it without a developer.',
-      includes: ['Responsive Framer build', 'CMS setup', 'Animations & interactions', 'SEO basics & analytics', 'Domain & launch support'],
-      keywords: ['framer', 'no-code', 'website build', 'cms', 'webflow', 'launch', 'hosting', 'domain']
+      id: 'website-development', title: 'Website Development',
+      img: 'assets/services/website-development.jpg',
+      categories: ['development', 'web-conversion'],
+      summary: 'Build and launch responsive websites using AI-assisted development, including basic interactions, simple animations, mobile optimisation and deployment. Website design is supplied and priced separately. Advanced functionality is scoped separately.',
+      keywords: ['website build', 'build', 'launch', 'hosting', 'deployment', 'ai-assisted', 'code']
     },
     {
-      id: 'no-code-mvp-development', title: 'No-Code MVP Development',
-      categories: ['no-code-development', 'product-strategy'],
-      summary: 'A working first version of your product built with no-code and AI-assisted tools, to validate the idea fast.',
-      includes: ['MVP build with no-code tools', 'AI-assisted features & workflows', 'Basic integrations', 'Launch & iteration support'],
-      keywords: ['no-code', 'mvp', 'ai', 'ai-assisted', 'automation', 'bubble', 'tools', 'validate']
+      id: 'web-app-platform-development', title: 'Web App & Platform Development',
+      categories: ['development'],
+      summary: 'Build functional web applications, SaaS platforms, dashboards and browser-based MVPs, including core workflows, user accounts, databases and integrations as required by the agreed scope.',
+      keywords: ['saas', 'mvp', 'web app', 'platform', 'dashboard', 'database', 'accounts', 'login', 'ai-assisted']
+    },
+    {
+      id: 'mobile-app-development', title: 'Mobile App Development',
+      categories: ['development'],
+      summary: 'Build iOS and Android mobile app MVPs using AI-assisted development, including core screens, functionality, testing and preparation for app store submission. App Store approval and third-party costs are not guaranteed or included.',
+      keywords: ['ios', 'android', 'app', 'mvp', 'app store', 'mobile', 'ai-assisted']
     },
     {
       id: 'interactive-web-prototypes', title: 'Interactive Web Prototypes',
-      categories: ['no-code-development', 'ux-ui'],
-      summary: 'Functional, coded prototypes that run in the browser, for testing real interactions before full development.',
-      includes: ['Working browser prototype', 'Realistic data & interactions', 'Shareable link', 'Feedback round'],
-      keywords: ['prototype', 'functional prototype', 'coded prototype', 'proof of concept', 'poc', 'demo']
+      img: 'assets/services/interactive-web-prototypes.jpg',
+      categories: ['development'],
+      summary: 'Build working browser-based prototypes and product demos to test ideas, demonstrate interactions and validate concepts before full development.',
+      keywords: ['prototype', 'functional prototype', 'coded prototype', 'proof of concept', 'poc', 'demo', 'validate']
     },
     {
-      id: 'development-handoff-support', title: 'Development Handoff & Support',
-      categories: ['no-code-development', 'ux-ui'],
-      summary: 'Everything your developers need to build the design exactly as intended, plus support during the build.',
-      includes: ['Annotated Figma files', 'Design tokens & specs', 'Asset exports', 'Design QA of builds', 'Ongoing developer support'],
-      keywords: ['handoff', 'handover', 'developer', 'specs', 'tokens', 'qa', 'design qa', 'custom development', 'collaborators']
+      id: 'website-maintenance-updates', title: 'Website Maintenance & Updates',
+      categories: ['development', 'web-conversion'],
+      summary: 'Make updates, fixes, content changes and functional improvements to existing websites. Scoped and quoted per request.',
+      keywords: ['maintenance', 'updates', 'fixes', 'bugs', 'content changes', 'support']
     },
 
-    /* ---------- 08 Business & Events ---------- */
+    /* ---------- 08 Business & Events (6) ---------- */
+    {
+      id: 'product-advisory', title: 'Product Advisory',
+      categories: ['business-events', 'product-strategy'],
+      summary: 'One-hour, one-to-one consultation for early-stage founders covering idea validation, product direction, MVP priorities, launch preparation and next steps. Includes preliminary review of materials supplied before the call. Full product audits and additional deliverables excluded.',
+      keywords: ['consultation', 'advice', 'call', 'session', 'mentoring', 'founder', 'validate', 'idea']
+    },
     {
       id: 'investor-pitch-decks', title: 'Investor Pitch Decks',
+      img: 'assets/services/investor-pitch-decks.jpg',
       categories: ['business-events'],
-      summary: 'Decks that tell your story clearly and help investors understand the opportunity in minutes.',
-      includes: ['Story & slide structure', 'Slide design', 'Charts & data visuals', 'Editable template'],
+      summary: 'Investor-focused pitch decks combining fundraising storytelling, content structure and presentation design, including the opportunity, market, product, business model and traction.',
       keywords: ['pitch deck', 'investor deck', 'fundraising', 'seed', 'presentation', 'slides']
     },
     {
-      id: 'business-presentations', title: 'Business Presentations',
+      id: 'exhibition-stands-signage', title: 'Exhibition Stands & Signage',
       categories: ['business-events'],
-      summary: 'Sales decks, keynotes and talk slides designed to be understood, even from the back of the room.',
-      includes: ['Sales & partnership decks', 'Keynote & talk slides', 'Presentation templates', 'Speaker-friendly layouts'],
-      keywords: ['presentation', 'keynote', 'sales deck', 'slides', 'powerpoint', 'google slides', 'talk', 'conference']
-    },
-    {
-      id: 'business-documents-reports', title: 'Business Documents & Reports',
-      categories: ['business-events'],
-      summary: 'Reports, proposals and company documents that look as credible as the work behind them.',
-      includes: ['Reports & whitepapers', 'Proposals', 'Company profiles', 'Document templates'],
-      keywords: ['report', 'whitepaper', 'proposal', 'company profile', 'documents', 'pdf', 'annual report']
-    },
-    {
-      id: 'exhibition-stand-design', title: 'Exhibition Stand Design',
-      categories: ['business-events'],
-      summary: 'Trade show and expo stands that stand out on a busy floor, delivered as production-ready files.',
-      includes: ['Stand concept & layout', 'Wall & panel graphics', 'Production files to exact specs', 'Coordination with stand builders'],
-      keywords: ['exhibition', 'expo', 'trade show', 'booth', 'stand', 'conference', 'large format']
-    },
-    {
-      id: 'event-graphics-signage', title: 'Event Graphics & Signage',
-      categories: ['business-events', 'graphic-design'],
-      summary: 'Banners, signage and printed event graphics that make your brand easy to find and remember.',
-      includes: ['Roll-up banners', 'Signage & wayfinding', 'Badges & lanyards', 'Print-ready large-format files'],
-      keywords: ['banner', 'roll-up', 'signage', 'event', 'badges', 'large format', 'backdrop']
+      summary: 'Design for exhibition stands, pull-up banners, backdrops, branded displays, event signage and other physical exhibition graphics. Includes production-ready artwork where applicable.',
+      keywords: ['exhibition', 'expo', 'trade show', 'booth', 'stand', 'banner', 'roll-up', 'pull-up', 'signage', 'backdrop', 'large format', 'event']
     },
     {
       id: 'promotional-props-activations', title: 'Promotional Props & Activations',
+      img: 'assets/services/promotional-props-activations.jpg',
       categories: ['business-events', 'launch-marketing'],
-      summary: 'Memorable physical props and brand moments that get people stopping, talking and taking photos.',
-      includes: ['Prop & activation concepts', 'Designs to scale', 'Print & cut files', 'Mock-ups for sign-off'],
+      summary: 'Creative concepts and designs for branded props, photo opportunities, interactive displays and memorable event activations.',
       keywords: ['props', 'activation', 'photo moment', 'foam', 'stunt', 'experiential', 'event marketing']
+    },
+    {
+      id: 'merchandise-giveaway-design', title: 'Merchandise & Giveaway Design',
+      img: 'assets/services/merchandise-giveaway-design.jpg',
+      categories: ['business-events'],
+      summary: 'Custom designs for branded T-shirts, tote bags, pens, stickers, stationery and promotional products for events or everyday business use. Production-ready artwork included.',
+      keywords: ['merch', 'merchandise', 't-shirt', 'tee', 'tote', 'stickers', 'apparel', 'swag', 'giveaways']
+    },
+    {
+      id: 'supplier-production-coordination', title: 'Supplier & Production Coordination',
+      categories: ['business-events'],
+      summary: 'Research suppliers, request and compare quotes, prepare production specifications, coordinate orders and manage production communication. Manufacturing, printing and shipping costs are separate.',
+      keywords: ['suppliers', 'production', 'printing', 'manufacturing', 'quotes', 'orders', 'coordination']
     }
   ]
 };

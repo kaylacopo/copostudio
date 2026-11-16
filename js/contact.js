@@ -95,6 +95,8 @@
       var nameEl = form.querySelector("#f-name");
       var emailEl = form.querySelector("#f-email");
       var goalEl = form.querySelector("#f-goal");
+      var callEl = form.querySelector("#f-call");
+      var val = function (sel) { var el = form.querySelector(sel); return el ? el.value.trim() : ""; };
 
       var payload = {
         access_key: ACCESS_KEY,
@@ -102,7 +104,10 @@
         from_name: "Copo Studio website",
         name: nameEl ? nameEl.value.trim() : "",
         email: emailEl ? emailEl.value.trim() : "",
-        message: goalEl ? goalEl.value.trim() : ""
+        message: goalEl ? goalEl.value.trim() : "",
+        timeline: val("#f-timeline") || "Not given",
+        budget: val("#f-budget") || "Not given",
+        discovery_call: callEl && callEl.checked ? "Yes, wants a free 20-minute discovery call" : "No"
       };
 
       setLoading(true);
