@@ -85,6 +85,32 @@
       }
     }
   }
+  /* hero headline: the full sentence at one size. Desktop sets it in four lines at the shared page-hero
+     size (site.css): "Everything your / startup needs to / build a great product, / in one strategic partner."
+     Phones keep their original three lines (.d-br is the desktop-only break). */
+  .hero__h .d-br { display: none; }
+  @media (min-width: 769px) {
+    .hero .hero__h { max-width: none !important; white-space: nowrap; }
+    .hero__h .d-br { display: inline; }
+    /* same artwork and size as site.css, nudged ~7vw to the right (partly off frame) for breathing room
+       between the headline and the logo. "lighten" over the site black (#0A0A0A) lifts the artwork's pure
+       black to the same black, so there's no visible edge where the image starts. */
+    .hero {
+      background:
+        linear-gradient(90deg,
+          rgba(10,10,10,0.85) 0%,
+          rgba(10,10,10,0.55) 32%,
+          rgba(10,10,10,0.15) 55%,
+          rgba(10,10,10,0) 70%),
+        url("assets/hero-bg.png") left 4.6vw center / 108% no-repeat,
+        var(--void) !important;
+      background-blend-mode: normal, lighten !important;
+    }
+  }
+  /* smaller laptops: the headline takes more of the width, so push the logo a little further */
+  @media (min-width: 769px) and (max-width: 1200px) {
+    .hero { background-position: 0 0, left 9vw center !important; }
+  }
   /* unify all home-page section headings to match hero scale */
   .display.h-large, .contact__h { font-size: clamp(32px, 3.33vw, 48px) !important; }
   /* section heads: label left, heading column up to 1000px — every heading shares one left edge */
@@ -93,6 +119,8 @@
   :root { --section-pad: clamp(56px, 6vw, 96px); --head-gap: clamp(32px, 3.5vw, 56px); }
   body > section.problems, body > section.work, body > section.deliverables,
   body > section.testimonials, body > section.about, body > section.contact { padding-block: var(--section-pad); }
+  /* "Built with founders" testimonials: white, to set it apart from the paper sections either side */
+  body > section.testimonials { background: #fff; }
   /* same gap between every section heading and its content */
   body > section .section-head { padding-bottom: 0; border-bottom: 0; margin-bottom: var(--head-gap); }
   body > section.deliverables .need-more { margin-top: var(--head-gap); padding-top: var(--head-gap); }
@@ -163,7 +191,7 @@
   </div>
 
   <div class="hero__headline">
-    <h1 class="hero__h" style="letter-spacing: -0.02em; line-height: 0.98; font-size: clamp(42px, 5vw, 72px); max-width: 60vw; text-wrap: balance; font-weight: 600;">Everything your startup needs to <br><span class="hero-hl">build a great product</span><span class="accent">,</span> <br>in one strategic partner<span class="accent">.</span></h1>
+    <h1 class="hero__h" style="letter-spacing: -0.02em; line-height: 0.98; font-size: clamp(42px, 5vw, 72px); max-width: 60vw; text-wrap: balance; font-weight: 600;">Everything your <br class="d-br">startup needs to <br><span class="hero-hl">build a great product</span><span class="accent">,</span> <br>in one strategic partner<span class="accent">.</span></h1>
   </div>
 
   <div class="hero__meta">

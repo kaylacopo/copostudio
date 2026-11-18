@@ -58,6 +58,8 @@
     margin: 0;
     max-width: 16ch;
   }
+  /* desktop: wide enough that the heading sits on two lines */
+  @media (min-width: 769px) { .svc-hero__h { max-width: 24ch; text-wrap: balance; } }
   .svc-hero__meta {
     display: grid;
     grid-template-columns: 1fr auto;
