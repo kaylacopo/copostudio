@@ -87,6 +87,8 @@
   .esd-gal { --gal-r: 2.25; display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 0.625fr); grid-template-rows: 1fr 1fr; gap: clamp(10px, 1.2vw, 16px); order: 1; width: 100%; align-self: start; aspect-ratio: var(--gal-r) / 1; }
   .esd-gal figure { margin: 0; position: relative; overflow: hidden; background: #ECEAF0; min-height: 0; }
   .esd-gal figure:first-child { grid-row: 1 / 3; }
+  .esd-gal figure.esd-fig--studio { background: #FDFDFD; }
+  .esd-gal .esd-fig--studio img { object-fit: contain; }
   .esd-gal img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease-out); }
   @media (hover: hover) { .esd-gal figure:hover img { transform: scale(1.03); } }
   .esd-tag { position: absolute; left: 10px; top: 10px; z-index: 1; font-family: var(--mono); font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; padding: 5px 8px; background: rgba(241, 238, 231, 0.92); color: var(--ink); }
@@ -197,9 +199,9 @@
       </div>
     </div>
     <div class="esd-gal reveal">
-      <figure><span class="esd-tag">Mockup</span><img src="/assets/stands/fintech-goddess-side.jpg" srcset="/assets/stands/fintech-goddess-side-sm.jpg 1000w, /assets/stands/fintech-goddess-side.jpg 2000w" sizes="(max-width: 760px) 100vw, 70vw" width="2000" height="1250" alt="Mockup of the Kalipso FinTech Connect stand: a goddess rising out of deep purple under the headline 'Fate is not a compliance strategy.'" fetchpriority="high"></figure>
-      <figure><span class="esd-tag">Mockup</span><img src="/assets/stands/fintech-goddess-corner-sm.jpg" srcset="/assets/stands/fintech-goddess-corner-sm.jpg 1000w, /assets/stands/fintech-goddess-corner.jpg 2000w" sizes="(max-width: 760px) 50vw, 26vw" width="1000" height="625" alt="Corner view of the Kalipso goddess stand with both walls and the branded counters"></figure>
-      <figure><span class="esd-tag">Mockup</span><img src="/assets/stands/fintech-goddess-front-sm.jpg" srcset="/assets/stands/fintech-goddess-front-sm.jpg 1000w, /assets/stands/fintech-goddess-front.jpg 2000w" sizes="(max-width: 760px) 50vw, 26vw" width="1000" height="625" alt="Front view of the Kalipso stand: 'Spreadsheets are for mortals.' above the screen"></figure>
+      <figure class="esd-fig--studio"><span class="esd-tag">Mockup</span><img src="/assets/stands/modex-fintech-corner.jpg" srcset="/assets/stands/modex-fintech-corner-sm.jpg 1000w, /assets/stands/modex-fintech-corner.jpg 2000w" sizes="(max-width: 760px) 100vw, 70vw" width="2000" height="1250" fetchpriority="high" alt="Mockup of the Kalipso FinTech Connect corner stand: a goddess rising out of purple waves beside the headline 'Fate is not a compliance strategy.'"></figure>
+      <figure class="esd-fig--studio"><span class="esd-tag">Mockup</span><img src="/assets/stands/modex-fintech-goddess.jpg" sizes="(max-width: 760px) 50vw, 26vw" width="1000" height="781" loading="lazy" alt="The goddess wall of the Kalipso stand with the brochure holder and counters"></figure>
+      <figure class="esd-fig--studio"><span class="esd-tag">Mockup</span><img src="/assets/stands/modex-fintech-front.jpg" sizes="(max-width: 760px) 50vw, 26vw" width="1000" height="781" loading="lazy" alt="Front view of the Kalipso stand: 'Spreadsheets are for mortals.' above the screen"></figure>
     </div>
   </article>
 
@@ -221,7 +223,7 @@
       </div>
     </div>
     <div class="esd-gal reveal">
-      <figure><span class="esd-tag">Mockup</span><img src="/assets/stands/risk-front.jpg" srcset="/assets/stands/risk-front-sm.jpg 1000w, /assets/stands/risk-front.jpg 2000w" sizes="(max-width: 760px) 100vw, 70vw" width="2000" height="1250" loading="lazy" alt="Front view mockup of the Kalipso #RISK Expo stand: white side walls, purple back wall with 60% and 70% statistics and a curved counter"></figure>
+      <figure class="esd-fig--studio"><span class="esd-tag">Mockup</span><img src="/assets/stands/modex-risk-front.jpg" srcset="/assets/stands/modex-risk-front-sm.jpg 1000w, /assets/stands/modex-risk-front.jpg 2000w" sizes="(max-width: 760px) 100vw, 70vw" width="2000" height="1250" loading="lazy" alt="Front view mockup of the Kalipso #RISK Expo stand: white side walls, purple back wall with 60% and 70% statistics and a curved counter"></figure>
       <figure><span class="esd-tag">On site</span><img src="/assets/stands/risk-onsite-stand.jpg" sizes="(max-width: 760px) 50vw, 26vw" width="800" height="872" loading="lazy" style="object-position: 50% 42%;" alt="The finished Kalipso stand at ExCeL London with visitors talking to the team"></figure>
       <figure><span class="esd-tag">On site</span><img src="/assets/stands/risk-onsite-team-sm.jpg" srcset="/assets/stands/risk-onsite-team-sm.jpg 1000w, /assets/stands/risk-onsite-team.jpg 2000w" sizes="(max-width: 760px) 50vw, 26vw" width="1000" height="750" loading="lazy" style="object-position: 40% 50%;" alt="Kayla on the Kalipso stand during the event, with the product demo on screen"></figure>
     </div>
