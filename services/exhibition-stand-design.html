@@ -74,6 +74,12 @@
   .esd-project__lead { margin: 0; font-size: 15px; line-height: 1.55; color: var(--ink-3); max-width: 44ch; }
   .esd-project__meta { margin-top: auto; padding-top: 14px; border-top: 1px solid var(--rule-light); width: 100%; display: flex; flex-direction: column; gap: 8px; font-family: var(--mono); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-3); }
   .esd-project__meta b { font-weight: 400; color: var(--ink); }
+  .esd-quote { margin: 14px 0 0; padding: 2px 0 2px 14px; border-left: 2px solid var(--pop); }
+  .esd-quote p { margin: 0 0 8px; font-family: var(--display); font-style: italic; font-weight: 500; font-size: 15px; line-height: 1.35; letter-spacing: -0.01em; color: var(--ink); max-width: 40ch; }
+  .esd-quote__who { display: flex; align-items: center; gap: 10px; }
+  .esd-quote__who img { width: 32px; height: 32px; border-radius: 50%; border: 1px solid var(--rule-light); background: #fff; object-fit: cover; flex-shrink: 0; }
+  .esd-quote__who span { font-size: 13px; line-height: 1.25; color: var(--ink-3); }
+  .esd-quote__who b { display: block; font-weight: 500; font-size: 14px; color: var(--ink); }
   .esd-dot { font-style: normal; font-size: 9px; vertical-align: 1px; margin-right: 6px; }
 
   /* one main mockup (same 16:10 shape as the renders, so nothing is cut off) + two on the side;
@@ -191,9 +197,9 @@
       </div>
     </div>
     <div class="esd-gal reveal">
-      <figure><span class="esd-tag">Mockup</span><img src="/assets/stands/fintech-goddess-side.jpg" srcset="/assets/stands/fintech-goddess-side-sm.jpg 1000w, /assets/stands/fintech-goddess-side.jpg 2000w" sizes="(max-width: 760px) 100vw, 70vw" width="2000" height="1250" alt="Mockup of the Kalipso FinTech Connect stand: a goddess rising out of deep purple under the headline 'Don't leave your compliance to the gods.'" fetchpriority="high"></figure>
+      <figure><span class="esd-tag">Mockup</span><img src="/assets/stands/fintech-goddess-side.jpg" srcset="/assets/stands/fintech-goddess-side-sm.jpg 1000w, /assets/stands/fintech-goddess-side.jpg 2000w" sizes="(max-width: 760px) 100vw, 70vw" width="2000" height="1250" alt="Mockup of the Kalipso FinTech Connect stand: a goddess rising out of deep purple under the headline 'Fate is not a compliance strategy.'" fetchpriority="high"></figure>
       <figure><span class="esd-tag">Mockup</span><img src="/assets/stands/fintech-goddess-corner-sm.jpg" srcset="/assets/stands/fintech-goddess-corner-sm.jpg 1000w, /assets/stands/fintech-goddess-corner.jpg 2000w" sizes="(max-width: 760px) 50vw, 26vw" width="1000" height="625" alt="Corner view of the Kalipso goddess stand with both walls and the branded counters"></figure>
-      <figure><span class="esd-tag">Mockup</span><img src="/assets/stands/fintech-goddess-front-sm.jpg" srcset="/assets/stands/fintech-goddess-front-sm.jpg 1000w, /assets/stands/fintech-goddess-front.jpg 2000w" sizes="(max-width: 760px) 50vw, 26vw" width="1000" height="625" alt="Front view of the Kalipso stand: 'Your spreadsheets had a good run.' above the screen"></figure>
+      <figure><span class="esd-tag">Mockup</span><img src="/assets/stands/fintech-goddess-front-sm.jpg" srcset="/assets/stands/fintech-goddess-front-sm.jpg 1000w, /assets/stands/fintech-goddess-front.jpg 2000w" sizes="(max-width: 760px) 50vw, 26vw" width="1000" height="625" alt="Front view of the Kalipso stand: 'Spreadsheets are for mortals.' above the screen"></figure>
     </div>
   </article>
 
@@ -204,6 +210,10 @@
       <div>
         <h2 class="esd-project__title">Kalipso at #RISK Expo Europe 2026<span style="color:var(--pop);">.</span></h2>
         <p class="esd-project__lead">For this event, the goal was to give everyone walking past what they need to get started with Kalipso: what it does, the results it delivers and a live demo.</p>
+        <blockquote class="esd-quote">
+          <p>&ldquo;Quick update from Risk London! &#128522; Here&rsquo;s our stand! It looks really good, and I think it stands out compared to many of the others here. We&rsquo;re really happy with how it turned out.&rdquo;</p>
+          <footer class="esd-quote__who"><img src="/assets/testimonial-kalipso.png" alt="" width="32" height="32"><span><b>Virginia</b>COO, Kalipso</span></footer>
+        </blockquote>
       </div>
       <div class="esd-project__meta">
         <span><b>#RISK Expo Europe</b> · ExCeL London</span>
